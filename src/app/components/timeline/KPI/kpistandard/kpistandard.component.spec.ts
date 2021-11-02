@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WowtestComponent } from './wowtest.component';
+import { KpistandardComponent } from './kpistandard.component';
 
-describe('WowtestComponent', () => {
-  let component: WowtestComponent;
-  let fixture: ComponentFixture<WowtestComponent>;
+describe('KpistandardComponent', () => {
+  let component: KpistandardComponent;
+  let fixture: ComponentFixture<KpistandardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WowtestComponent ]
+      declarations: [ KpistandardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WowtestComponent);
+    fixture = TestBed.createComponent(KpistandardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

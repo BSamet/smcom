@@ -4,12 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from "@angular/router";
-import { WowtestComponent } from './components/wowtest/wowtest.component';
+import { DashboardpageComponent } from './components/dashboard/dashboardpage/dashboardpage.component';
+import { KpistandardComponent } from './components/timeline/KPI/kpistandard/kpistandard.component';
+import { TimelinepageComponent } from './components/timeline/timelinepage/timelinepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WowtestComponent
+    DashboardpageComponent,
+    KpistandardComponent,
+    TimelinepageComponent
   ],
   imports: [
     BrowserModule,
