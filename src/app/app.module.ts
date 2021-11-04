@@ -7,13 +7,15 @@ import {RouterModule} from "@angular/router";
 import { DashboardpageComponent } from './components/dashboardpage/dashboardpage.component';
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
+import { LoginpageComponent } from './components/loginpage/loginpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardpageComponent,
     TimelinepageComponent,
-    KPIBlocComponent
+    KPIBlocComponent,
+    LoginpageComponent
   ],
   imports: [
     BrowserModule,

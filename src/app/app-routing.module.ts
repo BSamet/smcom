@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {DashboardpageComponent} from "./components/dashboardpage/dashboardpage.component";
+import {LoginpageComponent} from "./components/loginpage/loginpage.component";
 
 const routes: Routes = [
-  { path: '', component: DashboardpageComponent}
+  { path: '', component: LoginpageComponent}
 ]
 @NgModule({
   declarations: [],
