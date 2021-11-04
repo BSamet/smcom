@@ -4,16 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from "@angular/router";
-import { DashboardpageComponent } from './components/dashboard/dashboardpage/dashboardpage.component';
-import { KpistandardComponent } from './components/timeline/KPI/kpistandard/kpistandard.component';
-import { TimelinepageComponent } from './components/timeline/timelinepage/timelinepage.component';
+import { DashboardpageComponent } from './components/dashboardpage/dashboardpage.component';
+import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
+import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardpageComponent,
-    KpistandardComponent,
-    TimelinepageComponent
+    TimelinepageComponent,
+    KPIBlocComponent
   ],
   imports: [
     BrowserModule,
