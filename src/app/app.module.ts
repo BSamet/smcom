@@ -8,6 +8,7 @@ import { DashboardpageComponent } from './components/dashboardpage/dashboardpage
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
+import { Error404pageComponent } from './components/errorpages/error404page/error404page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoginpageComponent } from './components/loginpage/loginpage.component';
     DashboardpageComponent,
     TimelinepageComponent,
     KPIBlocComponent,
-    LoginpageComponent
+    LoginpageComponent,
+    Error404pageComponent
   ],
   imports: [
     BrowserModule,
