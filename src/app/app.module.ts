@@ -7,13 +7,15 @@ import {RouterModule} from "@angular/router";
 import { DashboardpageComponent } from './components/dashboardpage/dashboardpage.component';
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
+import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circular/kpi-circular.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardpageComponent,
     TimelinepageComponent,
-    KPIBlocComponent
+    KPIBlocComponent,
+    KpiCircularComponent
   ],
   imports: [
     BrowserModule,
