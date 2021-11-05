@@ -1,8 +1,19 @@
-<div class="flex justify-center bg-primary_cwork min-h-screen	">
-  <app-kpi-circular name="TRE" [value]="16.9"></app-kpi-circular>
-  <app-kpi-circular name="TRG" [value]="47.2"></app-kpi-circular>
-  <app-kpi-circular name="TRS" [value]="49.7"></app-kpi-circular>
-  <app-kpi-circular name="Disponibilté" [value]="54.4"></app-kpi-circular>
-  <app-kpi-circular name="Performance" [value]="104.6"></app-kpi-circular>
-  <app-kpi-circular name="Qualité" [value]="87.2"></app-kpi-circular>
-</div>
+<section class="bg-primary_cwork min-h-screen">
+    <!-- Circle progressbar -->
+    <div class="flex justify-center">
+      <app-kpi-circular name="TRE" [value]="16.9"></app-kpi-circular>
+      <app-kpi-circular name="TRG" [value]="47.2"></app-kpi-circular>
+      <app-kpi-circular name="TRS" [value]="49.7"></app-kpi-circular>
+      <app-kpi-circular name="Disponibilté" [value]="54.4"></app-kpi-circular>
+      <app-kpi-circular name="Performance" [value]="104.6"></app-kpi-circular>
+      <app-kpi-circular name="Qualité" [value]="87.2"></app-kpi-circular>
+    </div>
+    <!--Standard progressbar -->
+    <div class="flex justify-center">
+      <app-kpi-progressbar name="Taux stratégique d'engagement" [value]="35.7"></app-kpi-progressbar>
+      <app-kpi-progressbar name="Taux de charge" [value]="95"></app-kpi-progressbar>
+      <app-kpi-progressbar name="Taux de réquisiton" [value]="33.9"></app-kpi-progressbar>
+      <app-kpi-progressbar name="Taux de disponibilité matérielle" [value]="91.9"></app-kpi-progressbar>
+    </div>
+</section>
+
