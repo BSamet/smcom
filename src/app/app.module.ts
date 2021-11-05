@@ -9,6 +9,7 @@ import { TimelinepageComponent } from './components/timelinepage/timelinepage.co
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circular/kpi-circular.component';
 import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-progressbar/kpi-progressbar.component';
+import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-indicator/kpi-indicator.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-p
     TimelinepageComponent,
     KPIBlocComponent,
     KpiCircularComponent,
-    KpiProgressbarComponent
+    KpiProgressbarComponent,
+    KpiIndicatorComponent
   ],
   imports: [
     BrowserModule,
