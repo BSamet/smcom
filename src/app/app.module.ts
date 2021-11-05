@@ -8,6 +8,7 @@ import { DashboardpageComponent } from './components/dashboardpage/dashboardpage
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circular/kpi-circular.component';
+import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-progressbar/kpi-progressbar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circ
     DashboardpageComponent,
     TimelinepageComponent,
     KPIBlocComponent,
-    KpiCircularComponent
+    KpiCircularComponent,
+    KpiProgressbarComponent
   ],
   imports: [
     BrowserModule,

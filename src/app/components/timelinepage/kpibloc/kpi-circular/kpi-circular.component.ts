@@ -15,4 +15,13 @@ export class KpiCircularComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  currentColor() {
+    if (this.value <= 20) {
+      return 'red';
+    } else if (this.value <= 50) {
+      return 'orange';
+    } else {
+      return 'currentColor';
+    }
+  }
 }

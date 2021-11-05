@@ -1,10 +1,12 @@
-<div class="m-10">
-  <h2>{{ name }}</h2>
-  <svg width="200" height="200">
-    <circle stroke="#efefef" stroke-width="4" fill="none" r="40" cx="50" cy="50" stroke-dasharray="100" stroke-dashoffset="-46"/>
-    <circle stroke="#00acc1" stroke-width="4" style.stroke-dasharray="{{value}}, 100" stroke-dashoffset="0" stroke-linecap="round" fill="none" r="40" cx="50" cy="50" />
-    <g>
-      <text x="50" y="50" alignment-baseline="central" text-anchor="middle" font-size="15">{{value}}%</text>
-    </g>
+<div class="flex items-center justify-center w-40 h-40">
+  <svg class="transform -rotate-90">
+    <circle cx="80" cy="75" r="60" stroke="white" stroke-width="15" fill="transparent"
+            class="text-gray-700" />
+
+    <circle cx="80" cy="75" r="60" [ngStyle]="{stroke : currentColor()}" stroke-width="15" fill="transparent"
+            :stroke-dasharray="376"
+            [attr.stroke-dashoffset]="(376 - value / 100 * 376)"
+            class="text-blue-500 " />
   </svg>
+  <span class="absolute text-l text-white text-center font-medium">{{ name }}<br/>{{ value }}%</span>
 </div>
