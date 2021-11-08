@@ -10,6 +10,7 @@ import { CncComponent } from './components/cnc/cnc.component';
 import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circular/kpi-circular.component';
 import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-progressbar/kpi-progressbar.component';
 import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-indicator/kpi-indicator.component';
+import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-ind
     CncComponent,
     KpiCircularComponent,
     KpiProgressbarComponent,
-    KpiIndicatorComponent
+    KpiIndicatorComponent,
+    CncDashboardComponent
   ],
   imports: [
     BrowserModule,
