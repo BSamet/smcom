@@ -3,9 +3,19 @@
     <circle cx="80" cy="75" r="60" stroke="white" stroke-width="15" fill="transparent"
             class="text-gray-700" />
 
+<<<<<<< Updated upstream
     <circle cx="80" cy="75" r="60" [ngStyle]="{stroke : currentColor()}" stroke-width="15" fill="transparent"
+=======
+    <!-- Front circle -->
+    <circle *ngIf="value <= 100" cx="80" cy="75" r="60" [ngStyle]="{stroke : currentColor()}" stroke-width="15" fill="transparent"
+>>>>>>> Stashed changes
             :stroke-dasharray="376"
             [attr.stroke-dashoffset]="(376 - value / 100 * 376)"
+            class="text-blue-500 " />
+
+    <circle *ngIf="value > 100" cx="80" cy="75" r="60" [ngStyle]="{stroke : currentColor()}" stroke-width="15" fill="transparent"
+            :stroke-dasharray="376"
+            [attr.stroke-dashoffset]="(376 - 100 / 100 * 376)"
             class="text-blue-500 " />
   </svg>
   <span class="absolute text-l text-white text-center font-medium">{{ name }}<br/>{{ value }}%</span>

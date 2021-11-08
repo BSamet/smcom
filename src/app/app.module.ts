@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from "@angular/router";
@@ -27,4 +26,5 @@ import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-p
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
