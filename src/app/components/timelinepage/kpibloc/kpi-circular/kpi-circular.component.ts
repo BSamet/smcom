@@ -21,6 +21,8 @@ export class KpiCircularComponent implements OnInit {
       return 'red';
     } else if (this.value <= 50) {
       return 'orange';
+    } else if (this.value <= 80) {
+      return 'green'
     } else {
       return 'currentColor';
     }
