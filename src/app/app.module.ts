@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from "@angular/router";
@@ -8,6 +7,8 @@ import { DashboardpageComponent } from './components/dashboardpage/dashboardpage
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { NavbarComponent } from './components/dashboardpage/navbar/navbar.component';
+import { SidenavbarComponent } from './components/dashboardpage/sidenavbar/sidenavbar.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NavbarComponent } from './components/dashboardpage/navbar/navbar.compon
     DashboardpageComponent,
     TimelinepageComponent,
     KPIBlocComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidenavbarComponent,
   ],
   imports: [
     BrowserModule,
