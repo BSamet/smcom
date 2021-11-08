@@ -15,6 +15,7 @@ export class KpiCircularComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Color for circle when data is under ...
   currentColor() {
     if (this.value <= 20) {
       return 'red';

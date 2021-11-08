@@ -1,0 +1,28 @@
+.bg-orange {
+  background-color: orange;
+}
+
+.bg-cyan {
+  background-color: cyan;
+}
+
+.bg-green {
+  background-color: greenyellow;
+}
+
+.flex {
+  display: flex;
+}
+
+.center {
+  text-align: center;
+}
+
+.vertical {
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+    max-height: 80%;
+}

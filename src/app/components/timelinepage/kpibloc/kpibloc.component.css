@@ -1,0 +1,12 @@
+/* KPI Indicator color */
+.standardTime app-kpi-indicator {
+  color: #3b82f6;
+}
+
+.workTime app-kpi-indicator {
+  color: #22c55e;
+}
+
+.breakdownTime app-kpi-indicator {
+  color: #ef4444;
+}

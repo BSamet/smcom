@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-kpi-progressbar',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./kpi-progressbar.component.css']
 })
 export class KpiProgressbarComponent implements OnInit {
+
+  @Input() name!: string;
+  @Input() value!: number;
 
   constructor() { }
 
