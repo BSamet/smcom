@@ -1,18 +1,25 @@
-import { NgModule } from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {RouterModule} from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { DashboardpageComponent } from './components/dashboardpage/dashboardpage.component';
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { Error404pageComponent } from './components/errorpages/error404page/error404page.component';
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { ProfilepageComponent } from './components/profilepage/profilepage.component';
+import { NavbarComponent } from './components/dashboardpage/navbar/navbar.component';
+import { SidenavbarComponent } from './components/dashboardpage/sidenavbar/sidenavbar.component';
+import { FooterComponent } from './components/dashboardpage/footer/footer.component';
+import { CncComponent } from './components/cnc/cnc.component';
+import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circular/kpi-circular.component';
+import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-progressbar/kpi-progressbar.component';
+import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-indicator/kpi-indicator.component';
+import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +29,15 @@ import { ProfilepageComponent } from './components/profilepage/profilepage.compo
     KPIBlocComponent,
     LoginpageComponent,
     Error404pageComponent,
-    ProfilepageComponent
+    ProfilepageComponent,
+    NavbarComponent,
+    SidenavbarComponent,
+    FooterComponent,
+    CncComponent,
+    KpiCircularComponent,
+    KpiProgressbarComponent,
+    KpiIndicatorComponent,
+    CncDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,4 +49,5 @@ import { ProfilepageComponent } from './components/profilepage/profilepage.compo
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
