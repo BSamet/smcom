@@ -6,6 +6,12 @@ import { RouterModule } from "@angular/router";
 import { DashboardpageComponent } from './components/dashboardpage/dashboardpage.component';
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
+import { LoginpageComponent } from './components/loginpage/loginpage.component';
+import { Error404pageComponent } from './components/errorpages/error404page/error404page.component';
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { ProfilepageComponent } from './components/profilepage/profilepage.component';
 import { NavbarComponent } from './components/dashboardpage/navbar/navbar.component';
 import { SidenavbarComponent } from './components/dashboardpage/sidenavbar/sidenavbar.component';
 import { FooterComponent } from './components/dashboardpage/footer/footer.component';
@@ -16,14 +22,15 @@ import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/
 import { TimelineLineComponent } from './components/timelinepage/timeline-line/timeline-line.component';
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     DashboardpageComponent,
     TimelinepageComponent,
     KPIBlocComponent,
+    LoginpageComponent,
+    Error404pageComponent,
+    ProfilepageComponent,
     NavbarComponent,
     SidenavbarComponent,
     FooterComponent,
@@ -37,9 +44,11 @@ import { TimelinePeriodComponent } from './components/timelinepage/timeline-line
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 
