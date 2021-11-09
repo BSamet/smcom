@@ -16,6 +16,7 @@ export class LoginpageComponent implements OnInit {
 };
   isLoggedIn = false;
   isLoginFailed = false;
+  isLoading = false;
   errorMessage = '';
 
   constructor(
@@ -37,6 +38,7 @@ export class LoginpageComponent implements OnInit {
 
     this.authService.login(username, password).subscribe(
       data => {
+        this.isLoading = true;
         this.tokenStorage.saveToken(data.access_token);
         this.userService.getUserProfile().subscribe(data => {
           this.tokenStorage.saveUser(data);
@@ -49,6 +51,7 @@ export class LoginpageComponent implements OnInit {
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        this.isLoading = false;
       }
     );
   }
