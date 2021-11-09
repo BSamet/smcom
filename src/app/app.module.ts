@@ -9,6 +9,9 @@ import { TimelinepageComponent } from './components/timelinepage/timelinepage.co
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { Error404pageComponent } from './components/errorpages/error404page/error404page.component';
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,9 +25,11 @@ import { Error404pageComponent } from './components/errorpages/error404page/erro
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
