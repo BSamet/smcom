@@ -8,6 +8,7 @@ import { TimelinepageComponent } from './components/timelinepage/timelinepage.co
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { NavbarComponent } from './components/dashboardpage/navbar/navbar.component';
 import { SidenavbarComponent } from './components/dashboardpage/sidenavbar/sidenavbar.component';
+import { FooterComponent } from './components/dashboardpage/footer/footer.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SidenavbarComponent } from './components/dashboardpage/sidenavbar/siden
     KPIBlocComponent,
     NavbarComponent,
     SidenavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
