@@ -5,7 +5,7 @@ import {LoginpageComponent} from "./components/loginpage/loginpage.component";
 import {Error404pageComponent} from "./components/errorpages/error404page/error404page.component";
 
 const routes: Routes = [
-  { path: '', component: LoginpageComponent},
+  { path: 'login', component: LoginpageComponent},
 
   { path: '**', pathMatch: 'full',
     component: Error404pageComponent },
