@@ -6,12 +6,9 @@ import {Error404pageComponent} from "./components/errorpages/error404page/error4
 import {ProfilepageComponent} from "./components/profilepage/profilepage.component";
 import {DashboardpageComponent} from "./components/dashboardpage/dashboardpage.component";
 import {TimelinepageComponent} from "./components/timelinepage/timelinepage.component";
-import { CncComponent } from './components/cnc/cnc.component';
-
 const routes: Routes = [
   { path: '', component: DashboardpageComponent},
   { path: 'timeline', component: TimelinepageComponent},
-  { path: 'cnc', component: CncComponent},
   { path: 'login', component: LoginpageComponent},
   { path: 'profile', component: ProfilepageComponent},
   { path: '**', pathMatch: 'full',

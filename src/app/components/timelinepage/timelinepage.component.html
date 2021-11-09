@@ -1,1 +1,22 @@
-<app-kpibloc></app-kpibloc>
+<section class="bg-primary_cwork min-h-screen">
+  <div>
+    <button (click)="toggleShowKpi()" type="checkbox" class="text-white text-xs border-white rounded-xl border-2 hover:text-black hover:bg-white hover:border-black p-2 mx-2 relative left-10 top-5">
+      Display KPI
+    </button>
+    <button (click)="toggleShowTimeline()" type="checkbox" class="text-white text-xs border-white rounded-xl border-2 hover:text-black hover:bg-white hover:border-black p-2 mx-2 relative left-10 top-5">
+      Display Timeline
+    </button>
+  </div>
+  <div *ngIf="isShowKpi" class="row container-fluid"  id="kpiToggle" >
+    <app-kpibloc></app-kpibloc>
+  </div>
+  <div *ngIf="isShowTimeline" class="row container-fluid"  id="timelineToggle" >
+    <app-timeline-line day="Mon" month="Nov" dayNumber="1" year="21"></app-timeline-line>
+    <app-timeline-line day="Tue" month="Nov" dayNumber="2" year="21"></app-timeline-line>
+    <app-timeline-line day="Wen" month="Nov" dayNumber="3" year="21"></app-timeline-line>
+    <app-timeline-line day="Thu" month="Nov" dayNumber="4" year="21"></app-timeline-line>
+    <app-timeline-line day="Fri" month="Nov" dayNumber="5" year="21"></app-timeline-line>
+    <app-timeline-line day="Sat" month="Nov" dayNumber="6" year="21"></app-timeline-line>
+    <app-timeline-line day="Sun" month="Nov" dayNumber="7" year="21"></app-timeline-line>
+  </div>
+</section>
