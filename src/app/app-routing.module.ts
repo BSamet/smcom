@@ -6,9 +6,11 @@ import {TimelinepageComponent} from "./components/timelinepage/timelinepage.comp
 import { CncComponent } from './components/cnc/cnc.component';
 
 const routes: Routes = [
+
   { path: '', component: DashboardpageComponent},
   { path: 'timeline', component: TimelinepageComponent},
   { path: 'cnc', component: CncComponent},
+
 ]
 @NgModule({
   declarations: [],
