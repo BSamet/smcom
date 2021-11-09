@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginpageComponent} from "./components/loginpage/loginpage.component";
 import {Error404pageComponent} from "./components/errorpages/error404page/error404page.component";
+import {ProfilepageComponent} from "./components/profilepage/profilepage.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginpageComponent},
+  { path: 'profile', component: ProfilepageComponent},
 
   { path: '**', pathMatch: 'full',
     component: Error404pageComponent },

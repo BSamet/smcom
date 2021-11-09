@@ -16,7 +16,6 @@ export class LoginpageComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +25,9 @@ export class LoginpageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorage.getToken() != null) {
+      console.log(this.tokenStorage.getToken())
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
       this.router.navigate(['']).then();
     }
   }
@@ -37,12 +36,9 @@ export class LoginpageComponent implements OnInit {
 
     this.authService.login(username, password).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
-
+        this.tokenStorage.saveToken(data.access_token);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
         this.reloadPage();
       },
       err => {

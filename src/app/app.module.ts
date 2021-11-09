@@ -12,6 +12,7 @@ import { Error404pageComponent } from './components/errorpages/error404page/erro
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { ProfilepageComponent } from './components/profilepage/profilepage.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     TimelinepageComponent,
     KPIBlocComponent,
     LoginpageComponent,
-    Error404pageComponent
+    Error404pageComponent,
+    ProfilepageComponent
   ],
   imports: [
     BrowserModule,
