@@ -28,7 +28,7 @@ export class LoginpageComponent implements OnInit {
     if (this.tokenStorage.getToken() != null) {
       console.log(this.tokenStorage.getToken())
       this.isLoggedIn = true;
-      this.router.navigate(['']).then();
+      this.router.navigate(['profile']).then();
     }
   }
   onSubmit(): void {
