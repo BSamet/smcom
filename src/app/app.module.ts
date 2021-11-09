@@ -6,11 +6,16 @@ import { RouterModule } from "@angular/router";
 import { DashboardpageComponent } from './components/dashboardpage/dashboardpage.component';
 import { TimelinepageComponent } from './components/timelinepage/timelinepage.component';
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
+import { NavbarComponent } from './components/dashboardpage/navbar/navbar.component';
+import { SidenavbarComponent } from './components/dashboardpage/sidenavbar/sidenavbar.component';
+import { FooterComponent } from './components/dashboardpage/footer/footer.component';
 import { CncComponent } from './components/cnc/cnc.component';
 import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circular/kpi-circular.component';
 import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-progressbar/kpi-progressbar.component';
 import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-indicator/kpi-indicator.component';
 import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,6 +23,9 @@ import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/
     DashboardpageComponent,
     TimelinepageComponent,
     KPIBlocComponent,
+    NavbarComponent,
+    SidenavbarComponent,
+    FooterComponent,
     CncComponent,
     KpiCircularComponent,
     KpiProgressbarComponent,
