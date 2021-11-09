@@ -8,10 +8,12 @@ import { TimelinepageComponent } from './components/timelinepage/timelinepage.co
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { NavbarComponent } from './components/dashboardpage/navbar/navbar.component';
 import { SidenavbarComponent } from './components/dashboardpage/sidenavbar/sidenavbar.component';
+import { FooterComponent } from './components/dashboardpage/footer/footer.component';
 import { CncComponent } from './components/cnc/cnc.component';
 import { KpiCircularComponent } from './components/timelinepage/kpibloc/kpi-circular/kpi-circular.component';
 import { KpiProgressbarComponent } from './components/timelinepage/kpibloc/kpi-progressbar/kpi-progressbar.component';
 import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-indicator/kpi-indicator.component';
+
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-ind
     KPIBlocComponent,
     NavbarComponent,
     SidenavbarComponent,
+    FooterComponent,
     CncComponent,
     KpiCircularComponent,
     KpiProgressbarComponent,
