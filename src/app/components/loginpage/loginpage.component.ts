@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {TokenStorageService} from "../../services/token-storage.service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-loginpage',
@@ -21,14 +22,14 @@ export class LoginpageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken() != null) {
-      console.log(this.tokenStorage.getToken())
       this.isLoggedIn = true;
-      this.router.navigate(['profile']).then();
+      this.router.navigate(['']).then();
     }
   }
   onSubmit(): void {
@@ -37,9 +38,13 @@ export class LoginpageComponent implements OnInit {
     this.authService.login(username, password).subscribe(
       data => {
         this.tokenStorage.saveToken(data.access_token);
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.reloadPage();
+        this.userService.getUserProfile().subscribe(data => {
+          this.tokenStorage.saveUser(data);
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.reloadPage();
+        })
+
       },
       err => {
         this.errorMessage = err.error.message;

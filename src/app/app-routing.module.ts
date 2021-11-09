@@ -6,11 +6,12 @@ import {Error404pageComponent} from "./components/errorpages/error404page/error4
 import {ProfilepageComponent} from "./components/profilepage/profilepage.component";
 import {DashboardpageComponent} from "./components/dashboardpage/dashboardpage.component";
 import {TimelinepageComponent} from "./components/timelinepage/timelinepage.component";
+import {NeedAdminRole, NeedNormalRole, Permissions} from "./helpers/hasRoleGuard";
 const routes: Routes = [
-  { path: '', component: DashboardpageComponent},
+  { path: '', component: DashboardpageComponent, canActivate:[NeedNormalRole]},
   { path: 'timeline', component: TimelinepageComponent},
   { path: 'login', component: LoginpageComponent},
-  { path: 'profile', component: ProfilepageComponent},
+  { path: 'profile', component: ProfilepageComponent, canActivate:[NeedNormalRole]},
   { path: '**', pathMatch: 'full',
     component: Error404pageComponent },
 ]
@@ -20,6 +21,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
-  ]
+  ],
+  providers:[Permissions, NeedNormalRole, NeedAdminRole]
 })
 export class AppRoutingModule { }

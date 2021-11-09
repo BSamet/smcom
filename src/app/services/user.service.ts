@@ -13,5 +13,4 @@ export class UserService {
   getUserProfile(): Observable<any> {
     return this.http.get(API_URL + 'profile', { responseType: 'json' });
   }
-
 }

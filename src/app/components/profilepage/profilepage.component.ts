@@ -13,18 +13,11 @@ export class ProfilepageComponent implements OnInit {
   constructor(private storage: TokenStorageService, private user: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.user.getUserProfile().subscribe(
-      data => {
-        this.currentUser = data;
-      },
-      err => {
-        this.currentUser = err.status;
-        this.storage.signOut();
-        this.router.navigate(['login']).then()
-
-
-      }
-    );
+    this.currentUser = this.storage.getUser();
+  }
+  signOut():void{
+    this.storage.signOut();
+    this.router.navigate(['']).then();
   }
 
 }
