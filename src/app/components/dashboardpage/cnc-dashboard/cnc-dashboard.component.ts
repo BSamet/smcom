@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cnc-dashboard',
@@ -12,9 +13,10 @@ export class CncDashboardComponent implements OnInit {
   @Input() dncStatus!: string;
   @Input() prodStatus!: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
 
 }
