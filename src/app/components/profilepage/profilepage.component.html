@@ -8,9 +8,8 @@
         alt="">
     </div>
     <div>
-      <div class="text-xl font-medium text-black">Jean-Claude</div>
-      <p class="text-gray-500">Admin</p>
-      <p class="text-gray-500">Licence DNC</p>
+      <div class="text-xl font-medium text-black">{{this.currentUser.username}}</div>
+      <p class="text-gray-500">Roles : <span *ngFor="let role of currentUser.roles">{{role}}</span></p>
       <br>
     </div>
     <div><button

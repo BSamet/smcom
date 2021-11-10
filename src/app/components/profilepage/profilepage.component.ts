@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./profilepage.component.css']
 })
 export class ProfilepageComponent implements OnInit {
-  currentUser: string = "empty";
+  currentUser: any;
   constructor(private storage: TokenStorageService, private user: UserService, private router: Router) { }
 
   ngOnInit(): void {
