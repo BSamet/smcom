@@ -9,7 +9,7 @@
     </div>
     <div>
       <div class="text-xl font-medium text-black">{{this.currentUser.username}}</div>
-      <p class="text-gray-500">Roles : <span *ngFor="let role of currentUser.roles">{{role}}</span></p>
+      <p *ngFor="let role of currentUser.roles" class="text-gray-500">Utilisateur {{ role }}</p>
       <br>
     </div>
     <div><button
