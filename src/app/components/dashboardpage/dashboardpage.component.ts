@@ -10,18 +10,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DashboardpageComponent implements OnInit {
   listCNC!:Cnc[];
   constructor(
-    private http: HttpClient
-    
+    private http: HttpClient,
+    private storage: TokenStorageService
   ) { }
 
   ngOnInit(): void {
-    const header = {
-    headers: new HttpHeaders()
-      .set('Authorization',  `Basic ${btoa("vayv33mljnV9F5OkdFajxhRdp")}`)
-      .set("Accept",'application/json+v1')
-  }
-    console.log(header)
-    this.http.get("http://10.3.0.140:3000/station",header).subscribe(data=>{
+    const API_key = this.storage.getUser().API_key;
+    this.http.get("http://10.3.0.140:3000/station", {headers: {
+        API_key: API_key
+      }}).subscribe(data=>{
       this.listCNC=data as Cnc[];
       console.log(this.listCNC)
 
