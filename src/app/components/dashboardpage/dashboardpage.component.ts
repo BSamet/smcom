@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from "../../services/token-storage.service";
 import {Cnc} from "../../interfaces/cnc"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {NestAPI_URL} from "../../smcomconfig";
 @Component({
   selector: 'app-dashboardpage',
   templateUrl: './dashboardpage.component.html',
@@ -16,7 +17,7 @@ export class DashboardpageComponent implements OnInit {
 
   ngOnInit(): void {
     const API_key = this.storage.getUser().API_key;
-    this.http.get("http://10.3.0.140:3000/station", {headers: {
+    this.http.get(NestAPI_URL + 'station', {headers: {
         API_key: API_key
       }}).subscribe(data=>{
       this.listCNC=data as Cnc[];
