@@ -1,39 +1,609 @@
 
-<nav class="flex relative bg-blue-900 flex-wrap items-center justify-between p-4">
+<nav class="flex relative bg-blue-900 flex-wrap items-center justify-between ">
       <!-- Brand div -->
       <div>
         <img [routerLink]="['/']" class="h-14 ml-12 w-auto rounded-full" src="assets/images/cwork.png" alt="logo">
       </div>
-
-      <!-- Menu div -->
-      <div class="w-auto flex space-x-8 items-center justify-around sm:items-stretch sm:justify-start">
-
-        <a href="#" class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-md font-medium">Fichier</a>
-        <a href="#" class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-md font-medium">Affichage</a>
-        <a href="#" class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-md font-medium">Base de données</a>
-        <a href="#" class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-md font-medium">Ateliers</a>
-        <a href="#" class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-md font-medium">Plugins</a>
-        <a href="#" class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-md font-medium">Rapports</a>
-        <a href="#" class="text-white hover:bg-blue-500 hover:text-white px-3 py-2 rounded-md text-md font-medium">Outils</a>
-
-          <div class="pt-2 relative ml-auto text-gray-600">
-            <input class=" border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none ml-auto"
-                   type="search" name="search" placeholder="Search">
-            <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-              <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                   xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                   viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-                   width="512px" height="512px"><path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-              </svg>
-            </button>
+<!--CODE MENU FICHIER-->
+  <div class="mx-auto py-6 ">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <div (click)="toggle(0)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-30 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Fichier</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(0)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[0] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(0)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[0] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
           </div>
+          <ul [ngClass]="isOpenedList[0] === true? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <line x1="3" y1="6" x2="3" y2="19" />
+                <line x1="12" y1="6" x2="12" y2="19" />
+                <line x1="21" y1="6" x2="21" y2="19" />
+              </svg>
+              <span class="ml-2 font-normal">Nouveau</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+                <rect x="9" y="3" width="6" height="4" rx="2" />
+              </svg>
+              <span class="ml-2 font-normal">Alias</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <polyline points="8 16 10 10 16 8 14 14 8 16" />
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+              <span class="ml-2 font-normal">Copier</span>
+            </li>
+            <li><hr class="border-gray-200 dark:border-gray-700 my-1" /></li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="7" y="4" width="10" height="16" rx="1" />
+                <line x1="11" y1="5" x2="13" y2="5" />
+                <line x1="12" y1="17" x2="12" y2="17.01" />
+              </svg>
+              <span class="ml-2">restrictions</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+                <circle cx="9" cy="9" r="2" />
+              </svg>
+              <span class="ml-2">Importer</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Exporter</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Exporter liste</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Imprimer</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Deconnexion</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Quitter</span>
+            </li>
+          </ul>
+        </div>
+        <!-- FIN CODE MENU FICHIER -->
       </div>
+    </div>
+  </div>
+        <!-- DEBUT CODE MENU AFFICHAGE -->
+  <div class="mx-auto py-6">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <!-- Code block starts -->
+        <div (click)="toggle(1)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-30 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Affichage</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(1)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[1] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(1)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[1] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul [ngClass]="isOpenedList[1] === true ? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <line x1="3" y1="6" x2="3" y2="19" />
+                <line x1="12" y1="6" x2="12" y2="19" />
+                <line x1="21" y1="6" x2="21" y2="19" />
+              </svg>
+              <span class="ml-2 font-normal">Suivi</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+                <rect x="9" y="3" width="6" height="4" rx="2" />
+              </svg>
+              <span class="ml-2 font-normal">Voir Mouvements</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <polyline points="8 16 10 10 16 8 14 14 8 16" />
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+              <span class="ml-2 font-normal">Voir Base de données</span>
+            </li>
+            <li><hr class="border-gray-200 dark:border-gray-700 my-1" /></li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="7" y="4" width="10" height="16" rx="1" />
+                <line x1="11" y1="5" x2="13" y2="5" />
+                <line x1="12" y1="17" x2="12" y2="17.01" />
+              </svg>
+              <span class="ml-2">Voir Journal principal</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+                <circle cx="9" cy="9" r="2" />
+              </svg>
+              <span class="ml-2">Voir Journal système</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Voir Journal débuggage</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Voir Journal en archive</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Enregistrer la dimension des colonnes</span>
+            </li>
+          </ul>
+        </div>
+        <!-- FIN CODE MENU AFFICHAGE -->
+      </div>
+    </div>
+  </div>
+        <!--DEBUT CODE MENU BASE DE DONNEES-->
+  <div class="mx-auto py-6">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <div (click)="toggle(2)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-50 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Base de données</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(2)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[2] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(2)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[2] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul [ngClass]="isOpenedList[2] === true? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <line x1="3" y1="6" x2="3" y2="19" />
+                <line x1="12" y1="6" x2="12" y2="19" />
+                <line x1="21" y1="6" x2="21" y2="19" />
+              </svg>
+              <span class="ml-2 font-normal">Gestion des documents</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+                <rect x="9" y="3" width="6" height="4" rx="2" />
+              </svg>
+              <span class="ml-2 font-normal">Traçabilité</span>
+            </li>
 
-      <div class="flex items-end">
+          </ul>
+        </div>
+        <!-- FIN CODE MENU BASE DE DONNEES -->
+      </div>
+    </div>
+  </div>
+
+  <!--CODE MENU ATELIERS-->
+  <div class="mx-auto py-6">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <!-- Code block starts -->
+        <div (click)="toggle(3)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-30 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Ateliers</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(3)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[0] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(3)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[0] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul [ngClass]="isOpenedList[3] === true? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <line x1="3" y1="6" x2="3" y2="19" />
+                <line x1="12" y1="6" x2="12" y2="19" />
+                <line x1="21" y1="6" x2="21" y2="19" />
+              </svg>
+              <span class="ml-2 font-normal">Ajouter</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+                <rect x="9" y="3" width="6" height="4" rx="2" />
+              </svg>
+              <span class="ml-2 font-normal">CNC</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <polyline points="8 16 10 10 16 8 14 14 8 16" />
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+              <span class="ml-2 font-normal">Grouper les Cnc</span>
+            </li>
+            <li><hr class="border-gray-200 dark:border-gray-700 my-1" /></li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="7" y="4" width="10" height="16" rx="1" />
+                <line x1="11" y1="5" x2="13" y2="5" />
+                <line x1="12" y1="17" x2="12" y2="17.01" />
+              </svg>
+              <span class="ml-2">Dissocier le Cnc</span>
+            </li>
+
+          </ul>
+        </div>
+        <!-- FIN CODE MENU ATELIERS -->
+      </div>
+    </div>
+  </div>
+
+  <!--CODE MENU PLUGINS-->
+  <div class="mx-auto py-6">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <div (click)="toggle(4)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-30 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Plugins</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(4)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[4] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(4)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[4] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- FIN CODE MENU PLUGINS -->
+      </div>
+    </div>
+  </div>
+
+  <!--CODE MENU PLUGINS-->
+  <div class="mx-auto py-6">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <!-- Code block starts -->
+        <div (click)="toggle(5)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-30 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Rapports</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(5)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[5] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(5)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[5] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- FIN CODE MENU PLUGINS -->
+      </div>
+    </div>
+  </div>
+
+  <!--CODE MENU OUTILS-->
+  <div class="mx-auto py-6">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <!-- Code block starts -->
+        <div (click)="toggle(6)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-30 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Outils</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(6)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[6] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(6)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[6] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul [ngClass]="isOpenedList[6] === true? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <line x1="3" y1="6" x2="3" y2="19" />
+                <line x1="12" y1="6" x2="12" y2="19" />
+                <line x1="21" y1="6" x2="21" y2="19" />
+              </svg>
+              <span class="ml-2 font-normal">Sécurité</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+                <rect x="9" y="3" width="6" height="4" rx="2" />
+              </svg>
+              <span class="ml-2 font-normal">Voir caractères spéciaux</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <polyline points="8 16 10 10 16 8 14 14 8 16" />
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+              <span class="ml-2 font-normal">voir caractères spéciaux( Cnc->Pc et Pc->Cnc)</span>
+            </li>
+            <li><hr class="border-gray-200 dark:border-gray-700 my-1" /></li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="7" y="4" width="10" height="16" rx="1" />
+                <line x1="11" y1="5" x2="13" y2="5" />
+                <line x1="12" y1="17" x2="12" y2="17.01" />
+              </svg>
+              <span class="ml-2">Déploiement</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+                <circle cx="9" cy="9" r="2" />
+              </svg>
+              <span class="ml-2">Options de communication</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Options de production</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Préférences</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Tableau de bord web</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Gérer Moteurs</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Maintenance</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">Langue</span>
+            </li>
+          </ul>
+        </div>
+        <!-- FIN CODE MENU OUTILS -->
+      </div>
+    </div>
+  </div>
+
+  <!--CODE MENU AIDE-->
+  <div class="mx-auto py-6">
+    <div class="container flex justify-center mx-auto my-6">
+      <div class="z-50">
+        <div (click)="toggle(7)" class="relative">
+          <div class="bg-primary_cwork dark:bg-gray-800 dark:border-gray-700 flex justify-between border rounded w-30 cursor-pointer" data-menu>
+            <p class="px-3 py-3 text-white dark:text-gray-400 text-sm leading-3 tracking-normal font-normal">Aide</p>
+            <div class="bg-blue-100 dark:bg-gray-800 dark:border-gray-700 items-center flex rounded-r border-gray-300 border-l">
+              <div class="cursor-pointer text-gray-600 dark:text-gray-400 mx-3">
+                <svg (click)="toggle(7)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[7] === true ? ' hidden ' : '  icon icon-tabler icon-tabler-chevron-up'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg (click)="toggle(7)" xmlns="http://www.w3.org/2000/svg" [ngClass]="isOpenedList[7] === true ? ' icon icon-tabler icon-tabler-chevron-down ' : ' hidden'" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <polyline points="6 15 12 9 18 15" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul [ngClass]="isOpenedList[7] === true? 'visible transition duration-300 opacity-100 bg-white dark:bg-gray-800 shadow rounded mt-2 py-1 w-48 absolute':'hidden'">
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <line x1="3" y1="6" x2="3" y2="19" />
+                <line x1="12" y1="6" x2="12" y2="19" />
+                <line x1="21" y1="6" x2="21" y2="19" />
+              </svg>
+              <span class="ml-2 font-normal">Site Internet</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+                <rect x="9" y="3" width="6" height="4" rx="2" />
+              </svg>
+              <span class="ml-2 font-normal">Contact Mail</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <polyline points="8 16 10 10 16 8 14 14 8 16" />
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+              <span class="ml-2 font-normal">Licences logiciel</span>
+            </li>
+            <li><hr class="border-gray-200 dark:border-gray-700 my-1" /></li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="7" y="4" width="10" height="16" rx="1" />
+                <line x1="11" y1="5" x2="13" y2="5" />
+                <line x1="12" y1="17" x2="12" y2="17.01" />
+              </svg>
+              <span class="ml-2">Licences Hardware</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+                <circle cx="9" cy="9" r="2" />
+              </svg>
+              <span class="ml-2">PDF- Nouveautés</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">PDF- Aide</span>
+            </li>
+            <li class="cursor-pointer text-gray-600 dark:text-gray-400 text-sm leading-3 tracking-normal py-3 hover:bg-gray-100 px-3 flex items-center font-normal">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span class="ml-2">A propos de...</span>
+            </li>
+          </ul>
+        </div>
+        <!-- FIN CODE MENU AIDES -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Menu div -->
+      <div class="w-auto flex space-x-8 items-center justify-around sm:items-stretch sm:justify-start">
+      </div>
+      <div class=" mr-1 flex items-end">
         <h1 class="text-white px-3 py-2 rounded-md text-lg"> {{ this.user.username }} </h1>
         <button [routerLink]="['/profile']" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
           <span class="sr-only">Ouvrir le Menu User</span>
-          <img class="h-12 w-12  rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          <img class="h-12 w-12   rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
         </button>
       </div>
 
