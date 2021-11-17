@@ -1,5 +1,5 @@
 export interface Cnc {
-  Handle: number,
+  Handle: string,
   Name: string,
   Description: string,
   Disabled: boolean,
@@ -10,3 +10,4 @@ export interface Cnc {
   MDCGroups: any[],
   DisableParentState: boolean
 }
+
