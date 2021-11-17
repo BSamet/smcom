@@ -22,6 +22,7 @@ import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/
 import { TimelineLineComponent } from './components/timelinepage/timeline-line/timeline-line.component';
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
 import {NgApexchartsModule} from "ng-apexcharts";
+import {KpiService} from "./services/kpi.service";
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import {NgApexchartsModule} from "ng-apexcharts";
     ReactiveFormsModule,
     NgApexchartsModule,
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, KpiService],
   bootstrap: [AppComponent]
 })
 
