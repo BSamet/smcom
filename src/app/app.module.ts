@@ -8,7 +8,7 @@ import { TimelinepageComponent } from './components/timelinepage/timelinepage.co
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { Error404pageComponent } from './components/errorpages/error404page/error404page.component';
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { ProfilepageComponent } from './components/profilepage/profilepage.component';
@@ -21,6 +21,8 @@ import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-ind
 import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
 import { TimelineLineComponent } from './components/timelinepage/timeline-line/timeline-line.component';
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
+import {NgApexchartsModule} from "ng-apexcharts";
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,11 @@ import { TimelinePeriodComponent } from './components/timelinepage/timeline-line
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgApexchartsModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
