@@ -18,13 +18,13 @@ export class KpiCircularComponent implements OnInit {
   // Color for circle when data is under ...
   currentColor() {
     if (this.value <= 20) {
-      return 'red';
+      return '#FF1919';
     } else if (this.value <= 50) {
-      return 'orange';
+      return '#FFAE19';
     } else if (this.value <= 80) {
-      return 'green'
+      return '#329932'
     } else {
-      return 'currentColor';
+      return '#3b82f6';
     }
   }
 }
