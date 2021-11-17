@@ -21,6 +21,7 @@ import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-ind
 import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
 import { TimelineLineComponent } from './components/timelinepage/timeline-line/timeline-line.component';
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
+import { CommonModule } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TimelinePeriodComponent } from './components/timelinepage/timeline-line
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

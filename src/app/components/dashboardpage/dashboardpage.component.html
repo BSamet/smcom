@@ -2,24 +2,9 @@
   <app-navbar></app-navbar>
   <div class="md:flex">
     <app-sidenavbar></app-sidenavbar>
-    <div class="w-10/12 mx-2">
-      <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3">
-        <app-cnc-dashboard name="Moriseki" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="Moriseki" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="Moriseki" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="Moriseki" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="Fannuc" status="breakdown" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
-        <app-cnc-dashboard name="Fannuc" status="breakdown" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
-        <app-cnc-dashboard name="Fannuc" status="breakdown" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
-        <app-cnc-dashboard name="Fannuc" status="breakdown" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
-        <app-cnc-dashboard name="iTNC530" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="iTNC530" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="iTNC530" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="iTNC530" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
-        <app-cnc-dashboard name="CITIZEN" status="notWork" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
-        <app-cnc-dashboard name="CITIZEN" status="notWork" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
-        <app-cnc-dashboard name="CITIZEN" status="notWork" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
-        <app-cnc-dashboard name="CITIZEN" status="notWork" dncStatus="green" prodStatus="red"></app-cnc-dashboard>
+    <div class="w-10/12 mx-2" >
+      <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3" >
+        <app-cnc-dashboard  *ngFor="let cnc of listCNC" name="{{cnc.Name}}" status="work" dncStatus="green" prodStatus="green"></app-cnc-dashboard>
       </div>
     </div>
   </div>
