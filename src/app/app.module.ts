@@ -21,9 +21,9 @@ import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-ind
 import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
 import { TimelineLineComponent } from './components/timelinepage/timeline-line/timeline-line.component';
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
+import { CommonModule } from '@angular/common'
 import {NgApexchartsModule} from "ng-apexcharts";
 import {KpiService} from "./services/kpi.service";
-
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import {KpiService} from "./services/kpi.service";
     RouterModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
