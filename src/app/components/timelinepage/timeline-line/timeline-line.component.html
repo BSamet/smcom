@@ -1,56 +1,13 @@
-<section class="ml-4 mt-10 flex">
-  <div class="w-11/12">
-    <div class="bg-white mx-5 border-2 border-blue-500 h-20 rounded-xl overflow-hidden flex">
-      <app-timeline-period style="width: {{ timelineHour }}px" name="Test 1" status="work"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *3 }}px" name="Test 2" status="notWork"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *2}}px" name="Test 3" status="breakdown"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour}}px" name="Test 4" status="work"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *2}}px" name="Test 3" status="breakdown"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour }}px" name="Test 1" status="work"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour }}px" name="Test 1" status="work"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *3 }}px" name="Test 2" status="notWork"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *3 }}px" name="Test 2" status="notWork"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *3 }}px" name="Test 2" status="notWork"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *3 }}px" name="Test 2" status="notWork"></app-timeline-period>
-      <app-timeline-period style="width: {{ timelineHour *2}}px" name="Test 3" status="breakdown"></app-timeline-period>
-    </div>
-    <div class="mx-5 text-white text-xs pl-2 -ml-0.5 flex justify-between">
-      <p>00:00</p>
-      <p>01:00</p>
-      <p>02:00</p>
-      <p>03:00</p>
-      <p>04:00</p>
-      <p>05:00</p>
-      <p>06:00</p>
-      <p>07:00</p>
-      <p>08:00</p>
-      <p>09:00</p>
-      <p>10:00</p>
-      <p>11:00</p>
-      <p>12:00</p>
-      <p>13:00</p>
-      <p>14:00</p>
-      <p>15:00</p>
-      <p>16:00</p>
-      <p>17:00</p>
-      <p>18:00</p>
-      <p>19:00</p>
-      <p>20:00</p>
-      <p>21:00</p>
-      <p>22:00</p>
-      <p>23:00</p>
-    </div>
-  </div>
-  <div class="block rounded-t overflow-hidden bg-white text-center w-16 h-16 mt-2 ml-8">
-    <div class="bg-red-700 text-xs">
-      {{ month }}
-    </div>
-    <div class="pt-1 border-l border-r">
-      <span class="text-xl font-bold">{{ dayNumber }}</span>
-    </div>
-    <div class="pb-2 px-2 border-l border-r border-b rounded-b flex justify-between">
-      <span class="text-xs font-bold">{{ day }}</span>
-      <span class="text-xs font-bold">{{ year }}</span>
-    </div>
-  </div>
-</section>
+<div class="bg-white mt-10" id="chart">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [fill]="chartOptions.fill"
+    [legend]="chartOptions.legend"
+    [plotOptions]="chartOptions.plotOptions"
+    [xaxis]="chartOptions.xaxis"
+    [yaxis]="chartOptions.yaxis"
+    [tooltip]="chartOptions.tooltip"
+    [title]="chartOptions.title"
+  ></apx-chart>
+</div>
