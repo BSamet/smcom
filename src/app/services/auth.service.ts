@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-const AUTH_API = 'http://10.3.0.140:3000/auth/';
-
+import {NestAPI_URL} from "../smcomconfig";
+const AUTH_API = NestAPI_URL + 'auth/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

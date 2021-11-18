@@ -49,7 +49,9 @@ export class LoginpageComponent implements OnInit {
 
       },
       err => {
-        this.errorMessage = err.error.message;
+        if (err.error){
+          this.errorMessage = err.error.message;
+        } else this.errorMessage = "No error got!"
         this.isLoginFailed = true;
         this.isLoading = false;
       }
