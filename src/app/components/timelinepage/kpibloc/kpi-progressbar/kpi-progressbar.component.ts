@@ -1,9 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {flyInOut} from "../../../../animations/animations";
 
 @Component({
   selector: 'app-kpi-progressbar',
   templateUrl: './kpi-progressbar.component.html',
-  styleUrls: ['./kpi-progressbar.component.css']
+  styleUrls: ['./kpi-progressbar.component.css'],
+  animations: [
+    flyInOut
+  ]
 })
 export class KpiProgressbarComponent implements OnInit {
 

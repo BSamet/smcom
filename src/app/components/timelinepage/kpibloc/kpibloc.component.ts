@@ -6,12 +6,15 @@ import {TokenStorageService} from "../../../services/token-storage.service";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {DatePipe} from "@angular/common";
-import {animate, style, transition, trigger} from "@angular/animations";
+import {flyInOut} from "../../../animations/animations";
 
 @Component({
   selector: 'app-kpibloc',
   templateUrl: './kpibloc.component.html',
-  styleUrls: ['./kpibloc.component.css']
+  styleUrls: ['./kpibloc.component.css'],
+  animations: [
+    flyInOut
+  ]
 })
 export class KPIBlocComponent implements OnInit {
 

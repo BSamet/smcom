@@ -1,4 +1,4 @@
-<div *ngIf="this.status" [routerLink]="['/cnc/'+this.handle]" class="bg-red-900 h-40 rounded-md flex justify-around items-center" style="background-color: {{ status.State.Color }}">
+<div *ngIf="this.status" [@flyInOut] [routerLink]="['/cnc/'+this.handle]" class="bg-red-900 h-40 rounded-md flex justify-around items-center" style="background-color: {{ status.State.Color }}">
   <div><img class="h-28 w-auto rounded-xl" src="/assets/images/cnc_test.jpg"></div>
   <div class="w-1/3 text-white text-xs">
     <h1 class="text-center uppercase text-xl">{{ this.name }}</h1>

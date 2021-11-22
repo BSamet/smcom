@@ -4,33 +4,11 @@ import {Cnc} from "../../interfaces/cnc"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {NestAPI_URL} from "../../smcomconfig";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+
 @Component({
   selector: 'app-dashboardpage',
   templateUrl: './dashboardpage.component.html',
   styleUrls: ['./dashboardpage.component.css'],
-  animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        transition(
-          ':enter',
-          [
-            style({ opacity: 0 }),
-            animate('1s ease-in-out',
-              style({ opacity: 1 }))
-          ]
-        ),
-        transition(
-          ':leave',
-          [
-            style({ opacity: 1 }),
-            animate('1s ease-in-out',
-              style({ opacity: 0 }))
-          ]
-        )
-      ]
-    )
-  ]
 })
 export class DashboardpageComponent implements OnInit {
   listCNC!:Cnc[];

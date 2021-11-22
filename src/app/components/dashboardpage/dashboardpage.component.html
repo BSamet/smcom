@@ -4,10 +4,10 @@
     <app-sidenavbar></app-sidenavbar>
     <div class="w-10/12 mx-2" >
       <div *ngIf="listCNC" class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3" >
-        <app-cnc-dashboard  *ngFor="let cnc of listCNC" [@inOutAnimation] handle="{{cnc.Handle}}" name="{{cnc.Name}}" ></app-cnc-dashboard>
+        <app-cnc-dashboard  *ngFor="let cnc of listCNC" handle="{{cnc.Handle}}" name="{{cnc.Name}}" ></app-cnc-dashboard>
       </div>
       <div *ngIf="!listCNC" class="grid mt-3 ml-3" >
-        <div class="flex flex-col justify-center items-center text-xl text-primary_cwork text-base font-semibold">
+        <div class="flex flex-col justify-center items-center text-xl text-primary_cwork text-base font-semibold" [@flyInOut]>
           <div
             class="
                     animate-spin
