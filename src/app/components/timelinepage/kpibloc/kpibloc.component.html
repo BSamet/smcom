@@ -1,36 +1,52 @@
-<section>
+<section *ngIf="kpiData">
   <!-- Circle progressbar -->
   <div class="flex justify-center">
-    <app-kpi-circular name="TRE" [value]="16.9"></app-kpi-circular>
-    <app-kpi-circular name="TRG" [value]="47.2"></app-kpi-circular>
-    <app-kpi-circular name="TRS" [value]="49.7"></app-kpi-circular>
-    <app-kpi-circular name="Disponibilté" [value]="54.4"></app-kpi-circular>
-    <app-kpi-circular name="Performance" [value]="104.6"></app-kpi-circular>
-    <app-kpi-circular name="Qualité" [value]="87.2"></app-kpi-circular>
+    <app-kpi-circular name="TRE" [value]="kpiData.Rates.TEEP*100"></app-kpi-circular>
+    <app-kpi-circular name="TRG" [value]="kpiData.Rates.GEE*100"></app-kpi-circular>
+    <app-kpi-circular name="TRS" [value]="kpiData.Rates.OEE*100"></app-kpi-circular>
+    <app-kpi-circular name="Disponibilté" [value]="kpiData.Rates.Availability*100"></app-kpi-circular>
+    <app-kpi-circular name="Performance" [value]="kpiData.Rates.Performance*100"></app-kpi-circular>
+    <app-kpi-circular name="Qualité" [value]="kpiData.Rates.Quality*100"></app-kpi-circular>
   </div>
   <!--Standard progressbar -->
   <div class="flex justify-center">
-    <app-kpi-progressbar name="Taux stratégique d'engagement" [value]="35.7"></app-kpi-progressbar>
-    <app-kpi-progressbar name="Taux de charge" [value]="95"></app-kpi-progressbar>
-    <app-kpi-progressbar name="Taux de réquisiton" [value]="33.9"></app-kpi-progressbar>
-    <app-kpi-progressbar name="Taux de disponibilité matérielle" [value]="91.9"></app-kpi-progressbar>
+    <app-kpi-progressbar name="Taux stratégique d'engagement" [value]="kpiData.Rates.Involvement*100"></app-kpi-progressbar>
+    <app-kpi-progressbar name="Taux de charge" [value]="kpiData.Rates.Load*100"></app-kpi-progressbar>
+    <app-kpi-progressbar name="Taux de réquisiton" [value]="kpiData.Rates.Requisition*100"></app-kpi-progressbar>
+    <app-kpi-progressbar name="Taux de disponibilité matérielle" [value]="kpiData.Rates.HardwareAvailability*100"></app-kpi-progressbar>
   </div>
   <!-- KPI Indicator -->
   <div class="flex justify-center">
     <div class="my-4 standardTime">
-      <app-kpi-indicator name="Temps total" value="168:00:00"></app-kpi-indicator>
-      <app-kpi-indicator name="Temps d'ouverture" value="60:00:00"></app-kpi-indicator>
-      <app-kpi-indicator name="Temps requis" value="57:00:00"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps total" [value]="convertTime(kpiData.Times.AT)"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps d'ouverture" [value]="convertTime(kpiData.Times.OT)"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps requis" [value]="convertTime(kpiData.Times.PPT)"></app-kpi-indicator>
     </div>
     <div class="my-4 workTime">
-      <app-kpi-indicator name="Temps de fonctionnement" value="31:00:00"></app-kpi-indicator>
-      <app-kpi-indicator name="Temps net de fonctionnement" value="32:30:00"></app-kpi-indicator>
-      <app-kpi-indicator name="Temps utile de fonctionnement" value="28:20:00"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps de fonctionnement" [value]="convertTime(kpiData.Times.RT)"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps net de fonctionnement" [value]="convertTime(kpiData.Times.NRT)"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps utile de fonctionnement" [value]="convertTime(kpiData.Times.FPT)"></app-kpi-indicator>
     </div>
     <div class="my-4 breakdownTime">
-      <app-kpi-indicator name="Temps de panne" value="05:00:00"></app-kpi-indicator>
-      <app-kpi-indicator name="Temps moyen entre les pannes" value="11:24:00"></app-kpi-indicator>
-      <app-kpi-indicator name="Temps moyen de dépannage" value="01:00:00"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps de panne" [value]="convertTime(kpiData.Times.FT)"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps moyen entre les pannes" [value]="convertTime(kpiData.Times.MTBF)"></app-kpi-indicator>
+      <app-kpi-indicator name="Temps moyen de dépannage" [value]="convertTime(kpiData.Times.MTTR)"></app-kpi-indicator>
     </div>
+  </div>
+</section>
+<section *ngIf="!kpiData">
+  <div class="flex flex-col justify-center items-center text-lg text-white text-base font-semibold">
+    <div
+      class="
+              animate-spin
+              rounded-full
+              h-20
+              w-20
+              border-t-2 border-b-2 border-white
+              mb-3
+              transition ease-in duration-200
+            "
+    ></div>
+    Loading...
   </div>
 </section>

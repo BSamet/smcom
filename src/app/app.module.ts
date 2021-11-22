@@ -1,5 +1,6 @@
 import {Component, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from "@angular/router";
@@ -21,9 +22,16 @@ import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-ind
 import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
 import { TimelineLineComponent } from './components/timelinepage/timeline-line/timeline-line.component';
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
-import { CommonModule } from '@angular/common'
+import {CommonModule, DatePipe} from '@angular/common'
 import {NgApexchartsModule} from "ng-apexcharts";
 import {KpiService} from "./services/kpi.service";
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @NgModule({
   declarations: [
@@ -46,6 +54,7 @@ import {KpiService} from "./services/kpi.service";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
@@ -56,7 +65,7 @@ import {KpiService} from "./services/kpi.service";
     ReactiveFormsModule,
     NgApexchartsModule,
   ],
-  providers: [authInterceptorProviders, KpiService],
+  providers: [authInterceptorProviders, KpiService, DatePipe],
   bootstrap: [AppComponent]
 })
 

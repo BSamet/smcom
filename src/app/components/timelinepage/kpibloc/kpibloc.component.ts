@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {KpiService} from "../../../services/kpi.service";
 import {KPI} from "../../../interfaces/kpi";
 import {NestAPI_URL} from "../../../smcomconfig";
-import {Cnc} from "../../../interfaces/cnc";
+import {TokenStorageService} from "../../../services/token-storage.service";
+import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute} from "@angular/router";
+import {DatePipe} from "@angular/common";
+import {animate, style, transition, trigger} from "@angular/animations";
+
 @Component({
   selector: 'app-kpibloc',
   templateUrl: './kpibloc.component.html',
@@ -11,22 +16,26 @@ import {Cnc} from "../../../interfaces/cnc";
 export class KPIBlocComponent implements OnInit {
 
   kpiData!:KPI;
+  id!: string | null;
+  dateNow = new Date();
+  myDate: string | null;
 
-  constructor(private KpiService:KpiService) { }
+  constructor(private KpiService:KpiService, private storage: TokenStorageService, private http: HttpClient, private route: ActivatedRoute, private datePipe: DatePipe) {
+    this.myDate = this.datePipe.transform(this.dateNow, 'yyyy-MM-dd');
+  }
 
   ngOnInit(): void {
-    this.getKPIValue(1, "2021-11-17", "2021-11-17")
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getKPIValue(this.id, this.myDate, this.myDate)
   }
 
   // Put KPI data in variable
-  getKPIValue(Handle: number, startDay: string, endDay: string) {
+  getKPIValue(Handle: string | null, startDay: string | null, endDay: string | null) {
     const API_key = this.storage.getUser().API_key;
-    this.http.get(NestAPI_URL + 'station', {headers: {
+    this.http.get(NestAPI_URL + 'station/'+Handle+'/kpi/selectByDate/'+startDay+'/'+endDay, {headers: {
         API_key: API_key
       }}).subscribe(data=>{
-      this.listCNC=data as Cnc[];
-      console.log(this.listCNC)
-
+      this.kpiData=data as KPI;
     })
   }
 
