@@ -4,7 +4,7 @@ import {KPI} from "../../../interfaces/kpi";
 import {NestAPI_URL} from "../../../smcomconfig";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import {flyInOut} from "../../../animations/animations";
 
@@ -23,7 +23,7 @@ export class KPIBlocComponent implements OnInit {
   dateNow = new Date();
   myDate: string | null;
 
-  constructor(private KpiService:KpiService, private storage: TokenStorageService, private http: HttpClient, private route: ActivatedRoute, private datePipe: DatePipe) {
+  constructor(private KpiService:KpiService, private storage: TokenStorageService, private http: HttpClient, private route: ActivatedRoute, private datePipe: DatePipe, private router: Router) {
     this.myDate = this.datePipe.transform(this.dateNow, 'yyyy-MM-dd');
   }
 
@@ -39,6 +39,13 @@ export class KPIBlocComponent implements OnInit {
         API_key: API_key
       }}).subscribe(data=>{
       this.kpiData=data as KPI;
+    }, error => {
+      if (error.error) {
+        if (error.error.statusCode == 401){
+          this.storage.signOut();
+          this.router.navigate(['login']).then();
+        }
+      }
     })
   }
 
