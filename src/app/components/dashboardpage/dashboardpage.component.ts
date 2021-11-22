@@ -3,10 +3,12 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {Cnc} from "../../interfaces/cnc"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {NestAPI_URL} from "../../smcomconfig";
+import {animate, state, style, transition, trigger} from "@angular/animations";
+
 @Component({
   selector: 'app-dashboardpage',
   templateUrl: './dashboardpage.component.html',
-  styleUrls: ['./dashboardpage.component.css']
+  styleUrls: ['./dashboardpage.component.css'],
 })
 export class DashboardpageComponent implements OnInit {
   listCNC!:Cnc[];

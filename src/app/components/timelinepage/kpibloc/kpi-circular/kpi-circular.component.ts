@@ -1,9 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {flyInOut} from "../../../../animations/animations";
 
 @Component({
   selector: 'app-kpi-circular',
   templateUrl: './kpi-circular.component.html',
-  styleUrls: ['./kpi-circular.component.css']
+  styleUrls: ['./kpi-circular.component.css'],
+  animations: [
+    flyInOut
+  ]
 })
 export class KpiCircularComponent implements OnInit {
 

@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {animCloseOpen, flyInOut} from "../../animations/animations";
 
 @Component({
   selector: 'app-timelinepage',
   templateUrl: './timelinepage.component.html',
-  styleUrls: ['./timelinepage.component.css']
+  styleUrls: ['./timelinepage.component.css'],
+  animations: [
+    animCloseOpen,
+    flyInOut
+  ]
 })
 export class TimelinepageComponent implements OnInit {
 

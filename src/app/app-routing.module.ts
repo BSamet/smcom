@@ -9,7 +9,7 @@ import {TimelinepageComponent} from "./components/timelinepage/timelinepage.comp
 import {NeedAdminRole, NeedNormalRole, Permissions} from "./helpers/hasRoleGuard";
 const routes: Routes = [
   { path: '', component: DashboardpageComponent, canActivate:[NeedNormalRole]},
-  { path: 'timeline', component: TimelinepageComponent},
+  { path: 'cnc/:id', component: TimelinepageComponent},
   { path: 'login', component: LoginpageComponent},
   { path: 'profile', component: ProfilepageComponent, canActivate:[NeedNormalRole]},
   { path: '**', pathMatch: 'full',

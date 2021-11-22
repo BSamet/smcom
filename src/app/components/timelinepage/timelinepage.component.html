@@ -8,10 +8,10 @@
       Display Timeline
     </button>
   </div>
-  <div *ngIf="isShowKpi" class="row container-fluid"  id="kpiToggle" >
+  <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid h-80"  id="kpiToggle" >
     <app-kpibloc></app-kpibloc>
   </div>
-  <div *ngIf="isShowTimeline" class="row container-fluid"  id="timelineToggle" >
+  <div *ngIf="isShowTimeline" [@flyInOut] class="row container-fluid"  id="timelineToggle" >
     <app-timeline-line></app-timeline-line>
   </div>
 </section>

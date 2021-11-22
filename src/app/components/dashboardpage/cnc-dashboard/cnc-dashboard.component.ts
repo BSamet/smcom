@@ -4,10 +4,14 @@ import {Router} from "@angular/router";
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Status } from "../../../interfaces/status"
 import {NestAPI_URL} from "../../../smcomconfig";
+import {flyInOut} from "../../../animations/animations";
 @Component({
   selector: 'app-cnc-dashboard',
   templateUrl: './cnc-dashboard.component.html',
-  styleUrls: ['./cnc-dashboard.component.css']
+  styleUrls: ['./cnc-dashboard.component.css'],
+  animations: [
+    flyInOut
+  ]
 })
 export class CncDashboardComponent implements OnInit {
 
