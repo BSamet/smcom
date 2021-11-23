@@ -456,8 +456,10 @@ export class TimelineLineComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const self = this;
     setTimeout(function(){
-      window.location.reload();
+      self.ngOnInit();
+      console.log("refresh");
     }, 10000);
   }
 
