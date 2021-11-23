@@ -1,0 +1,108 @@
+{
+  "timeline_data": [
+    {
+      "toppkfield": 28,
+      "topcnchandlefield": 2,
+      "topstatehandlefield": 0,
+      "topstartdatefield": "16-11-2021 09-20-14",
+      "topenddatefield": "16-11-2021 09-20-14",
+      "topdurationfield": 0
+    },
+    {
+      "toppkfield": 29,
+      "topcnchandlefield": 3,
+      "topstatehandlefield": 0,
+      "topstartdatefield": "16-11-2021 09-30-23",
+      "topenddatefield": "16-11-2021 09-30-23",
+      "topdurationfield": 0
+    },
+    {
+      "toppkfield": 44,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 0,
+      "topstartdatefield": "01-11-2021 00-00-00",
+      "topenddatefield": "02-11-2021 03-00-00",
+      "topdurationfield": 97200
+    },
+    {
+      "toppkfield": 45,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 1,
+      "topstartdatefield": "02-11-2021 03-00-00",
+      "topenddatefield": "02-11-2021 14-00-00",
+      "topdurationfield": 39600
+    },
+    {
+      "toppkfield": 46,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 4,
+      "topstartdatefield": "02-11-2021 14-00-00",
+      "topenddatefield": "02-11-2021 15-37-21",
+      "topdurationfield": 5841
+    },
+    {
+      "toppkfield": 47,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 2,
+      "topstartdatefield": "02-11-2021 15-37-21",
+      "topenddatefield": "02-11-2021 15-38-03",
+      "topdurationfield": 42
+    },
+    {
+      "toppkfield": 48,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 3,
+      "topstartdatefield": "02-11-2021 15-38-03",
+      "topenddatefield": "02-11-2021 15-38-14",
+      "topdurationfield": 11
+    },
+    {
+      "toppkfield": 49,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 0,
+      "topstartdatefield": "02-11-2021 15-38-14",
+      "topenddatefield": "02-11-2021 15-38-23",
+      "topdurationfield": 9
+    },
+    {
+      "toppkfield": 50,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 3,
+      "topstartdatefield": "02-11-2021 15-38-23",
+      "topenddatefield": "02-11-2021 16-09-41",
+      "topdurationfield": 1878
+    },
+    {
+      "toppkfield": 51,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 1,
+      "topstartdatefield": "02-11-2021 16-09-41",
+      "topenddatefield": "09-11-2021 10-24-36",
+      "topdurationfield": 584095
+    },
+    {
+      "toppkfield": 52,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 0,
+      "topstartdatefield": "09-11-2021 10-24-36",
+      "topenddatefield": "11-11-2021 10-26-09",
+      "topdurationfield": 172893
+    },
+    {
+      "toppkfield": 53,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 3,
+      "topstartdatefield": "11-11-2021 10-26-09",
+      "topenddatefield": "17-11-2021 10-26-09",
+      "topdurationfield": 518400
+    },
+    {
+      "toppkfield": 54,
+      "topcnchandlefield": 1,
+      "topstatehandlefield": 1,
+      "topstartdatefield": "17-11-2021 10-26-09",
+      "topenddatefield": "17-11-2021 10-26-09",
+      "topdurationfield": 0
+    }
+  ]
+}

@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mock:server": "json-server mocks-data/timelineData.json --routes mocks-data/routes.json"
   },
   "private": true,
   "dependencies": {
@@ -18,13 +19,14 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "apexcharts": "^3.30.0",
     "critters": "^0.0.14",
+    "moment": "^2.29.1",
+    "ng-apexcharts": "^1.5.12",
     "rxjs": "~6.6.0",
     "tailwindcss": "^2.2.19",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "apexcharts": "^3.30.0",
-    "ng-apexcharts": "^1.5.12"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.11",
