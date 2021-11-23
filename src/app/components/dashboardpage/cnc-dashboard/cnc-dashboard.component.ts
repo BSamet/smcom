@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, Routes} from "@angular/router";
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Status } from "../../../interfaces/status"
 import {NestAPI_URL} from "../../../smcomconfig";
@@ -28,7 +28,6 @@ export class CncDashboardComponent implements OnInit {
       }}).subscribe(data=>{
       this.status=data as Status;
       console.log(this.status)
-
     })
 
 }}
