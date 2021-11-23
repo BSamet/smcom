@@ -47,7 +47,7 @@
           </form>
         </div>
         <div *ngIf="isLoginFailed" class="px-4 py-3 my-3 leading-normal text-red-100 bg-red-700 rounded-lg transition duration-500 ease-in-out" role="alert">
-          <p>Connexion échouée, veuillez réssayer</p>
+          <p>{{errorMessage}}</p>
         </div>
       </div>
     </div>

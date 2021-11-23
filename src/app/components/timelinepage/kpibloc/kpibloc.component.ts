@@ -43,7 +43,7 @@ export class KPIBlocComponent implements OnInit {
       if (error.error) {
         if (error.error.statusCode == 401){
           this.storage.signOut();
-          this.router.navigate(['login']).then();
+          this.router.navigate(['login/expired']).then();
         }
       }
     })

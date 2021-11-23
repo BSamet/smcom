@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: '', component: DashboardpageComponent, canActivate:[NeedNormalRole]},
   { path: 'cnc/:id', component: TimelinepageComponent},
   { path: 'login', component: LoginpageComponent},
+  { path: 'login/:err', component: LoginpageComponent},
   { path: 'profile', component: ProfilepageComponent, canActivate:[NeedNormalRole]},
   { path: '**', pathMatch: 'full',
     component: Error404pageComponent },
