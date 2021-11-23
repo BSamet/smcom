@@ -204,6 +204,22 @@
     </div>
   </div>
 
+    <nav class="mr-1 flex items-end bg-transparent">
+    <div class ="row">
+      <div class="col-12"></div>
+      <div class="col-3">
+        <select class="custom-select">
+          <option value="fr" [selected]>Francais</option>
+          <option value="en">Anglais</option>
+          <option value="de">Allemand</option>
+          <option value="it">Italien</option>
+          <option value="es">Espagnol</option>
+        </select>
+    </div>
+    </div>
+    </nav>
+
+    <nav>
   <div class=" mr-1 flex items-end">
     <h1 class="text-white px-3 py-2 rounded-md text-lg"> {{ this.user.username }} </h1>
     <button [routerLink]="['/profile']" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
