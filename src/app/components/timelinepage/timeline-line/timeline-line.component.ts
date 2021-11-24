@@ -104,6 +104,11 @@ export class TimelineLineComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const self = this;
+    setTimeout(function(){
+      self.ngOnInit();
+      console.log("refresh");
+    }, 10000);
     // Get stats and create chart
     const API_key = this.storage.getUser().API_key;
     this.http.get(NestAPI_URL + 'state', {headers: {

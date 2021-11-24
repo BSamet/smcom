@@ -28,6 +28,15 @@ export class LoginpageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const err = this.route.snapshot.paramMap.get('err');
+    if (err=="unauthorized"){
+      this.isLoginFailed=true;
+      this.errorMessage ="Veuillez vous connecter pour accéder à cette page !"
+    }
+    if (err=="expired"){
+      this.isLoginFailed=true;
+      this.errorMessage ="Votre session est expirée !"
+    }
     if (this.tokenStorage.getToken() != null) {
       this.isLoggedIn = true;
       this.router.navigate(['']).then();
@@ -51,7 +60,8 @@ export class LoginpageComponent implements OnInit {
       err => {
         if (err.error){
           this.errorMessage = err.error.message;
-        } else this.errorMessage = "No error got!"
+          this.errorMessage = "Connexion échouée"
+        } else this.errorMessage = "Erreur inconnue !"
         this.isLoginFailed = true;
         this.isLoading = false;
       }
