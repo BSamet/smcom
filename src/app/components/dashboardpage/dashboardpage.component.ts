@@ -20,13 +20,14 @@ export class DashboardpageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const self = this;
     const API_key = this.storage.getUser().API_key;
     this.http.get(NestAPI_URL + 'station', {headers: {
         API_key: API_key
       }}).subscribe(data=>{
       this.listCNC=data as Cnc[];
       console.log(this.listCNC)
-    }, error => {
+      }, error => {
         if (error.error) {
           if (error.error.statusCode == 401){
             this.storage.signOut();
@@ -34,6 +35,11 @@ export class DashboardpageComponent implements OnInit {
           }
         }
     })
+
+    setTimeout(function(){
+      self.ngOnInit();
+      console.log("refresh");
+    }, 10000);
   }
 
 }
