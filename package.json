@@ -6,10 +6,15 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mock:server": "json-server mocks-data/timelineData.json --routes mocks-data/routes.json"
   },
   "private": true,
   "dependencies": {
+    "apexcharts": "3.30.0",
+    "critters": "0.0.14",
+    "moment": "2.29.1",
+    "ng-apexcharts": "1.5.12",
     "@angular/animations": "12.2.12",
     "@angular/common": "12.2.12",
     "@angular/compiler": "12.2.12",

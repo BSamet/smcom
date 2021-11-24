@@ -29,5 +29,5 @@ export class CncDashboardComponent implements OnInit {
       this.status=data as Status;
       console.log(this.status)
     })
-
-}}
+  }
+}
