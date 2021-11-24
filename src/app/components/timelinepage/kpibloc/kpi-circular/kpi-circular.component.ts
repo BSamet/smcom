@@ -22,13 +22,13 @@ export class KpiCircularComponent implements OnInit {
   // Color for circle when data is under ...
   currentColor() {
     if (this.value <= 20) {
-      return '#FF1919';
+      return '#EC644B';
     } else if (this.value <= 50) {
-      return '#FFAE19';
+      return '#F5D76E';
     } else if (this.value <= 80) {
-      return '#329932'
+      return '#87D37C'
     } else {
-      return '#3b82f6';
+      return '#3498DB';
     }
   }
 }

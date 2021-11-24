@@ -30,5 +30,5 @@ export class CncDashboardComponent implements OnInit {
       console.log(this.status)
 
     })
-
-}}
+  }
+}
