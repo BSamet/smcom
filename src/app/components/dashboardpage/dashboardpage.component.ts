@@ -38,8 +38,7 @@ export class DashboardpageComponent implements OnInit {
 
     setTimeout(function(){
       self.ngOnInit();
-      console.log("refresh");
-    }, 10000);
+    }, 60000);
   }
 
 }
