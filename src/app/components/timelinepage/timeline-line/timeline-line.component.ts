@@ -59,8 +59,8 @@ export class TimelineLineComponent implements OnInit {
       }
     },
     // Pour afficher le temps sur une intervalle de -12h/+12h à partir de la date actuelle
-    min : Date.now() - 43200000,
-    max : Date.now() + 43200000,
+    // min : Date.now() - 43200000,
+    // max : Date.now() + 43200000,
   }
   yaxis= {
     labels: {
@@ -115,7 +115,7 @@ export class TimelineLineComponent implements OnInit {
     const lastSevenDays = this.timelineService.getDaysArray(new Date(sixDaysPrior), new Date())
 
     for (let day of lastSevenDays){
-      console.log("Pushed serie", day.toLocaleTimeString())
+      console.log(this.timelineService.dayOfWeekAsString(day.getDay()))
       this.series.push({name: this.timelineService.dayOfWeekAsString(day.getDay()), data: this.data})
     }
     this.chartOptions = {
