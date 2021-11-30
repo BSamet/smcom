@@ -20,8 +20,7 @@ export class DashboardpageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (fr)texte = loadJson(fr.json)
-    texte['file'] => Fichier
+
     const API_key = this.storage.getUser().API_key;
     this.http.get(NestAPI_URL + 'station', {headers: {
         API_key: API_key

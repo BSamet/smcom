@@ -7,7 +7,7 @@
   <div class="flex">
     <div class="relative group">
       <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
-        <span>Fichier</span>
+        <span>{{getTextFromKey("file")}}</span>
       </button>
       <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
         <div class="px-2 pt-2 pb-4 bg-white bg-gray-200 rounded-xl shadow-lg">
@@ -21,7 +21,7 @@
                   <line x1="12" y1="6" x2="12" y2="19" />
                   <line x1="21" y1="6" x2="21" y2="19" />
               </svg></span>
-              <span>Nouveau</span>
+              <span>{{getTextFromKey('new')}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -203,21 +203,40 @@
       </div>
     </div>
   </div>
+  <div class="relative group">
+    <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
+      <span>{{getCurrentLan()}}</span>
+    </button>
+    <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
+      <div class="px-2 pt-2 pb-4 bg-white bg-gray-200 rounded-xl shadow-lg">
+        <div class="grid my-2" (click)="changeLan('en')">
+          <p class="flex items-center text-sm">
+                <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                  <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                  <line x1="3" y1="6" x2="3" y2="19" />
+                  <line x1="12" y1="6" x2="12" y2="19" />
+                  <line x1="21" y1="6" x2="21" y2="19" />
+              </svg></span>
+            <span>English</span>
+          </p>
+        </div>
+        <div class="grid my-2" (click)="changeLan('fr')">
+          <p class="flex items-center text-sm">
+                <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+                    <rect x="9" y="3" width="6" height="4" rx="2" />
+                </svg></span>
+            <span>Français</span>
+          </p>
+        </div>
 
-    <nav class="mr-1 flex items-end bg-transparent">
-    <div class ="row">
-      <div class="col-12"></div>
-      <div class="col-3">
-        <select class="custom-select">
-          <option value="fr" [selected]>Francais</option>
-          <option value="en">Anglais</option>
-          <option value="de">Allemand</option>
-          <option value="it">Italien</option>
-          <option value="es">Espagnol</option>
-        </select>
+      </div>
     </div>
-    </div>
-    </nav>
+  </div>
+
 
     <nav>
   <div class=" mr-1 flex items-end">

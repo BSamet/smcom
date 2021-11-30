@@ -1,4 +1,5 @@
-{"file":"Files",
+{
+  "file":"Files",
   "new":"New",
   "alias":"Alias",
   "copy":"Copy",
@@ -13,11 +14,10 @@
   "see movements": "see movements",
   "see database": "see database",
   "see main journal": "see main journal",
-  "see system log": "ee system log",
+  "see system log": "see system log",
   "see debug log": "see debug log",
   "see journal in archive": "see journal in archive",
   "save column dimension":"save column dimension",
-
   "programs": "programs",
   "monitoring": "monitoring",
   "change state": "change state",
@@ -26,7 +26,6 @@
   "add": "Add",
   "delete": "Delete",
   "properties": "Properties",
-
   "company": "Company",
   "update contract expired": "update contract expired",
   "administrator": "administrator"

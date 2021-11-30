@@ -8,7 +8,7 @@
   "export list":"Exporter liste",
   "print":"Imprimer",
   "disconnection":"Déconnexion",
-"view": "Affichage",
+  "view": "Affichage",
   "follow up": "Suivi",
   "see movements": "Voir mouvements",
   "see database": "Voir base de données",
@@ -17,7 +17,6 @@
   "see debug log": "Voir journal débogage",
   "see journal in archive": "Voir journal en archive",
   "save column dimension":"Enregistrer la dimension des colonnes",
-
   "programs": "Programmes",
   "monitoring": "Suivi",
   "change state": "Changer d'état",
@@ -26,7 +25,6 @@
   "add": "Ajouter",
   "delete": "Supprimer",
   "properties": "Propriétés",
-
   "company": "Société",
   "update contract expired\n": "Contrat de mis à jour",
   "administrator": "Administrateur"
