@@ -1,4 +1,4 @@
-<div *ngIf="!isLoadingChart" [@flyInOut] class="bg-white mt-10" id="chart">
+<div *ngIf="!isLoadingChart" class="bg-white mt-10" id="chart">
   <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
@@ -11,7 +11,7 @@
     [title]="chartOptions.title"
   ></apx-chart>
 </div>
-<section *ngIf="isLoadingChart" [@flyInOut] class="mt-10">
+<section *ngIf="isLoadingChart" class="mt-10">
   <div class="flex flex-col justify-center items-center text-lg text-white text-base font-semibold">
     <div
       class="
