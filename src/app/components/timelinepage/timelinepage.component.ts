@@ -12,6 +12,7 @@ import {animCloseOpen, flyInOut} from "../../animations/animations";
 })
 export class TimelinepageComponent implements OnInit {
 
+  isSideNavPin!: boolean;
   isShowKpi!: boolean;
   isShowTimeline!: boolean;
 
@@ -20,11 +21,16 @@ export class TimelinepageComponent implements OnInit {
   ngOnInit(): void {
     this.isShowKpi = false;
     this.isShowTimeline = true;
+    this.isSideNavPin = false;
   }
   toggleShowKpi() {
     this.isShowKpi = ! this.isShowKpi;
   }
   toggleShowTimeline() {
     this.isShowTimeline = ! this.isShowTimeline;
+  }
+
+  toggleSideNavPin() {
+    this.isSideNavPin = ! this.isSideNavPin;
   }
 }

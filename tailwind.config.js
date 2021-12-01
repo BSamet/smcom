@@ -22,7 +22,11 @@ module.exports = {
       emerald: colors.emerald,
       orange: colors.orange
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '90%': '90%',
+      }
+    },
   },
   variants: {
     extend: {},
