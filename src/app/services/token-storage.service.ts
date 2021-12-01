@@ -18,6 +18,11 @@ export class TokenStorageService {
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
+  public saveLanguage(language: string): void {
+    window.sessionStorage.removeItem("LANGUAGE");
+    window.sessionStorage.setItem("LANGUAGE", language);
+  }
+
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
@@ -26,6 +31,11 @@ export class TokenStorageService {
   public getToken(): string | null {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
+
+  public getLanguage(): string {
+    return window.sessionStorage.getItem("LANGUAGE")||"en";
+  }
+
   public getUser(): any{
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {

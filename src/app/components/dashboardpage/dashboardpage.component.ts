@@ -20,7 +20,9 @@ export class DashboardpageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     const self = this;
+
     const API_key = this.storage.getUser().API_key;
     this.http.get(NestAPI_URL + 'station', {headers: {
         API_key: API_key
