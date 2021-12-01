@@ -2,10 +2,10 @@
 <section class="bg-primary_cwork min-h-screen">
   <div>
     <button (click)="toggleShowKpi()" [ngClass]="{'text-white border-white': isShowKpi === false, 'text-black border-black': isShowKpi === true}" type="checkbox" class="text-xs rounded hover:bg-blue-500 border-2 p-2 mx-2 relative left-10 top-5">
-      Afficher KPI
+      {{getTextFromKey('monitoring KPI')}}
     </button>
     <button (click)="toggleShowTimeline()" [ngClass]="{'text-white border-white': isShowTimeline === true, 'text-black border-black': isShowTimeline === false}" type="checkbox" class="text-xs rounded border-2 hover:bg-blue-500 p-2 mx-2 relative left-10 top-5">
-      Afficher Timeline
+      {{getTextFromKey('monitoring timeline')}}
     </button>
   </div>
   <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid h-80"  id="kpiToggle" >

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {animCloseOpen, flyInOut} from "../../animations/animations";
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-timelinepage',
@@ -15,11 +16,15 @@ export class TimelinepageComponent implements OnInit {
   isShowKpi!: boolean;
   isShowTimeline!: boolean;
 
-  constructor() { }
+  constructor(private language:LanguageService) { }
 
   ngOnInit(): void {
     this.isShowKpi = false;
     this.isShowTimeline = true;
+  }
+
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
   }
   toggleShowKpi() {
     this.isShowKpi = ! this.isShowKpi;

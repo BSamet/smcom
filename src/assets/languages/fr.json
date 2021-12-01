@@ -30,6 +30,30 @@
   "administrator": "Administrateur",
   "French":"Français",
   "German": "Allemand",
-  "English": "Anglais"
+  "English": "Anglais",
+  "monitoring KPI": "Afficher KPI",
+  "monitoring timeline": "Afficher Timeline",
+  "Strategic engagement rate": "Taux Stratégique d'engagement",
+  "charging rate": "Taux de charge",
+  "requisition rate": "Taux de réquisition",
+  "Material availability rate":"Taux de disponibilité matérielle",
+  "total time": "Temps total",
+  "opening time": "temps d'ouverture",
+  "time required":"Temps requis",
+  "operating time": "Temps de fonctionnement",
+  "Net operating time": "Temps net de fonctionnement",
+  "Useful operating time": "Temps utile de fonctionnement",
+  "Downtime": "Temps de panne",
+  "Average time between failures": "Temps moyen entre les pannes",
+  "Average troubleshooting time": "Temps moyen de dépannage",
+  "TEEP": "TRE",
+  "GEE": "TRG",
+  "OEE": "TRS",
+  "Availablity": "Disponibilté",
+  "Performance": "Performance",
+  "Quality": "Qualité"S
+
+
+
 }
 

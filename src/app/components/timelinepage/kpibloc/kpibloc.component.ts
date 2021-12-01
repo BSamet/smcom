@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import {flyInOut} from "../../../animations/animations";
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-kpibloc',
@@ -23,13 +24,18 @@ export class KPIBlocComponent implements OnInit {
   dateNow = new Date();
   myDate: string | null;
 
-  constructor(private KpiService:KpiService, private storage: TokenStorageService, private http: HttpClient, private route: ActivatedRoute, private datePipe: DatePipe, private router: Router) {
+
+  constructor(private KpiService:KpiService, private storage: TokenStorageService, private http: HttpClient, private route: ActivatedRoute, private datePipe: DatePipe, private router: Router,private language:LanguageService) {
     this.myDate = this.datePipe.transform(this.dateNow, 'yyyy-MM-dd');
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getKPIValue(this.id, this.myDate, this.myDate)
+  }
+
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
   }
 
   // Put KPI data in variable
