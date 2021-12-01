@@ -11,12 +11,12 @@ export class Permissions {
         return true
       } else {
         console.log("need roles!")
-        router.navigate(['login']).then();
+        router.navigate(['login/unauthorized']).then();
         return false
       }
     } else {
       console.log("need session!")
-      router.navigate(['login']).then();
+      router.navigate(['login/unauthorized']).then();
       return false;
     }
   }

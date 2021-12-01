@@ -54,7 +54,12 @@ export class TimelineLineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    const self = this;
+    setTimeout(function(){
+      self.ngOnInit();
+      console.log("refresh");
+    }, 10000);
+    // Get stats and create chart
 
   }
 }
