@@ -17,6 +17,11 @@ export class KpiIndicatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const self = this;
+    setTimeout(function(){
+      self.ngOnInit();
+      console.log("refresh");
+    }, 10000);
   }
 
 }

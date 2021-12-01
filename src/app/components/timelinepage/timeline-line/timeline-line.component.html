@@ -1,4 +1,4 @@
-<div class="bg-white mt-10" id="chart">
+<div *ngIf="!isLoadingChart" class="bg-white mt-10" id="chart">
   <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
@@ -11,3 +11,19 @@
     [title]="chartOptions.title"
   ></apx-chart>
 </div>
+<section *ngIf="isLoadingChart" class="mt-10">
+  <div class="flex flex-col justify-center items-center text-lg text-white text-base font-semibold">
+    <div
+      class="
+              animate-spin
+              rounded-full
+              h-20
+              w-20
+              border-t-2 border-b-2 border-white
+              mb-3
+              transition ease-in duration-200
+            "
+    ></div>
+    Loading...
+  </div>
+</section>
