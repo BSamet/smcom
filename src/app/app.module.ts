@@ -65,7 +65,7 @@ import {
     ReactiveFormsModule,
     NgApexchartsModule,
   ],
-  providers: [authInterceptorProviders, KpiService, DatePipe],
+  providers: [authInterceptorProviders, KpiService, DatePipe, HttpClientModule],
   bootstrap: [AppComponent]
 })
 

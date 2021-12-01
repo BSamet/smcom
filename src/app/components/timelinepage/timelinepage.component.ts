@@ -13,6 +13,7 @@ import { LanguageService } from 'src/app/services/language.service';
 })
 export class TimelinepageComponent implements OnInit {
 
+  isSideNavPin!: boolean;
   isShowKpi!: boolean;
   isShowTimeline!: boolean;
 
@@ -21,6 +22,7 @@ export class TimelinepageComponent implements OnInit {
   ngOnInit(): void {
     this.isShowKpi = false;
     this.isShowTimeline = true;
+    this.isSideNavPin = false;
   }
 
   getTextFromKey(key:string){
@@ -31,5 +33,9 @@ export class TimelinepageComponent implements OnInit {
   }
   toggleShowTimeline() {
     this.isShowTimeline = ! this.isShowTimeline;
+  }
+
+  toggleSideNavPin() {
+    this.isSideNavPin = ! this.isSideNavPin;
   }
 }
