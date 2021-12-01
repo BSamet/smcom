@@ -7,7 +7,7 @@
   <div class="flex">
     <div class="relative group">
       <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
-        <span>Fichier</span>
+        <span>{{getTextFromKey("file")}}</span>
       </button>
       <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
         <div class="px-2 pt-2 pb-4 bg-white bg-gray-200 rounded-xl shadow-lg">
@@ -21,7 +21,7 @@
                   <line x1="12" y1="6" x2="12" y2="19" />
                   <line x1="21" y1="6" x2="21" y2="19" />
               </svg></span>
-              <span>Nouveau</span>
+              <span>{{getTextFromKey('new')}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -31,7 +31,7 @@
                     <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
                     <rect x="9" y="3" width="6" height="4" rx="2" />
                 </svg></span>
-              <span>Alias</span>
+              <span>{{getTextFromKey("alias")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -41,7 +41,7 @@
                 <polyline points="8 16 10 10 16 8 14 14 8 16" />
                 <circle cx="12" cy="12" r="9" />
               </svg></span>
-              <span>Copier</span>
+              <span>{{getTextFromKey("copy")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -52,7 +52,7 @@
                 <line x1="11" y1="5" x2="13" y2="5" />
                 <line x1="12" y1="17" x2="12" y2="17.01" />
               </svg></span>
-              <span>Restrictions</span>
+              <span>{{getTextFromKey("restrictions")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -62,7 +62,7 @@
                 <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
                 <circle cx="9" cy="9" r="2" />
               </svg></span>
-              <span>Importer</span>
+              <span>{{getTextFromKey("import")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -72,7 +72,7 @@
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg></span>
-              <span>Exporter</span>
+              <span>{{getTextFromKey("export")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -82,7 +82,7 @@
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg></span>
-              <span>Exporter liste</span>
+              <span>{{getTextFromKey("export list")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -92,7 +92,7 @@
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg></span>
-              <span>Imprimer</span>
+              <span>{{getTextFromKey("print")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -102,7 +102,7 @@
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg></span>
-              <span>Déconnexion</span>
+              <span>{{getTextFromKey("disconnection")}}</span>
             </p>
           </div>
         </div>
@@ -111,7 +111,7 @@
 
     <div class="relative group">
       <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
-        <span>Afficher</span>
+        <span>{{getTextFromKey("view")}}</span>
       </button>
       <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
         <div class="px-2 pt-2 pb-4 bg-white bg-gray-200 rounded-xl shadow-lg">
@@ -125,7 +125,7 @@
                 <line x1="12" y1="6" x2="12" y2="19" />
                 <line x1="21" y1="6" x2="21" y2="19" />
               </svg></span>
-              <span>Suivi</span>
+              <span>{{getTextFromKey("follow up")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -135,7 +135,7 @@
                 <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
                 <rect x="9" y="3" width="6" height="4" rx="2" />
               </svg></span>
-              <span>Voir mouvements</span>
+              <span>{{getTextFromKey("see movements")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -145,7 +145,7 @@
                 <polyline points="8 16 10 10 16 8 14 14 8 16" />
                 <circle cx="12" cy="12" r="9" />
               </svg></span>
-              <span>Voir base de données</span>
+              <span>{{getTextFromKey("see database")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -156,7 +156,7 @@
                 <line x1="11" y1="5" x2="13" y2="5" />
                 <line x1="12" y1="17" x2="12" y2="17.01" />
               </svg></span>
-              <span>Voir journal principal</span>
+              <span>{{getTextFromKey("see main journal")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -166,7 +166,7 @@
                 <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
                 <circle cx="9" cy="9" r="2" />
                 </svg></span>
-              <span>Voir journal système</span>
+              <span>{{getTextFromKey("see system log")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -176,7 +176,7 @@
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg></span>
-              <span>Voir journal debuggage</span>
+              <span>{{getTextFromKey("see debug log")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -186,7 +186,7 @@
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg></span>
-              <span>Voir journal en archive</span>
+              <span>{{getTextFromKey("see journal in archive")}}</span>
             </p>
           </div>
           <div class="grid my-2">
@@ -196,14 +196,45 @@
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg></span>
-              <span>Enregistrer la dimension des colonnes</span>
+              <span>{{getTextFromKey("save column dimension")}}</span>
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="relative group">
+    <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
+      <span>{{getCurrentLan()}}</span>
+    </button>
+    <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
+      <div class="px-2 pt-2 pb-4 bg-white bg-gray-200 rounded-xl shadow-lg">
+        <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('en')">
+            <button class="flex justify-between text-sm ">
+              <p>{{getTextFromKey("English")}}</p>
+              <img  class="translationBrand" src="assets/images/Drapeau_Anglais.png" >
+            </button>
 
+        </div>
+        <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('fr')">
+          <button class="flex justify-between text-sm ">
+            <p>{{getTextFromKey("French")}}</p>
+            <img  class="translationBrand" src="assets/images/Drapeau_France.png" >
+          </button>
+        </div>
+        <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('de')">
+          <button class="flex justify-between text-sm ">
+            <p>{{getTextFromKey("German")}}</p>
+            <img  class="translationBrand" src="assets/images/Drapeau_Allemand.png" >
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+    <nav>
   <div class=" mr-1 flex items-end">
     <h1 class="text-white px-3 py-2 rounded-md text-lg"> {{ this.user.username }} </h1>
     <button [routerLink]="['/profile']" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from 'src/app/services/language.service';
 import {TokenStorageService} from "../../../services/token-storage.service";
 
 @Component({
@@ -8,8 +9,9 @@ import {TokenStorageService} from "../../../services/token-storage.service";
 })
 export class NavbarComponent implements OnInit {
   user:any;
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(private tokenStorage: TokenStorageService,private language:LanguageService) { }
   menus = [false, false]
+  languageLoad=this.language
   isOpenedList = this.menus;
   toggle(index:number) {
     this.isOpenedList[index] = !this.isOpenedList[index];
@@ -20,5 +22,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.tokenStorage.getUser()
   }
-
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  }
+  changeLan(lankey:string){
+    this.tokenStorage.saveLanguage(lankey)
+  }
+  getCurrentLan(){
+    return this.tokenStorage.getLanguage()
+  }
 }

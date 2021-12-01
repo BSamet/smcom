@@ -8,10 +8,10 @@
   </div>
   <div class="overflow-hidden h-6 mb-4 text-xs flex rounded-lg bg-white">
     <div style="width:{{ value }}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500">
-      <span *ngIf="value > 10" class="text-sm font-semibold inline-block py-1 px-2 text-white">
+      <span *ngIf="value > 20" class="text-sm font-semibold inline-block py-1 px-2 text-white">
         {{ value.toFixed(2)  }}%
       </span>
-      <span *ngIf="value < 10" class="text-sm font-semibold inline-block py-1 px-2 text-black">
+      <span *ngIf="value < 20" class="text-sm font-semibold inline-block py-1 px-2 text-black">
         {{ value.toFixed(2)  }}%
       </span>
     </div>
