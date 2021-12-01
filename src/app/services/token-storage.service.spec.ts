@@ -64,6 +64,20 @@ describe('TokenStorageService', () => {
         expect(service.getUser()).toEqual('anotheruser');
       });
   });
+  describe('saveLanguage', () => {
+    it('should store the language in window.sessionStorage',
+      () => {
+        service.saveLanguage('somelanguage');
+        expect(window.sessionStorage.getItem('LANGUAGE')).toEqual('somelanguage');
+      });
+  });
+  describe('retrieveLanguage', () => {
+    it('should return stored language from window.sessionStorage',
+      () => {
+        window.sessionStorage.setItem('LANGUAGE', 'anotherlanguage');
+        expect(service.getLanguage()).toEqual('anotherlanguage');
+      });
+  });
   describe('clearSession', () => {
     it('should clear the session storage as the user signs out',
       () => {
