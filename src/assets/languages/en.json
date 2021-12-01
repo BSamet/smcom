@@ -18,15 +18,18 @@
   "see debug log": "see debug log",
   "see journal in archive": "see journal in archive",
   "save column dimension":"save column dimension",
-  "programs": "programs",
-  "monitoring": "monitoring",
-  "change state": "change state",
-  "machine calendar": "machine calendar",
+  "programs": "Programs",
+  "monitoring": "Monitoring",
+  "change state": "Change state",
+  "machine calendar": "Machine calendar",
   "informations": "Informations",
   "add": "Add",
   "delete": "Delete",
   "properties": "Properties",
   "company": "Company",
   "update contract expired": "update contract expired",
-  "administrator": "administrator"
+  "administrator": "administrator",
+  "French":"French",
+  "German": "German",
+  "English": "English"
 }

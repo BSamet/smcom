@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TokenStorageService } from './token-storage.service';
 import languageJSONen from '../../assets/languages/en.json'
 import languageJSONfr from '../../assets/languages/fr.json'
+import languageJSONde from '../../assets/languages/de.json'
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,10 @@ export class LanguageService {
     if (this.storage.getLanguage() =="fr") {
       // @ts-ignore
       dictString = languageJSONfr[key as keyof any];
+    }
+    if (this.storage.getLanguage() =="de") {
+      // @ts-ignore
+      dictString = languageJSONde[key as keyof any];
     }
     return dictString;
   }

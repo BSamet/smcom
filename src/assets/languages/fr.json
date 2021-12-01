@@ -26,7 +26,10 @@
   "delete": "Supprimer",
   "properties": "Propriétés",
   "company": "Société",
-  "update contract expired\n": "Contrat de mis à jour",
-  "administrator": "Administrateur"
+  "update contract expired": "Contrat de mis à jour",
+  "administrator": "Administrateur",
+  "French":"Français",
+  "German": "Allemand",
+  "English": "Anglais"
 }
 
