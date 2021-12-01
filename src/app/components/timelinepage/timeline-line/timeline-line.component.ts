@@ -38,57 +38,7 @@ export class TimelineLineComponent implements OnInit {
   series = [] as any;
   data: any[];
   isLoadingChart = true
-  // Config chart
-  chartConfig= {
-    height: 650,
-    type: "rangeBar",
-  }
-  plotOptions= {
-    bar: {
-      horizontal: true,
-      barHeight: "50%",
-      rangeBarGroupRows: true,
-    },
-  }
-  xaxis= {
-    type: "datetime",
-    labels: {
-      datetimeUTC: false,
-      style: {
-        fontSize: '17px'
-      }
-    },
-    // Pour afficher le temps sur une intervalle de -12h/+12h à partir de la date actuelle
-    // min : Date.now() - 43200000,
-    // max : Date.now() + 43200000,
-  }
-  yaxis= {
-    labels: {
-      style: {
-        fontSize: '17px'
-      }
-    }
-  }
-  legend= {
-    position: "top",
-    horizontalAlign: "center",
-    fontSize: "17px",
-    onItemClick: {
-      toggleDataSeries: true
-    },
-  }
-  tooltip= {
-    enabled: true,
-    x: {
-      format: 'dd MMMM HH:mm',
-    },
-  }
-  title= {
-    text: "",
-    style: {
-      fontSize: '20px'
-    }
-  }
+
 
   // For  cnc stats
   statsList!: State[]
@@ -96,7 +46,7 @@ export class TimelineLineComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent | undefined;
   public chartOptions: Partial<ChartOptions> | any;
 
-  constructor(private timelineService: TimelineService, private route: ActivatedRoute,private http: HttpClient, private storage: TokenStorageService) {
+  constructor(private timelineService: TimelineService, private route: ActivatedRoute, private http: HttpClient, private storage: TokenStorageService) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
     this.series = [];
@@ -104,86 +54,7 @@ export class TimelineLineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.updateTimeline()
-    this.updateTimelineV2()
+
 
   }
-
-  updateTimelineV2(){
-    const API_key = this.storage.getUser().API_key;
-    const sixDaysPrior = new Date().setDate(new Date().getDate() - 6)
-    const lastSevenDays = this.timelineService.getDaysArray(new Date(sixDaysPrior), new Date())
-
-    for (let day of lastSevenDays){
-      console.log(this.timelineService.dayOfWeekAsString(day.getDay()))
-      this.series.push({name: this.timelineService.dayOfWeekAsString(day.getDay()), data: this.data})
-    }
-    this.chartOptions = {
-      series: this.series,
-      chart: this.chartConfig,
-      plotOptions: this.plotOptions,
-      xaxis: this.xaxis,
-      yaxis: this.yaxis,
-      legend: this.legend,
-      tooltip: this.tooltip,
-      title: this.title
-    };
-    this.isLoadingChart = false
-    console.log('series :', this.series)
-
-  }
-  updateTimeline(){
-    const API_key = this.storage.getUser().API_key;
-    this.http.get(NestAPI_URL + 'state', {headers: {
-        API_key: API_key
-      }}).subscribe(data=>{
-      this.statsList=data as State[];
-      let states = 0;
-      for (let state of this.statsList) {
-        this.timelineService.timelineData(state.Handle, this.id)
-          .subscribe(data => {
-            this.data = this.loadData(data, state.Name)
-            this.series.push({name: state.Name, data: this.data, color: state.Color})
-            states++
-            if (states == this.statsList.length) {
-              this.isLoadingChart = false
-            }
-            this.chartOptions = {
-              series: this.series,
-              chart: this.chartConfig,
-              plotOptions: this.plotOptions,
-              xaxis: this.xaxis,
-              yaxis: this.yaxis,
-              legend: this.legend,
-              tooltip: this.tooltip,
-              title: this.title
-            };
-          })
-      }
-    })
-  }
-
-  private loadData(dataInput: any, name: string) {
-    const data = []
-    for (let top of dataInput) {
-      const start = moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix()*1000
-      const end = moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').unix()*1000
-      const test = this.timelineService.getDaysArray(
-        moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').toDate(),
-        moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').toDate()
-      )
-      console.log(name, test)
-      data.push(
-        {
-          x: name,
-          y: [
-            start,
-            end
-          ]
-        }
-      )
-    }
-    return data
-  }
-
 }
