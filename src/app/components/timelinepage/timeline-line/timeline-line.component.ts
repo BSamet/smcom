@@ -138,6 +138,11 @@ export class TimelineLineComponent implements OnInit {
           })
       }
     })
+    let start = moment("11/02/2021 03:00:00", 'MM/DD/YYYY HH:mm:ss').toDate()
+    let end = moment("11/04/2021 03:00:00", 'MM/DD/YYYY HH:mm:ss').toDate()
+    const test = this.timelineService.intervalDate(start, end)
+    console.log(test)
+
   }
 
   private loadData(dataInput: any, name: string) {

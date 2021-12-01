@@ -3,3 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Utilities */
+@layer utilities {
+  /* Sidenav button */
+  @variants hover {
+    .sideNavButton {
+      display: block;
+      padding: 5px 0 5px 0;
+      border: solid 2px white;
+      border-radius: 5px;
+      transition: 200ms;
+    }
+    .sideNavButton--hover {
+      background-color: #3b82f6;
+    }
+  }
+}
