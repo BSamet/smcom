@@ -1,12 +1,11 @@
-<nav aria-label="primary" class="relative h-24 items-center z-20 flex-col flex-grow hidden pb-4 md:pb-0 bg-blue-900 md:flex md:justify-between md:flex-row">
+<nav aria-label="primary" class="relative h-24 items-center z-20 flex-row flex-grow h-auto pb-4 md:pb-0 bg-blue-900 flex justify-between flex-row">
   <!-- Brand div -->
   <div>
     <img [routerLink]="['/']" class="h-14 ml-12 w-auto rounded-full" src="assets/images/cwork.png" alt="logo">
   </div>
-
-  <div class="flex">
+  <div class="flex  gap-5">
     <div class="relative group">
-      <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
+      <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg w-auto inline mt-0 ml-4">
         <span>{{getTextFromKey("file")}}</span>
       </button>
       <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
@@ -110,7 +109,7 @@
     </div>
 
     <div class="relative group">
-      <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
+      <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg w-auto inline mt-0 md:ml-4">
         <span>{{getTextFromKey("view")}}</span>
       </button>
       <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
@@ -202,44 +201,43 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="relative group">
-    <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">
-      <span>{{getCurrentLan()}}</span>
-    </button>
-    <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
-      <div class="px-2 pt-2 pb-4 bg-white bg-gray-200 rounded-xl shadow-lg">
-        <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('en')">
+
+    <div class="relative group">
+      <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg w-auto inline ">
+        <span>{{getCurrentLan()}}</span>
+      </button>
+      <div class="absolute z-10 hidden bg-grey-200 w-44 group-hover:block">
+        <div class="bg-white bg-gray-200 rounded-xl shadow-lg">
+          <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('en')">
             <button class="flex justify-between text-sm ">
               <p>{{getTextFromKey("English")}}</p>
               <img  class="translationBrand" src="assets/images/Drapeau_Anglais.png" >
             </button>
 
+          </div>
+          <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('fr')">
+            <button class="flex justify-between text-sm ">
+              <p>{{getTextFromKey("French")}}</p>
+              <img  class="translationBrand" src="assets/images/Drapeau_France.png" >
+            </button>
+          </div>
+          <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('de')">
+            <button class="flex justify-between text-sm ">
+              <p>{{getTextFromKey("German")}}</p>
+              <img  class="translationBrand" src="assets/images/Drapeau_Allemand.png" >
+            </button>
+          </div>
         </div>
-        <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('fr')">
-          <button class="flex justify-between text-sm ">
-            <p>{{getTextFromKey("French")}}</p>
-            <img  class="translationBrand" src="assets/images/Drapeau_France.png" >
-          </button>
-        </div>
-        <div class="p-2 grid my-2 rounded-lg hover:bg-gray-400 " (click)="changeLan('de')">
-          <button class="flex justify-between text-sm ">
-            <p>{{getTextFromKey("German")}}</p>
-            <img  class="translationBrand" src="assets/images/Drapeau_Allemand.png" >
-          </button>
-        </div>
-
       </div>
     </div>
   </div>
-
-
-    <nav>
-  <div class=" mr-1 flex items-end">
-    <h1 class="text-white px-3 py-2 rounded-md text-lg"> {{ this.user.username }} </h1>
-    <button [routerLink]="['/profile']" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-      <span class="sr-only">Ouvrir le Menu User</span>
-      <img class="h-12 w-12   rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-    </button>
-  </div>
+  <nav>
+    <div class=" mr-1 flex items-end">
+      <h1 class="text-white px-3 py-2 rounded-md text-lg"> {{ this.user.username }} </h1>
+      <button [routerLink]="['/profile']" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+        <span class="sr-only">Ouvrir le Menu User</span>
+        <img class="h-12 w-12   rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+      </button>
+    </div>
+  </nav>
 </nav>
