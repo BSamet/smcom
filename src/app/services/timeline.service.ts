@@ -16,6 +16,16 @@ export class TimelineService {
     return this.http.get("http://localhost:3000/timeline_data?topstatehandlefield="+ state +"&topcnchandlefield="+ cnc);
   }
 
+  public timelineDataV2(cnc : string | null){
+    return this.http.get("http://localhost:3000/timeline_data?topcnchandlefield="+ cnc);
+  }
+
+  datesAreOnSameDay(first:Date, second:Date){
+    return first.getFullYear() === second.getFullYear() &&
+      first.getMonth() === second.getMonth() &&
+      first.getDate() === second.getDate();
+  }
+
   dayOfWeekAsString(dayIndex:number) {
     return ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dayIndex] || '';
   }
