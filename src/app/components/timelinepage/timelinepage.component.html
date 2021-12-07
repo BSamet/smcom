@@ -26,9 +26,9 @@
     <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid h-80"  id="kpiToggle" >
       <app-kpibloc></app-kpibloc>
     </div>
-    <div *ngIf="isShowTimeline" [@flyInOut] class="row container-fluid"  id="timelineToggle" >
+    <div *ngIf="isShowTimeline" [@flyInOut]  id="timelineToggle" >
       <app-timeline-line></app-timeline-line>
+      <app-timelinenavigation class="flex justify-center mt-5"></app-timelinenavigation>
     </div>
   </div>
 </section>
-
