@@ -27,7 +27,7 @@ export class TimelineService {
   }
 
   dayOfWeekAsString(dayIndex:number) {
-    return ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dayIndex] || '';
+    return ["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"][dayIndex] || '';
   }
   getDaysArray(start:Date, end:Date) {
     let arr;

@@ -12,7 +12,7 @@ import {
   ApexTitleSubtitle,
 } from 'ng-apexcharts';
 import { TimelineData } from '../../../interfaces/timeline';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { NestAPI_URL } from '../../../smcomconfig';
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { HttpClient } from '@angular/common/http';
@@ -65,13 +65,7 @@ export class TimelineLineComponent implements OnInit {
   fill = {
     type: 'solid',
   };
-  xaxis = {
-    type: 'datetime',
-    labels: {
-      datetimeUTC: false,
-    },
-    range: parseInt(this.day) + 86399000
-  };
+
   yaxis = {
     labels: {
       style: {
@@ -100,7 +94,8 @@ export class TimelineLineComponent implements OnInit {
     private timelineService: TimelineService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private storage: TokenStorageService
+    private storage: TokenStorageService,
+    private router: Router
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
@@ -111,6 +106,17 @@ export class TimelineLineComponent implements OnInit {
   updateTimeline() {
     const dayDate = new Date(parseInt(this.day));
     const API_key = this.storage.getUser().API_key;
+
+    const xaxis = {
+      type: 'datetime',
+      labels: {
+        datetimeUTC: false,
+      },
+      min: dayDate.getTime(),
+      max: dayDate.getTime() + 86399000
+
+    };
+
     this.http
       .get(NestAPI_URL + 'state', {
         headers: {
@@ -121,12 +127,17 @@ export class TimelineLineComponent implements OnInit {
         this.statsList = states as State[];
         this.timelineService.timelineDataV2(this.id).subscribe((tops) => {
           const topsData = tops as TimelineData[];
+          const day = this.timelineService.dayOfWeekAsString(dayDate.getDay())
           for (let top of topsData) {
+
             let start =
               moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix() *
               1000;
             let end =
               moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').unix() * 1000;
+            if (top.topdurationfield == 0){
+              end = Date.now()
+            }
             if (
               (start > dayDate.getTime() &&
                 start < dayDate.getTime() + 86400000) ||
@@ -135,10 +146,9 @@ export class TimelineLineComponent implements OnInit {
               if (start < dayDate.getTime()) start = dayDate.getTime();
               if (end > dayDate.getTime() + 86399000)
                 end = dayDate.getTime() + 86399000;
-
               this.series.push({
                 name: this.statsList[top.topstatehandlefield].Name,
-                data: [{ x: moment(dayDate).format('DD/MM'), y: [start, end] }],
+                data: [{ x: day.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
                 color: this.statsList[top.topstatehandlefield].Color,
               });
             } else if (
@@ -150,7 +160,7 @@ export class TimelineLineComponent implements OnInit {
 
               this.series.push({
                 name: this.statsList[top.topstatehandlefield].Name,
-                data: [{ x: moment(dayDate).format('DD/MM'), y: [start, end] }],
+                data: [{ x: day.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
                 color: this.statsList[top.topstatehandlefield].Color,
               });
             }
@@ -164,7 +174,7 @@ export class TimelineLineComponent implements OnInit {
             series: this.series,
             chart: this.chartConfig,
             plotOptions: this.plotOptions,
-            xaxis: this.xaxis,
+            xaxis: xaxis,
             yaxis: this.yaxis,
             legend: this.legend,
             tooltip: this.tooltip,
@@ -172,6 +182,13 @@ export class TimelineLineComponent implements OnInit {
           };
           this.isLoadingChart = false;
         });
+      }, error => {
+        if (error.error) {
+          if (error.error.statusCode == 401){
+            this.storage.signOut();
+            this.router.navigate(['login/expired']).then();
+          }
+        }
       });
   }
 
@@ -192,7 +209,6 @@ export class TimelineLineComponent implements OnInit {
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
-      console.log('refresh');
     }, 60000);
     // Get stats and create chart
   }
