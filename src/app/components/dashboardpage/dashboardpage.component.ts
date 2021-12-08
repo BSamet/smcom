@@ -19,6 +19,8 @@ export class DashboardpageComponent implements OnInit {
     private router: Router
   ) { }
 
+  adminView = false;
+
   ngOnInit(): void {
 
     const self = this;
@@ -41,6 +43,14 @@ export class DashboardpageComponent implements OnInit {
     setTimeout(function(){
       self.ngOnInit();
     }, 60000);
+
+    this.setAdminView();
   }
 
+  setAdminView(){
+    const currentUser = this.storage.getUser();
+    if(currentUser.roles.includes("admin")){
+      this.adminView = true;
+    } else { this.adminView = false}
+  }
 }
