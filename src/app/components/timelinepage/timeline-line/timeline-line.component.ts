@@ -36,7 +36,6 @@ export type ChartOptions = {
 })
 export class TimelineLineComponent implements OnInit {
   @Input() day!: string;
-
   // Chart variable
   id!: string | null;
   dataTimeline!: TimelineData[];
@@ -68,6 +67,10 @@ export class TimelineLineComponent implements OnInit {
   };
   xaxis = {
     type: 'datetime',
+    labels: {
+      datetimeUTC: false,
+    },
+    range: parseInt(this.day) + 86399000
   };
   yaxis = {
     labels: {
@@ -76,34 +79,17 @@ export class TimelineLineComponent implements OnInit {
       },
     },
   };
+  tooltip = {
+    enabled: true,
+    x: {
+      format: 'HH:mm',
+    },
+  };
 
   legend = {
     show: false,
   };
-  tooltip = {
-    custom: function (opts: any) {
-      const fromYear = new Date(opts.y1).getFullYear();
-      const toYear = new Date(opts.y2).getFullYear();
-      const values = opts.ctx.rangeBar.getTooltipValues(opts);
 
-      return (
-        '<div class="apexcharts-tooltip-rangebar">' +
-        '<div> <span class="series-name" style="color: ' +
-        values.color +
-        '">' +
-        (values.seriesName ? values.seriesName : '') +
-        '</span></div>' +
-        '<div> <span class="category">' +
-        values.ylabel +
-        ' </span> <span class="value start-value">' +
-        fromYear +
-        '</span> <span class="separator">-</span> <span class="value end-value">' +
-        toYear +
-        '</span></div>' +
-        '</div>'
-      );
-    },
-  };
   // For  cnc stats
   statsList!: State[];
 
@@ -122,7 +108,6 @@ export class TimelineLineComponent implements OnInit {
     this.data = [];
   }
 
-
   updateTimeline() {
     const dayDate = new Date(parseInt(this.day));
     const API_key = this.storage.getUser().API_key;
@@ -136,27 +121,39 @@ export class TimelineLineComponent implements OnInit {
         this.statsList = states as State[];
         this.timelineService.timelineDataV2(this.id).subscribe((tops) => {
           const topsData = tops as TimelineData[];
-          for (let top of topsData){
-            let start = moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix()*1000
-            let end = moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').unix()*1000
+          for (let top of topsData) {
+            let start =
+              moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix() *
+              1000;
+            let end =
+              moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').unix() * 1000;
+            if (
+              (start > dayDate.getTime() &&
+                start < dayDate.getTime() + 86400000) ||
+              (end > dayDate.getTime() && end < dayDate.getTime() + 86400000)
+            ) {
+              if (start < dayDate.getTime()) start = dayDate.getTime();
+              if (end > dayDate.getTime() + 86399000)
+                end = dayDate.getTime() + 86399000;
 
-            if ((start > dayDate.getTime() && start < dayDate.getTime() + 86400000) || (end > dayDate.getTime() && end < dayDate.getTime() + 86400000)){
-              if (start < dayDate.getTime()) start = dayDate.getTime()
-              if (end > dayDate.getTime() + 86400000) end = dayDate.getTime()
+              this.series.push({
+                name: this.statsList[top.topstatehandlefield].Name,
+                data: [{ x: moment(dayDate).format('DD/MM'), y: [start, end] }],
+                color: this.statsList[top.topstatehandlefield].Color,
+              });
+            } else if (
+              start < dayDate.getTime() &&
+              end > dayDate.getTime() + 86400000
+            ) {
+              start = dayDate.getTime();
+              end = dayDate.getTime() + 86399000;
+
+              this.series.push({
+                name: this.statsList[top.topstatehandlefield].Name,
+                data: [{ x: moment(dayDate).format('DD/MM'), y: [start, end] }],
+                color: this.statsList[top.topstatehandlefield].Color,
+              });
             }
-            this.series.push(
-              {
-                name:this.statsList[top.topstatehandlefield].Name,
-                data:[
-                  {
-                    // x:this.timelineService.dayOfWeekAsString(moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').toDate().getDay()),
-                    x:moment(dayDate).format("DD/MM"),
-                    y:[start, end]
-                  }
-                ]
-              }
-            )
-
           }
           /*this.series.push({
             name: state.Name,
@@ -179,7 +176,6 @@ export class TimelineLineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     /* this.series = [
       {
         name: 'Setup',

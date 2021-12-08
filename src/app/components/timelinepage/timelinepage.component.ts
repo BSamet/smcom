@@ -23,9 +23,7 @@ export class TimelinepageComponent implements OnInit {
 
   ngOnInit(): void {
     const maxDay = new Date(2021, 10, 14);
-    console.log(maxDay)
     const sixDaysPrior = maxDay.getTime() - 6*86400000;
-    console.log(new Date(sixDaysPrior))
     this.daysList = this.timelineService.getDaysArray(new Date(sixDaysPrior), maxDay);
     this.isShowKpi = false;
     this.isShowTimeline = true;
