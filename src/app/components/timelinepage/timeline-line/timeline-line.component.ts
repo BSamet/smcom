@@ -16,6 +16,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { NestAPI_URL } from '../../../smcomconfig';
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { HttpClient } from '@angular/common/http';
+import {animCloseOpen, flyInOut} from "../../../animations/animations";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -33,6 +34,9 @@ export type ChartOptions = {
   selector: 'app-timeline-line',
   templateUrl: './timeline-line.component.html',
   styleUrls: ['./timeline-line.component.css'],
+  animations: [
+    flyInOut
+  ]
 })
 export class TimelineLineComponent implements OnInit {
   @Input() day!: string;

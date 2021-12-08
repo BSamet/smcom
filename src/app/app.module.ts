@@ -32,6 +32,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { TimelinenavigationComponent } from './components/timelinepage/timeline_navigation/timelinenavigation/timelinenavigation.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {
     KpiIndicatorComponent,
     CncDashboardComponent,
     TimelineLineComponent,
-    TimelinePeriodComponent
+    TimelinePeriodComponent,
+    TimelinenavigationComponent
   ],
   imports: [
     BrowserModule,

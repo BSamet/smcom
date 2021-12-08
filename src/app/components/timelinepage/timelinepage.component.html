@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<section class="bg-primary_cwork min-h-screen" [ngClass]="{'md:flex': isSideNavPin === true}">
+<section class="bg-primary_cwork min-h-screen pb-1" [ngClass]="{'md:flex': isSideNavPin === true}">
   <!-- SidenavSection-->
   <div id="sideNav" class="w-full md:w-auto z-50 transform transition flex" [ngClass]="{'absolute -translate-x-90% md:-translate-x-52 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
     <!-- Sidenav -->
@@ -26,10 +26,10 @@
     <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid h-80"  id="kpiToggle" >
       <app-kpibloc></app-kpibloc>
     </div>
-    <div *ngIf="isShowTimeline" [@flyInOut] class="row container-fluid mt-10 mx-3"  id="timelineToggle" >
+    <div *ngIf="isShowTimeline" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
       <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}"></app-timeline-line>
     </div>
   </div>
-
+  <app-timelinenavigation *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
 </section>
 
