@@ -16,11 +16,12 @@ module.exports = {
       white: colors.white,
       gray: colors.trueGray,
       indigo: colors.indigo,
-      red: colors.rose,
+      red: colors.red,
       yellow: colors.amber,
       blue: colors.blue,
       emerald: colors.emerald,
-      orange: colors.orange
+      orange: colors.orange,
+      failure: "#EC644B"
     },
     borderWidth: {
       '1': '1px',
