@@ -24,11 +24,20 @@ module.exports = {
       white: colors.white,
       gray: colors.trueGray,
       indigo: colors.indigo,
-      red: colors.rose,
+      red: colors.red,
       yellow: colors.amber,
       blue: colors.blue,
       emerald: colors.emerald,
-      orange: colors.orange
+      orange: colors.orange,
+      failure: "#EC644B"
+    },
+    borderWidth: {
+      '1': '1px',
+      '2': '2px',
+      '3': '3px',
+      '4': '4px',
+      '6': '6px',
+      '8': '8px',
     },
     extend: {
       spacing:{

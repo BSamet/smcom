@@ -1,4 +1,4 @@
-<div *ngIf="!isLoadingChart" class="bg-white mt-10" id="chart">
+<div *ngIf="!isLoadingChart" [@flyInOut] class="bg-white rounded-xl" id="chart">
   <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
