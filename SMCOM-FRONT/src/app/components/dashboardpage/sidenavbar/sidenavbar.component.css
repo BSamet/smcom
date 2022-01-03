@@ -1,0 +1,4 @@
+.sidebar {
+  font-size:clamp(0.9rem, 0.8308rem + 0.3077vw, 1.2rem)   /* Responsive font */
+}
+
