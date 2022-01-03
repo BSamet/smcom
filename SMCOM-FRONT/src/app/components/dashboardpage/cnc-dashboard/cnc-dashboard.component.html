@@ -1,0 +1,23 @@
+<div *ngIf="this.status" [@flyInOut] [routerLink]="['/cnc/'+this.handle]" class="bg-red-900 h-40 rounded-md flex justify-around items-center" style="background-color: {{ status.State.Color }}">
+  <div><img class="h-28 w-auto rounded-xl" src="/assets/images/cnc_test.jpg"></div>
+  <div class="w-1/3 text-white text-xs">
+    <h1 class="text-center uppercase text-xl">{{ this.name }}</h1>
+    <p>État actuel : {{ this.status.State.Name}} </p>
+    <p>1234</p>
+    <p>OP20</p>
+    <p>A13-145789</p>
+    <p>DO:0%</p>
+    <div class="flex">
+      <div class="text-xs grid grid-cols-4 gap-4">
+        <p>DNC</p>
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="25" stroke="black" stroke-width="3" />
+        </svg>
+        <p>PROD</p>
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="25" stroke="black" stroke-width="3" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

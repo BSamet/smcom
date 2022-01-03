@@ -1,0 +1,65 @@
+<ng-container *ngIf="adminView==true; then adminContent else normalContent"></ng-container>
+
+<!-- template affiché si l'utilisateur a le role admin -->
+<ng-template #adminContent>
+  <section class="bg-white overflow-hidden min-h-screen">
+    <app-navbar></app-navbar>
+    <div class="md:flex">
+      <app-sidenavbar></app-sidenavbar>
+      <div class="w-10/12 mx-2">
+        <h1>Vue administrateur</h1>
+        <div *ngIf="listCNC" class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3">
+          <app-cnc-dashboard *ngFor="let cnc of listCNC" handle="{{cnc.Handle}}" name="{{cnc.Name}}">
+          </app-cnc-dashboard>
+        </div>
+        <div *ngIf="!listCNC" class="grid mt-3 ml-3">
+          <div class="flex flex-col justify-center items-center text-xl text-primary_cwork text-base font-semibold"
+            [@flyInOut]>
+            <div class="
+                    animate-spin
+                    rounded-full
+                    h-32
+                    w-32
+                    border-t-2 border-b-2 border-primary_cwork
+                    mb-3
+                  "></div>
+            Loading...
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </section>
+</ng-template>
+
+<!-- template affiché si l'utilisateur a le role normal -->
+<ng-template #normalContent>
+  <section class="bg-white overflow-hidden min-h-screen">
+    <app-navbar></app-navbar>
+    <div class="md:flex">
+      <app-sidenavbar></app-sidenavbar>
+      <div class="w-10/12 mx-2">
+        <h1>Vue utilisateur</h1>
+        <div *ngIf="listCNC" class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3">
+          <app-cnc-dashboard *ngFor="let cnc of listCNC" handle="{{cnc.Handle}}" name="{{cnc.Name}}">
+          </app-cnc-dashboard>
+        </div>
+        <div *ngIf="!listCNC" class="grid mt-3 ml-3">
+          <div class="flex flex-col justify-center items-center text-xl text-primary_cwork text-base font-semibold"
+            [@flyInOut]>
+            <div class="
+                      animate-spin
+                      rounded-full
+                      h-32
+                      w-32
+                      border-t-2 border-b-2 border-primary_cwork
+                      mb-3
+                    "></div>
+            Loading...
+          </div>
+        </div>
+    </div>
+    </div>
+    <app-footer></app-footer>
+  </section>
+</ng-template>
