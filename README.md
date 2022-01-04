@@ -1,4 +1,4 @@
-#Objet du projet :
+# Objet du projet :
 
 
 L’objectif à terme du projet est de créer une application web permettant à des utilisateurs de pouvoir visualiser et d’interagir avec des machines à commande numérique de façon équivalente (en termes de fonctionnalités) au logiciel CWORK existant.
