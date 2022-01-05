@@ -16,13 +16,13 @@
   <!-- Main Section-->
   <div class="w-full" [ngClass]="{'md:w-10/12': isSideNavPin === true}">
     <div class="text-white">
-      <mat-slide-toggle (click)="toggleShowKpi()" class="p-2 mx-2 relative left-10 top-5">Afficher KPI</mat-slide-toggle>
-      <mat-slide-toggle (click)="toggleShowTimeline()" class="p-2 mx-2 relative left-10 top-5">Afficher Timeline</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5">Afficher KPI</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5">Afficher Timeline</mat-slide-toggle>
       <mat-form-field class="p-2 mx-2 relative left-10 top-5" appearance="fill">
         <mat-label class="text-white">Enter a date range</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
           <input matStartDate formControlName="start" placeholder="Start date">
-          <input matEndDate formControlName="end" placeholder="End date">
+          <input matEndDate formControlName="end" placeholder="End date" (dateChange)="updateTimelines('change', $event)">
         </mat-date-range-input>
         <mat-datepicker-toggle class="text-white" matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -34,10 +34,10 @@
     <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid h-80"  id="kpiToggle" >
       <app-kpibloc></app-kpibloc>
     </div>
-    <div *ngIf="isShowTimeline" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
+    <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
       <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}"></app-timeline-line>
+      <app-timelinenavigation *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
     </div>
   </div>
-  <app-timelinenavigation *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
 </section>
 
