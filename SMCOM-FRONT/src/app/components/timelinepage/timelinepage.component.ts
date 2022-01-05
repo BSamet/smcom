@@ -3,7 +3,6 @@ import {animCloseOpen, flyInOut} from "../../animations/animations";
 import { LanguageService } from 'src/app/services/language.service';
 import {TimelineService} from "../../services/timeline.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 
 function getDateStartingFromMidnight(dateTime:Date) {
   let date = new Date(dateTime.getTime());
