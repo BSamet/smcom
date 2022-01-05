@@ -22,7 +22,7 @@
         <mat-label class="text-white">Enter a date range</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
           <input matStartDate formControlName="start" placeholder="Start date">
-          <input matEndDate formControlName="end" placeholder="End date" (dateChange)="updateTimelines('change', $event)">
+          <input matEndDate formControlName="end" placeholder="End date" (dateChange)="updateTimelines()">
         </mat-date-range-input>
         <mat-datepicker-toggle class="text-white" matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
