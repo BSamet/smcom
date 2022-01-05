@@ -25,14 +25,11 @@ import { TimelinePeriodComponent } from './components/timelinepage/timeline-line
 import {CommonModule, DatePipe} from '@angular/common'
 import {NgApexchartsModule} from "ng-apexcharts";
 import {KpiService} from "./services/kpi.service";
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
 import { TimelinenavigationComponent } from './components/timelinepage/timeline_navigation/timelinenavigation/timelinenavigation.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -66,6 +63,10 @@ import { TimelinenavigationComponent } from './components/timelinepage/timeline_
     FormsModule,
     ReactiveFormsModule,
     NgApexchartsModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
   ],
   providers: [authInterceptorProviders, KpiService, DatePipe, HttpClientModule],
   bootstrap: [AppComponent]

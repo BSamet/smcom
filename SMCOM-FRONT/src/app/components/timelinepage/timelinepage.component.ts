@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {animCloseOpen, flyInOut} from "../../animations/animations";
 import { LanguageService } from 'src/app/services/language.service';
 import {TimelineService} from "../../services/timeline.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-timelinepage',
@@ -13,7 +14,10 @@ import {TimelineService} from "../../services/timeline.service";
   ]
 })
 export class TimelinepageComponent implements OnInit {
-
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
   daysList: Date[] | undefined;
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
