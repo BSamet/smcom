@@ -5,11 +5,6 @@ import {TimelineService} from "../../services/timeline.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 
-function getDateStartingFromMidnight(dateTime:Date) {
-  let date = new Date(dateTime.getTime());
-  date.setHours(0, 0, 0, 0);
-  return date;
-}
 @Component({
   selector: 'app-timelinepage',
   templateUrl: './timelinepage.component.html',
@@ -21,9 +16,8 @@ function getDateStartingFromMidnight(dateTime:Date) {
 })
 export class TimelinepageComponent implements OnInit {
   range = new FormGroup({
-    start: new FormControl(new Date(getDateStartingFromMidnight(new Date()).getTime() - 6*86400000)),
-    // par défaut récupère les données d'une semaine avant
-    end: new FormControl(new Date(new Date(getDateStartingFromMidnight(new Date()).getTime() + 86399000)))
+    start: new FormControl(),
+    end: new FormControl(),
   });
   daysList: Date[] | undefined;
   isSideNavPin!: boolean;
@@ -36,7 +30,6 @@ export class TimelinepageComponent implements OnInit {
     // const maxDay = new Date(2021, 10, 30);
     // const sixDaysPrior = maxDay.getTime() - 6*86400000;
     // this.daysList = this.timelineService.getDaysArray(new Date(sixDaysPrior), maxDay);
-    this.updateTimelines();
     this.isShowKpi = false;
     this.isShowTimeline = true;
     this.isSideNavPin = false;
@@ -46,7 +39,7 @@ export class TimelinepageComponent implements OnInit {
     this.isSideNavPin = ! this.isSideNavPin;
   }
 
-  updateTimelines() {
+  updateTimelines(change: string, $event: MatDatepickerInputEvent<Date>) {
     this.daysList = this.timelineService.getDaysArray(new Date(this.range.value.start), new Date(this.range.value.end));
   }
 }
