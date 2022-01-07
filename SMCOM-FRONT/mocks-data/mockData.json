@@ -44,5 +44,12 @@
     {"toppkfield":"150","topcnchandlefield":"1","topstatehandlefield":"3","topstartdatefield":"11/28/2021 13:00:00","topcommentfield":"","topenddatefield":"11/28/2021 17:00:00","topdurationfield":"14400"},
     {"toppkfield":"151","topcnchandlefield":"1","topstatehandlefield":"2","topstartdatefield":"11/28/2021 17:00:00","topcommentfield":"","topenddatefield":"11/29/2021 01:00:00","topdurationfield":"28800"},
     {"toppkfield":"152","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/29/2021 01:00:00","topcommentfield":"","topenddatefield":"11/29/2021 01:00:00","topdurationfield":"0"}
-]
+],
+
+  "ping":[
+    {
+      "res": "pong"
+    }
+  ]
+
 }

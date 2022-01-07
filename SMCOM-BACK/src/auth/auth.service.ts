@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
+import {Observable} from "rxjs";
+import {AxiosResponse} from "axios";
+import {CAPI_url} from "../smcomconfig";
 
 @Injectable()
 export class AuthService {
@@ -28,4 +31,5 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
+
 }
