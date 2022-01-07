@@ -30,6 +30,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { ServicecheckerComponent } from './components/servicechecker/servicechecker.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     CncDashboardComponent,
     TimelineLineComponent,
     TimelinePeriodComponent,
-    TimelinenavigationComponent
+    TimelinenavigationComponent,
+    ServicecheckerComponent
   ],
   imports: [
     BrowserModule,
