@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {KpiService} from "../../../services/kpi.service";
 import {KPI} from "../../../interfaces/kpi";
 import {NestAPI_URL} from "../../../smcomconfig";
 import {TokenStorageService} from "../../../services/token-storage.service";
@@ -25,7 +24,7 @@ export class KPIBlocComponent implements OnInit {
   myDate: string | null;
 
 
-  constructor(private KpiService:KpiService, private storage: TokenStorageService, private http: HttpClient, private route: ActivatedRoute, private datePipe: DatePipe, private router: Router,private language:LanguageService) {
+  constructor(private storage: TokenStorageService, private http: HttpClient, private route: ActivatedRoute, private datePipe: DatePipe, private router: Router,private language:LanguageService) {
     this.myDate = this.datePipe.transform(this.dateNow, 'yyyy-MM-dd');
   }
 
