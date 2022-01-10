@@ -21,30 +21,36 @@ export class DashboardpageComponent implements OnInit {
 
   adminView = false;
 
-  ngOnInit(): void {
-
-    const self = this;
+  async update(){
 
     const API_key = this.storage.getUser().API_key;
-    this.http.get(NestAPI_URL + 'station', {headers: {
+    let URL = NestAPI_URL;
+    if (this.storage.getDataMode() === "MOCK")
+      URL = "http://localhost:3000/"
+    this.http.get(URL + 'station', {headers: {
         API_key: API_key
       }}).subscribe(data=>{
       this.listCNC=data as Cnc[];
       console.log(this.listCNC)
-      }, error => {
-        if (error.error) {
-          if (error.error.statusCode == 401){
-            this.storage.signOut();
-            this.router.navigate(['login/expired']).then();
-          }
+    }, error => {
+      if (error.error) {
+        if (error.error.statusCode == 401){
+          this.storage.signOut();
+          this.router.navigate(['login/expired']).then();
         }
+      }
     })
+
+  }
+  ngOnInit(): void {
+    this.setAdminView();
+    const self = this;
+    this.update();
 
     setTimeout(function(){
       self.ngOnInit();
     }, 60000);
 
-    this.setAdminView();
   }
 
   setAdminView(){
