@@ -23,7 +23,12 @@ export class CncDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     const API_key = this.storage.getUser().API_key;
-    this.http.get(NestAPI_URL + 'station/' +this.handle+"/status", {headers: {
+    let URL = NestAPI_URL;
+    if (this.storage.getDataMode() === "MOCK")
+      URL = "http://localhost:3000/"
+
+    console.log('URL CNC: ', URL)
+    this.http.get(URL + 'station/' +this.handle+"/status", {headers: {
         API_key: API_key
       }}).subscribe(data=>{
       this.status=data as Status;

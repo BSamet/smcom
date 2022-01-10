@@ -3,6 +3,7 @@
   <div>
     <img [routerLink]="['/']" class="h-14 ml-12 w-auto rounded-full" src="assets/images/cwork.png" alt="logo">
   </div>
+
   <div class="flex  gap-5">
     <div class="relative group">
       <button class="flex flex-row items-center w-full p-2 mt-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg w-auto inline mt-0 ml-4">
@@ -229,6 +230,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="relative group">
+      <mat-slide-toggle [(ngModel)]="dataLIVEMode" (change)="switchDataMode()" class="flex flex-row items-center w-full p-2 m-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg w-auto inline relative">
+        <span *ngIf="dataLIVEMode">Mode temps réel</span>
+        <span *ngIf="!dataLIVEMode">Mode émulation</span>
+      </mat-slide-toggle>
     </div>
   </div>
   <nav>
