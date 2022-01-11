@@ -46,6 +46,7 @@ export class TimelineLineComponent implements OnInit {
   series = [] as any;
   data: any[];
   isLoadingChart = true;
+  noData = false;
 
   chartConfig = {
     toolbar: { show: false },
@@ -90,7 +91,7 @@ export class TimelineLineComponent implements OnInit {
 
   // For  cnc stats
   statsList!: State[];
-
+  dayString = "";
   @ViewChild('chart') chart: ChartComponent | undefined;
   public chartOptions: Partial<ChartOptions> | any;
 
@@ -105,12 +106,13 @@ export class TimelineLineComponent implements OnInit {
     // Timeline Chart Data
     this.series = [];
     this.data = [];
+
   }
 
   updateTimeline() {
     const dayDate = new Date(parseInt(this.day));
     const API_key = this.storage.getUser().API_key;
-
+    this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) + " " + moment(dayDate).format('DD/MM');
     const xaxis = {
       type: 'datetime',
       labels: {
@@ -134,7 +136,6 @@ export class TimelineLineComponent implements OnInit {
         this.statsList = states as State[];
         this.timelineService.timelineDataV2(this.id).subscribe((tops) => {
           const topsData = tops as TimelineData[];
-          const day = this.timelineService.dayOfWeekAsString(dayDate.getDay())
           for (let top of topsData) {
 
             let start =
@@ -155,7 +156,7 @@ export class TimelineLineComponent implements OnInit {
                 end = dayDate.getTime() + 86399000;
               this.series.push({
                 name: this.statsList[top.topstatehandlefield].Name,
-                data: [{ x: day.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
+                data: [{ x: this.dayString.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
                 color: this.statsList[top.topstatehandlefield].Color,
               });
             } else if (
@@ -167,7 +168,7 @@ export class TimelineLineComponent implements OnInit {
 
               this.series.push({
                 name: this.statsList[top.topstatehandlefield].Name,
-                data: [{ x: day.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
+                data: [{ x: this.dayString.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
                 color: this.statsList[top.topstatehandlefield].Color,
               });
             }
