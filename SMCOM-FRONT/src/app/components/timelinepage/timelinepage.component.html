@@ -1,20 +1,20 @@
 <app-navbar></app-navbar>
-<section class="bg-primary_cwork min-h-screen pb-1" [ngClass]="{'md:flex': isSideNavPin === true}">
+<section class="bg-primary_cwork min-h-full pb-1" [ngClass]="{'flex': isSideNavPin === true}">
   <!-- SidenavSection-->
-  <div id="sideNav" class="w-full md:w-auto z-50 transform transition flex" [ngClass]="{'absolute -translate-x-90% md:-translate-x-52 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
+  <div id="sideNav" class=" gl:-translate-x-40 w-auto z-50 transform transition flex" [ngClass]="{'absolute xs:-translate-x-40 sm:-translate-x-44 md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
     <!-- Sidenav -->
-    <div class="w-11/12 md:w-auto">
+    <div>
       <app-sidenavbar></app-sidenavbar>
     </div>
     <!-- Sidenav brand-->
-    <div class="w-1/12 md:w-auto">
-      <img src="assets/images/double_arrow.svg" class="cursor-pointer" [ngClass]="{'rotateArrow': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
-      <img src="assets/images/pin.svg" class="cursor-pointer" (click)="toggleSideNavPin()" [ngClass]="{'border-2 border-white rounded-xl': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
+    <div class="w-1/12 ">
+      <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow w-12': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
+      <img src="assets/images/pin.svg" class="cursor-pointer w-6 lg:-translate-x-40 " (click)="toggleSideNavPin()" [ngClass]="{'border-6 border-white rounded-xl w-20': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
     </div>
   </div>
 
   <!-- Main Section-->
-  <div class="w-full" [ngClass]="{'md:w-10/12': isSideNavPin === true}">
+  <div class="w-full">
     <div class="text-white">
       <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5">Afficher KPI</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5">Afficher Timeline</mat-slide-toggle>
