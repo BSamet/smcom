@@ -24,12 +24,12 @@ import { TimelineLineComponent } from './components/timelinepage/timeline-line/t
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
 import {CommonModule, DatePipe} from '@angular/common'
 import {NgApexchartsModule} from "ng-apexcharts";
-import {KpiService} from "./services/kpi.service";
 import { TimelinenavigationComponent } from './components/timelinepage/timeline_navigation/timelinenavigation/timelinenavigation.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { ServicecheckerComponent } from './components/servicechecker/servicechecker.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     CncDashboardComponent,
     TimelineLineComponent,
     TimelinePeriodComponent,
-    TimelinenavigationComponent
+    TimelinenavigationComponent,
+    ServicecheckerComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatFormFieldModule,
     MatDatepickerModule,
   ],
-  providers: [authInterceptorProviders, KpiService, DatePipe, HttpClientModule],
+  providers: [authInterceptorProviders, DatePipe, HttpClientModule],
   bootstrap: [AppComponent]
 })
 

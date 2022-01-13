@@ -121,8 +121,11 @@ export class TimelineLineComponent implements OnInit {
 
     };
 
+    let URL = NestAPI_URL;
+    if (this.storage.getDataMode() === "MOCK")
+      URL = "http://localhost:3000/"
     this.http
-      .get(NestAPI_URL + 'state', {
+      .get(URL + 'state', {
         headers: {
           API_key: API_key,
         },

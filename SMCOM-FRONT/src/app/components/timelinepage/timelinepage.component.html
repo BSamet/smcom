@@ -1,20 +1,24 @@
 <app-navbar></app-navbar>
-<section class="bg-primary_cwork min-h-screen pb-1" [ngClass]="{'md:flex': isSideNavPin === true}">
-  <!-- SidenavSection-->
-  <div id="sideNav" class="w-full md:w-auto z-50 transform transition flex" [ngClass]="{'absolute -translate-x-90% md:-translate-x-52 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
-    <!-- Sidenav -->
-    <div class="w-11/12 md:w-auto">
-      <app-sidenavbar></app-sidenavbar>
-    </div>
-    <!-- Sidenav brand-->
-    <div class="w-1/12 md:w-auto">
-      <img src="assets/images/double_arrow.svg" class="cursor-pointer" [ngClass]="{'rotateArrow': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
-      <img src="assets/images/pin.svg" class="cursor-pointer" (click)="toggleSideNavPin()" [ngClass]="{'border-2 border-white rounded-xl': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
-    </div>
-  </div>
 
+  <section class=" bg-primary_cwork min-h-screen pb-1" [ngClass]="{'md:flex': isSideNavPin === true}">
+    <!-- SidenavSection-->
+    <div id="sideNav" class="w-full md:w-auto z-50 transform transition flex" [ngClass]="{'absolute -translate-x-90% md:-translate-x-52 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
+      <!-- Sidenav -->
+      <div class="w-11/12 md:w-auto">
+        <app-sidenavbar></app-sidenavbar>
+      </div>
+      <!-- Sidenav brand-->
+      <div class="w-1/12 md:w-auto">
+        <img src="assets/images/double_arrow.svg" class="cursor-pointer" [ngClass]="{'rotateArrow': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
+        <img src="assets/images/pin.svg" class="cursor-pointer" (click)="toggleSideNavPin()" [ngClass]="{'border-2 border-white rounded-xl': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
+      </div>
+    </div>
+
+
+<div>
   <!-- Main Section-->
-  <div class="w-full" [ngClass]="{'md:w-10/12': isSideNavPin === true}">
+
+  <div [ngClass]="{'md:w-10/12': isSideNavPin === true}">
     <div class="text-white">
       <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5">Afficher KPI</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5">Afficher Timeline</mat-slide-toggle>
@@ -31,13 +35,35 @@
         <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
       </mat-form-field>
     </div>
+
     <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid h-80"  id="kpiToggle" >
       <app-kpibloc></app-kpibloc>
     </div>
-    <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
-      <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}"></app-timeline-line>
+    <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="overflow-y-hidden mt-10 mx-3"  id="timelineToggle" >  <!--  test overflow -->
+      <section class="flex">
+        <div class="w-11/12">
+          <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}"></app-timeline-line>
+        </div>
+        <div class="w-1/12 ml-12 self-center">
+          <div class="bg-primary_cwork text-blue-100">
+            <!-- av -->
+            <nav>
+              <button class="mb-56 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"><<</button>
+              <button class="mt-56 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">>> </button>
+            </nav>
+          </div>
+        </div>
+      </section>
       <app-timelinenavigation *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
     </div>
   </div>
+</div>
+
+
+
 </section>
+
+
+
+
 
