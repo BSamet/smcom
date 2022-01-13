@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./dashboardpage.component.css'],
 })
 export class DashboardpageComponent implements OnInit {
+  isSideNavPin!: boolean;
   listCNC!:Cnc[];
   constructor(
     private http: HttpClient,
@@ -51,6 +52,7 @@ export class DashboardpageComponent implements OnInit {
       self.ngOnInit();
     }, 60000);
 
+    this.isSideNavPin = false;
   }
 
   setAdminView(){
@@ -58,5 +60,9 @@ export class DashboardpageComponent implements OnInit {
     if(currentUser.roles.includes("admin")){
       this.adminView = true;
     } else { this.adminView = false}
+  }
+
+  toggleSideNavPin() {
+    this.isSideNavPin = ! this.isSideNavPin;
   }
 }
