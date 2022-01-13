@@ -7,7 +7,7 @@
       <app-sidenavbar></app-sidenavbar>
     </div>
     <!-- Sidenav brand-->
-    <div class="w-1/12 firefox">
+    <div class="w-1/12 min firefox">
       <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow w-12': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
       <img src="assets/images/pin.svg" class="cursor-pointer w-6 lg:-translate-x-40 " (click)="toggleSideNavPin()" [ngClass]="{'border-6 border-white rounded-xl w-20': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
     </div>
