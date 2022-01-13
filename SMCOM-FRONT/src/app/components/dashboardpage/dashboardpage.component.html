@@ -5,7 +5,14 @@
   <section class="bg-white overflow-hidden min-h-screen">
     <app-navbar></app-navbar>
     <div class="md:flex">
-      <app-sidenavbar></app-sidenavbar>
+      <!-- SidenavSection-->
+      <div id="sideNav" class=" w-auto z-50 transform transition md:flex" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
+        <!-- Sidenav -->
+        <div>
+          <app-sidenavbar></app-sidenavbar>
+        </div>
+        <!-- Sidenav brand-->
+      </div>
       <div class="w-10/12 mx-2">
         <h1>Vue administrateur</h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3">

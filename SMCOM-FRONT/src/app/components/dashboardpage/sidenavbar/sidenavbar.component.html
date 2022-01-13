@@ -1,7 +1,7 @@
 <!-- sidebar -->
-<div class=" h-auto md:h-screen sidebar bg-primary_cwork text-blue-100 py-7 px-6">
+<div class="gap-5 w-auto z-50 transform transition md:flex h-auto md:h-screen sidebar bg-primary_cwork text-blue-100 py-7 px-6" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-44 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
   <!-- av -->
-  <nav class="grid grid-cols-1 gap-5 w-auto md:grid-cols-1 2xl:w-60">
+  <nav class="grid grid-cols-2 gap-5 w-auto md:grid-cols-1 2xl:w-60">
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("programs")}}</button>
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("monitoring")}}</button>
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("change state")}}</button>
@@ -11,6 +11,11 @@
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("delete")}}</button>
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("properties")}}</button>
   </nav>
+  <div class="hidden md:block translate-x-10 min firefox" >
+    <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow w-12': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
+    <img src="assets/images/pin.svg" class="cursor-pointer w-6 lg:-translate-x-40 " (click)="toggleSideNavPin()" [ngClass]="{'border-6 border-white rounded-xl w-20': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
+  </div>
 </div>
+
 
 

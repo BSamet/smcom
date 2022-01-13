@@ -1,16 +1,13 @@
+
 <app-navbar></app-navbar>
 <section class="bg-primary_cwork min-h-full pb-1" [ngClass]="{'flex': isSideNavPin === true}">
   <!-- SidenavSection-->
-  <div id="sideNav" class=" gl:-translate-x-40 w-auto z-50 transform transition flex" [ngClass]="{'absolute xs:-translate-x-40 sm:-translate-x-44 md:-translate-x-44 lg:-translate-x-44 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
+  <div id="sideNav" class=" w-auto md:z-50 transform transition flex" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
     <!-- Sidenav -->
     <div>
       <app-sidenavbar></app-sidenavbar>
     </div>
     <!-- Sidenav brand-->
-    <div class="w-1/12 min firefox">
-      <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow w-12': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
-      <img src="assets/images/pin.svg" class="cursor-pointer w-6 lg:-translate-x-40 " (click)="toggleSideNavPin()" [ngClass]="{'border-6 border-white rounded-xl w-20': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
-    </div>
   </div>
 
   <!-- Main Section-->
@@ -39,5 +36,5 @@
       <app-timelinenavigation *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
     </div>
   </div>
-</section>
 
+</section>
