@@ -39,17 +39,19 @@
     <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid h-80"  id="kpiToggle" >
       <app-kpibloc></app-kpibloc>
     </div>
-    <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="overflow-y-hidden mt-10 mx-3"  id="timelineToggle" >  <!--  test overflow -->
+    <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
       <section class="flex">
         <div class="w-11/12">
           <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}"></app-timeline-line>
         </div>
-        <div class="w-1/12 ml-12 self-center">
+        <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-0 px-8">
           <div class="bg-primary_cwork text-blue-100">
             <!-- av -->
             <nav>
-              <button class="mb-56 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"><<</button>
-              <button class="mt-56 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">>> </button>
+              <button class="mb-4 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-l"><<</button>
+              <button class="mb-4 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-l"><</button>
+              <button class="mt-4 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-r">> </button>
+              <button class="mt-4 transform rotate-90 h-24 w-24 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-r">>> </button>
             </nav>
           </div>
         </div>
