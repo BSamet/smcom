@@ -25,9 +25,8 @@ $exploreBtn.Location = New-Object System.Drawing.Point(250,28)
 $exploreBtn.AutoSize = $true
 $exploreBtn.Add_Click({
     $show = $folderBrowserDialog.ShowDialog()
-    If($Show -eq "OK"){
+    If($show -eq "OK"){
         $projectDirectoryPath.Text = $folderBrowserDialog.SelectedPath
-        $rootProjectPath = $projectDirectoryPath.Text
     }
 })
 
@@ -40,11 +39,13 @@ $startBtn.AutoSize = $true
 $startBtn.Location = New-Object System.Drawing.Point(30,100)
 $startBtn.Text = 'Start SMCOM'
 $startBtn.Add_Click({
-    cd $rootProjectPath
-    cd '.\SMCOM-BACK'
+    $projectPath = $projectDirectoryPath.Text
+    $nestApiPath = ($projectPath+"\SMCOM-BACK")
+    cd $nestApiPath
     Start-Process npm -ArgumentList "install" -PassThru
     Start-Process npm -ArgumentList "run start" -PassThru
-    cd '..\SMCOM-FRONT'
+    $clientPath = ($projectPath+"\SMCOM-FRONT")
+    cd $clientPath
     Start-Process npm -ArgumentList "install" -PassThru
     Start-Process npm -ArgumentList "run start" -PassThru
     Start-Process npm -ArgumentList "run mock:server" -PassThru
