@@ -283,6 +283,35 @@
       "ProdPercent": false,
       "UsePercent": false
     }
+  ],
+  "stationKPI": [
+    {
+      "id": 1,
+      "Times": {
+        "AT": "63072000",
+        "OT": "0",
+        "PPT": "4524586",
+        "RT": "3164502",
+        "NRT": "0",
+        "FPT": "0",
+        "FT": "771354",
+        "MTBF": "1131146",
+        "MTTR": "192838"
+      },
+      "Rates": {
+        "TEEP": "0.00",
+        "GEE": "0.00",
+        "OEE": "0.00",
+        "Performance": "0.00",
+        "Quality": "0.00",
+        "Availability": "0.70",
+        "Requisition": "0.07",
+        "Load": "0.00",
+        "Involvement": "0.00",
+        "HardwareAvailability": "0.85"
+      }
+    }
+
   ]
 
 }

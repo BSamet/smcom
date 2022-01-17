@@ -1,3 +1,4 @@
 {
-  "/station/:id/status": "/stationStatus/:id"
+  "/station/:id/status": "/stationStatus/:id",
+  "/station/:id/kpi/selectByDate/:dateStart/:dateEnd": "/stationKPI/1"
 }
