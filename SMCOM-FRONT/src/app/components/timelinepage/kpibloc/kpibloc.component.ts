@@ -40,7 +40,10 @@ export class KPIBlocComponent implements OnInit {
   // Put KPI data in variable
   getKPIValue(Handle: string | null, startDay: string | null, endDay: string | null) {
     const API_key = this.storage.getUser().API_key;
-    this.http.get(NestAPI_URL + 'station/'+Handle+'/kpi/selectByDate/'+startDay+'/'+endDay, {headers: {
+    let URL = NestAPI_URL;
+    if (this.storage.getDataMode() === "MOCK")
+      URL = "http://localhost:3000/"
+    this.http.get(URL + 'station/'+Handle+'/kpi/selectByDate/'+startDay+'/'+endDay, {headers: {
         API_key: API_key
       }}).subscribe(data=>{
       this.kpiData=data as KPI;
