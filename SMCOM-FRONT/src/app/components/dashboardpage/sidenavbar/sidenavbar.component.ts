@@ -4,7 +4,7 @@ import { LanguageService } from 'src/app/services/language.service';
 @Component({
   selector: 'app-sidenavbar',
   templateUrl: './sidenavbar.component.html',
-  styleUrls: ['./sidenavbar.component.css']
+  styleUrls: ['./sidenavbar.component.css'],
 })
 export class SidenavbarComponent implements OnInit {
 
@@ -12,8 +12,11 @@ export class SidenavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  toggleSideNavPin() {
+    this.isSideNavPin = ! this.isSideNavPin;
+  }
   getTextFromKey(key:string){
     return this.language.getTextFromKey(key)
   }
+  isSideNavPin!: boolean;
 }

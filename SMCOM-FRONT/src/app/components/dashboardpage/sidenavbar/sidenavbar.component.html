@@ -1,7 +1,7 @@
 <!-- sidebar -->
-<div class=" h-auto md:h-screen sidebar bg-primary_cwork text-blue-100 py-7 px-6">
+<div class="gap-5 w-auto z-50 transform transition md:flex md:flex-col h-fit md:h-screen sidebar bg-primary_cwork text-blue-100 py-7 px-5" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-44 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false}">
   <!-- av -->
-  <nav class="grid grid-cols-1 gap-5 w-auto md:grid-cols-1 2xl:w-60">
+  <nav class="grid grid-col-2 gap-5 w-auto md:grid-col-1 2xl:w-60">
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("programs")}}</button>
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("monitoring")}}</button>
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("change state")}}</button>
@@ -12,5 +12,6 @@
     <button href="#" class="sideNavButton hover:sideNavButton--hover">{{getTextFromKey("properties")}}</button>
   </nav>
 </div>
+
 
 

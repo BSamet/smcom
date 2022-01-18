@@ -2,13 +2,25 @@
 
 <!-- template affiché si l'utilisateur a le role admin -->
 <ng-template #adminContent>
-  <section class="bg-white overflow-hidden min-h-screen">
+  <section class="bg-white overflow-hidden h-screen">
     <app-navbar></app-navbar>
     <div class="md:flex">
-      <app-sidenavbar></app-sidenavbar>
+      <!-- SidenavSection-->
+      <div id="sideNav" class=" w-auto z-50 bg-primary_cwork transform transition md:flex" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-44 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false, 'relative': isSideNavPin === true}">
+        <!-- Sidenav -->
+        <div>
+          <app-sidenavbar></app-sidenavbar>
+        </div>
+        <!-- Sidenav brand-->
+        <div class="hidden md:block translate-x-10  bg-primary_cwork min firefox ml-2" >
+          <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow ': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
+          <img src="assets/images/pin.svg" class="cursor-pointer w-6 lg:-translate-x-40 " (click)="toggleSideNavPin()" [ngClass]="{'border-6 border-white rounded-xl ': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
+        </div>
+
+      </div>
       <div class="w-10/12 mx-2">
         <h1>Vue administrateur</h1>
-        <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3">
+        <div class="grid grid-cols-1  pl-4  sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3">
           <app-cnc-dashboard *ngFor="let cnc of listCNC" handle="{{cnc.Handle}}" name="{{cnc.Name}}">
           </app-cnc-dashboard>
         </div>
