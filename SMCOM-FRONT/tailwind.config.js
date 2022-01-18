@@ -45,7 +45,7 @@ module.exports = {
         '120': '30rem'
       },
       height:{
-        'fullscreen': '90.5vh'
+        'fullscreen': '80.5vh' /* 90.5vh */
       }
     },
   },
