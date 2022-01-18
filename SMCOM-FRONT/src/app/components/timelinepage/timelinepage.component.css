@@ -8,3 +8,6 @@
 .firefox{
   -moz-transform: translate(40%);
 }
+html{
+  background-color: #324B5D;
+}
