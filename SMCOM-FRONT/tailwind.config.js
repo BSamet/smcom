@@ -43,6 +43,9 @@ module.exports = {
     extend: {
       spacing:{
         '120': '30rem'
+      },
+      height:{
+        'fullscreen': '90.5vh'
       }
     },
   },
