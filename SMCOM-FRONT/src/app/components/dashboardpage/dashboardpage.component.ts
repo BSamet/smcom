@@ -3,7 +3,6 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {Cnc} from "../../interfaces/cnc"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {NestAPI_URL} from "../../smcomconfig";
-import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Router} from "@angular/router";
 
 @Component({
@@ -23,6 +22,11 @@ export class DashboardpageComponent implements OnInit {
 
   async update(){
 
+    const self = this;
+    setTimeout(function(){
+      self.update();
+    }, 10000);
+
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
@@ -30,8 +34,10 @@ export class DashboardpageComponent implements OnInit {
     this.http.get(URL + 'station', {headers: {
         API_key: API_key
       }}).subscribe(data=>{
-      this.listCNC=data as Cnc[];
-      console.log(this.listCNC)
+        const cncData = data as Cnc[];
+        if (this.listCNC == undefined || JSON.stringify(cncData) !== JSON.stringify(this.listCNC))
+          this.listCNC=cncData;
+
     }, error => {
       if (error.error) {
         if (error.error.statusCode == 401){
@@ -44,12 +50,8 @@ export class DashboardpageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.setAdminView();
-    const self = this;
     this.update();
 
-    setTimeout(function(){
-      self.ngOnInit();
-    }, 60000);
 
   }
 
