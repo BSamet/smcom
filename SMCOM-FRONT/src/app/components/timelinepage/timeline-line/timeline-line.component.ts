@@ -90,9 +90,11 @@ export class TimelineLineComponent implements OnInit {
   };
 
   // For  cnc stats
-  statsList!: State[];
+  statsList: State[] = [];
   dayString = "";
   @ViewChild('chart') chart: ChartComponent | undefined;
+  @Input() timelineData: TimelineData[] = [];
+  @Input() stateData: State[] = [];
   public chartOptions: Partial<ChartOptions> | any;
 
   constructor(
@@ -123,101 +125,63 @@ export class TimelineLineComponent implements OnInit {
 
     };
 
-    let URL = NestAPI_URL;
-    if (this.storage.getDataMode() === "MOCK")
-      URL = "http://localhost:3000/"
-    this.http
-      .get(URL + 'state', {
-        headers: {
-          API_key: API_key,
-        },
-      })
-      .subscribe((states) => {
-        this.statsList = states as State[];
-        this.timelineService.timelineDataV2(this.id).subscribe((tops) => {
-          const topsData = tops as TimelineData[];
-          for (let top of topsData) {
-
-            let start =
-              moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix() *
-              1000;
-            let end =
-              moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').unix() * 1000;
-            if (top.topdurationfield == 0){
-              end = Date.now()
-            }
-            if (
-              (start > dayDate.getTime() &&
-                start < dayDate.getTime() + 86400000) ||
-              (end > dayDate.getTime() && end < dayDate.getTime() + 86400000)
-            ) {
-              if (start < dayDate.getTime()) start = dayDate.getTime();
-              if (end > dayDate.getTime() + 86399000)
-                end = dayDate.getTime() + 86399000;
-              this.series.push({
-                name: this.statsList[top.topstatehandlefield].Name,
-                data: [{ x: this.dayString.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
-                color: this.statsList[top.topstatehandlefield].Color,
-              });
-            } else if (
-              start < dayDate.getTime() &&
-              end > dayDate.getTime() + 86400000
-            ) {
-              start = dayDate.getTime();
-              end = dayDate.getTime() + 86399000;
-
-              this.series.push({
-                name: this.statsList[top.topstatehandlefield].Name,
-                data: [{ x: this.dayString.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
-                color: this.statsList[top.topstatehandlefield].Color,
-              });
-            }
-          }
-          /*this.series.push({
-            name: state.Name,
-            data: this.data,
-            color: state.Color,
-          });*/
-          this.chartOptions = {
-            series: this.series,
-            chart: this.chartConfig,
-            plotOptions: this.plotOptions,
-            xaxis: xaxis,
-            yaxis: this.yaxis,
-            legend: this.legend,
-            tooltip: this.tooltip,
-            title: this.title,
-          };
-          this.isLoadingChart = false;
+    this.statsList = this.stateData;
+    const topsData = this.timelineData;
+    for (let top of topsData) {
+      let start =
+        moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix() *
+        1000;
+      let end =
+        moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').unix() * 1000;
+      if (top.topdurationfield == 0){
+        end = Date.now()
+      }
+      if (
+        (start > dayDate.getTime() &&
+          start < dayDate.getTime() + 86400000) ||
+        (end > dayDate.getTime() && end < dayDate.getTime() + 86400000)
+      ) {
+        if (start < dayDate.getTime()) start = dayDate.getTime();
+        if (end > dayDate.getTime() + 86399000)
+          end = dayDate.getTime() + 86399000;
+        this.series.push({
+          name: this.statsList[top.topstatehandlefield].Name,
+          data: [{ x: this.dayString.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
+          color: this.statsList[top.topstatehandlefield].Color,
         });
-      }, error => {
-        if (error.error) {
-          if (error.error.statusCode == 401){
-            this.storage.signOut();
-            this.router.navigate(['login/expired']).then();
-          }
-        }
-      });
+      } else if (
+        start < dayDate.getTime() &&
+        end > dayDate.getTime() + 86400000
+      ) {
+        start = dayDate.getTime();
+        end = dayDate.getTime() + 86399000;
+
+        this.series.push({
+          name: this.statsList[top.topstatehandlefield].Name,
+          data: [{ x: this.dayString.substring(0, 3) + ' ' + moment(dayDate).format('DD/MM'), y: [start, end] }],
+          color: this.statsList[top.topstatehandlefield].Color,
+        });
+      }
+    }
+    this.chartOptions = {
+      series: this.series,
+      chart: this.chartConfig,
+      plotOptions: this.plotOptions,
+      xaxis: xaxis,
+      yaxis: this.yaxis,
+      legend: this.legend,
+      tooltip: this.tooltip,
+      title: this.title,
+    };
+    this.isLoadingChart = false;
   }
 
   ngOnInit(): void {
-    /* this.series = [
-      {
-        name: 'Setup',
-        data: [
-          {
-            x: this.timelineService.dayOfWeekAsString(dayDate.getDay()),
-            y: [1638774000000, 1638774664000],
-          },
-        ],
-      },
-    ]; */
     this.updateTimeline();
 
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
     }, 60000);
-    // Get stats and create chart
   }
 }
