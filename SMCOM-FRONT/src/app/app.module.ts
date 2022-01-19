@@ -30,9 +30,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { ServicecheckerComponent } from './components/servicechecker/servicechecker.component';
-import { DateViewComponent } from './components/date-view/date-view.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
 
 @NgModule({
   declarations: [
@@ -54,7 +54,6 @@ import {MatButtonModule} from "@angular/material/button";
     TimelinePeriodComponent,
     TimelinenavigationComponent,
     ServicecheckerComponent,
-    DateViewComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +72,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatFormFieldModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   providers: [authInterceptorProviders, DatePipe, HttpClientModule],
   bootstrap: [AppComponent]
