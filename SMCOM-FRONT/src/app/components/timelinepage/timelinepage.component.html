@@ -42,7 +42,7 @@
       <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
         <section class="flex overflow-y-scroll">
           <div class="w-11/12">
-            <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}"></app-timeline-line>
+            <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
           </div>
           <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-0 px-8">
             <div class="bg-primary_cwork text-blue-100">
