@@ -44,4 +44,12 @@ export class TokenStorageService {
 
     return {};
   }
+
+  public setDataMode(dataMode: string): void { // permet de changer le mode d'acquisition en LIVE ou en MOCK
+    window.sessionStorage.removeItem("DATAMODE");
+    window.sessionStorage.setItem("DATAMODE", dataMode);
+  }
+  public getDataMode(): string {
+    return window.sessionStorage.getItem("DATAMODE")||"MOCK";
+  }
 }

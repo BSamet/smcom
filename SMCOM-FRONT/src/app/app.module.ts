@@ -22,17 +22,14 @@ import { KpiIndicatorComponent } from './components/timelinepage/kpibloc/kpi-ind
 import { CncDashboardComponent } from './components/dashboardpage/cnc-dashboard/cnc-dashboard.component';
 import { TimelineLineComponent } from './components/timelinepage/timeline-line/timeline-line.component';
 import { TimelinePeriodComponent } from './components/timelinepage/timeline-line/timeline-period/timeline-period.component';
-import { CommonModule, DatePipe } from '@angular/common'
-import { NgApexchartsModule } from "ng-apexcharts";
-import { KpiService } from "./services/kpi.service";
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
+import {CommonModule, DatePipe} from '@angular/common'
+import {NgApexchartsModule} from "ng-apexcharts";
 import { TimelinenavigationComponent } from './components/timelinepage/timeline_navigation/timelinenavigation/timelinenavigation.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import { ServicecheckerComponent } from './components/servicechecker/servicechecker.component';
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 
@@ -54,7 +51,8 @@ import { Ability, PureAbility } from '@casl/ability';
     CncDashboardComponent,
     TimelineLineComponent,
     TimelinePeriodComponent,
-    TimelinenavigationComponent
+    TimelinenavigationComponent,
+    ServicecheckerComponent
   ],
   imports: [
     BrowserModule,
@@ -69,11 +67,15 @@ import { Ability, PureAbility } from '@casl/ability';
     ReactiveFormsModule,
     NgApexchartsModule,
     AbilityModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability },
-    authInterceptorProviders, KpiService, DatePipe, HttpClientModule],
+    authInterceptorProviders, DatePipe, HttpClientModule],
   bootstrap: [AppComponent],
 })
 

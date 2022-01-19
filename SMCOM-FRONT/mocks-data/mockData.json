@@ -44,5 +44,274 @@
     {"toppkfield":"150","topcnchandlefield":"1","topstatehandlefield":"3","topstartdatefield":"11/28/2021 13:00:00","topcommentfield":"","topenddatefield":"11/28/2021 17:00:00","topdurationfield":"14400"},
     {"toppkfield":"151","topcnchandlefield":"1","topstatehandlefield":"2","topstartdatefield":"11/28/2021 17:00:00","topcommentfield":"","topenddatefield":"11/29/2021 01:00:00","topdurationfield":"28800"},
     {"toppkfield":"152","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/29/2021 01:00:00","topcommentfield":"","topenddatefield":"11/29/2021 01:00:00","topdurationfield":"0"}
-]
+],
+
+  "ping":[
+    {
+      "res": "pong"
+    }
+  ],
+
+  "station": [
+    {
+      "id": 4,
+      "Handle": 4,
+      "Name": "Cnc-1",
+      "Description": "",
+      "Disabled": false,
+      "DNCMode": true,
+      "MDCMode": true,
+      "Workshop": "Tournage",
+      "DNCgroup": "Cnc-1",
+      "MDCGroups": [],
+      "DisableParentState": false
+    },
+    {
+      "id": 2,
+      "Handle": 2,
+      "Name": "Cnc-2",
+      "Description": "",
+      "Disabled": false,
+      "DNCMode": true,
+      "MDCMode": true,
+      "Workshop": "Tournage",
+      "DNCgroup": "Cnc-2",
+      "MDCGroups": [],
+      "DisableParentState": false
+    },
+    {
+      "id": 3,
+      "Handle": 3,
+      "Name": "Cnc-3",
+      "Description": "",
+      "Disabled": false,
+      "DNCMode": true,
+      "MDCMode": true,
+      "Workshop": "Tournage",
+      "DNCgroup": "Cnc-3",
+      "MDCGroups": [],
+      "DisableParentState": false
+    },
+    {
+      "id": 5,
+      "Handle": 5,
+      "Name": "Cnc-4",
+      "Description": "",
+      "Disabled": false,
+      "DNCMode": true,
+      "MDCMode": true,
+      "Workshop": "Tournage",
+      "DNCgroup": "Cnc-4",
+      "MDCGroups": [],
+      "DisableParentState": false
+    },
+    {
+      "id": 1,
+      "Handle": 1,
+      "Name": "CNC-7812",
+      "Description": "",
+      "Disabled": false,
+      "DNCMode": true,
+      "MDCMode": true,
+      "Workshop": "Tournage",
+      "DNCgroup": "CNC-7812",
+      "MDCGroups": [],
+      "DisableParentState": false
+    }
+  ],
+  "stationStatus": [
+    {
+      "id": 1,
+      "Reference": "",
+      "Order": "",
+      "Job": "",
+      "JobCycleTime": 0,
+      "PartCount": 0,
+      "State": {
+        "Handle": 4,
+        "Name": "Disengagement",
+        "Color": "#B3A882",
+        "OEECategory": 1,
+        "ParentHandle": null,
+        "CloseDay": true,
+        "ProdPercent": false,
+        "UsePercent": false
+      },
+      "LastTop": "2022-01-03T10:32:20.000+01:00",
+      "Comment": "",
+      "Alarms": [],
+      "ActiveProgram": {}
+    },
+    {
+      "id": 2,
+      "Reference": "",
+      "Order": "",
+      "Job": "",
+      "JobCycleTime": 0,
+      "PartCount": 0,
+      "State": {
+        "Handle": 2,
+        "Name": "Setup",
+        "Color": "#3498DB",
+        "OEECategory": 9,
+        "ParentHandle": null,
+        "CloseDay": false,
+        "ProdPercent": false,
+        "UsePercent": true
+      },
+      "LastTop": "2022-01-03T10:28:15.000+01:00",
+      "Comment": "",
+      "Alarms": [],
+      "ActiveProgram": {}
+    },
+    {
+      "id": 3,
+      "Reference": "",
+      "Order": "",
+      "Job": "",
+      "JobCycleTime": 0,
+      "PartCount": 0,
+      "State": {
+        "Handle": 1,
+        "Name": "Failure",
+        "Color": "#EC644B",
+        "OEECategory": 5,
+        "ParentHandle": null,
+        "CloseDay": false,
+        "ProdPercent": false,
+        "UsePercent": true
+      },
+      "LastTop": "2021-11-24T13:53:05.000+01:00",
+      "Comment": "",
+      "Alarms": [],
+      "ActiveProgram": {}
+    },
+    {
+      "id": 4,
+      "Reference": "",
+      "Order": "",
+      "Job": "",
+      "JobCycleTime": 0,
+      "PartCount": 0,
+      "State": {
+        "Handle": 0,
+        "Name": "Production",
+        "Color": "#87D37C",
+        "OEECategory": 4,
+        "ParentHandle": null,
+        "CloseDay": false,
+        "ProdPercent": true,
+        "UsePercent": true
+      },
+      "LastTop": "2021-11-24T13:53:13.000+01:00",
+      "Comment": "",
+      "Alarms": [],
+      "ActiveProgram": {}
+    },
+    {
+      "id": 5,
+      "Reference": "",
+      "Order": "",
+      "Job": "",
+      "JobCycleTime": 0,
+      "PartCount": 0,
+      "State": {
+        "Handle": 0,
+        "Name": "Production",
+        "Color": "#87D37C",
+        "OEECategory": 4,
+        "ParentHandle": null,
+        "CloseDay": false,
+        "ProdPercent": true,
+        "UsePercent": true
+      },
+      "LastTop": "2021-11-18T10:18:29.000+01:00",
+      "Comment": "",
+      "Alarms": [],
+      "ActiveProgram": {}
+    }
+
+  ],
+  "state": [
+    {
+      "Handle": 0,
+      "Name": "Production",
+      "Color": "#87D37C",
+      "OEECategory": 4,
+      "ParentHandle": null,
+      "CloseDay": false,
+      "ProdPercent": true,
+      "UsePercent": true
+    },
+    {
+      "Handle": 1,
+      "Name": "Failure",
+      "Color": "#EC644B",
+      "OEECategory": 5,
+      "ParentHandle": null,
+      "CloseDay": false,
+      "ProdPercent": false,
+      "UsePercent": true
+    },
+    {
+      "Handle": 2,
+      "Name": "Setup",
+      "Color": "#3498DB",
+      "OEECategory": 9,
+      "ParentHandle": null,
+      "CloseDay": false,
+      "ProdPercent": false,
+      "UsePercent": true
+    },
+    {
+      "Handle": 3,
+      "Name": "Idle",
+      "Color": "#F5D76E",
+      "OEECategory": 3,
+      "ParentHandle": null,
+      "CloseDay": false,
+      "ProdPercent": false,
+      "UsePercent": true
+    },
+    {
+      "Handle": 4,
+      "Name": "Disengagement",
+      "Color": "#B3A882",
+      "OEECategory": 1,
+      "ParentHandle": null,
+      "CloseDay": true,
+      "ProdPercent": false,
+      "UsePercent": false
+    }
+  ],
+  "stationKPI": [
+    {
+      "id": 1,
+      "Times": {
+        "AT": "63072000",
+        "OT": "0",
+        "PPT": "4524586",
+        "RT": "3164502",
+        "NRT": "0",
+        "FPT": "0",
+        "FT": "771354",
+        "MTBF": "1131146",
+        "MTTR": "192838"
+      },
+      "Rates": {
+        "TEEP": "0.00",
+        "GEE": "0.00",
+        "OEE": "0.00",
+        "Performance": "0.00",
+        "Quality": "0.00",
+        "Availability": "0.70",
+        "Requisition": "0.07",
+        "Load": "0.00",
+        "Involvement": "0.00",
+        "HardwareAvailability": "0.85"
+      }
+    }
+
+  ]
+
 }

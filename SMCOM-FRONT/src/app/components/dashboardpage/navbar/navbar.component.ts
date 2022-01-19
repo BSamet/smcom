@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   menus = [false, false]
   languageLoad=this.language
   isOpenedList = this.menus;
+  dataLIVEMode = this.tokenStorage.getDataMode() === 'LIVE';
   toggle(index:number) {
     this.isOpenedList[index] = !this.isOpenedList[index];
   }
@@ -30,5 +31,12 @@ export class NavbarComponent implements OnInit {
   }
   getCurrentLan(){
     return this.tokenStorage.getLanguage()
+  }
+  switchDataMode(){
+    if (this.dataLIVEMode)
+      this.tokenStorage.setDataMode('LIVE')
+    else
+      this.tokenStorage.setDataMode('MOCK')
+    window.location.reload();
   }
 }
