@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Ability, AbilityBuilder } from '@casl/ability';
+import { AbilityService } from 'src/app/services/ability.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SMCOM';
+
+  constructor(
+    private ability: Ability,
+    private abilityService: AbilityService
+  ) { }
+
+  ngOnInit(): void {
+    this.ability = this.abilityService.updateAbility();
+  }
+
 }
