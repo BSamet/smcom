@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from "../../services/token-storage.service";
-import {Cnc} from "../../interfaces/cnc"
+import { TokenStorageService } from "../../services/token-storage.service";
+import { Cnc } from "../../interfaces/cnc"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {NestAPI_URL} from "../../smcomconfig";
 import {Router} from "@angular/router";
@@ -16,10 +16,8 @@ export class DashboardpageComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private storage: TokenStorageService,
-    private router: Router
+    private router: Router,
   ) { }
-
-  adminView = false;
 
   async update(){
 
@@ -50,18 +48,9 @@ export class DashboardpageComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.setAdminView();
     this.update();
 
-
     this.isSideNavPin = false;
-  }
-
-  setAdminView(){
-    const currentUser = this.storage.getUser();
-    if(currentUser.roles.includes("admin")){
-      this.adminView = true;
-    } else { this.adminView = false}
   }
 
   toggleSideNavPin() {
