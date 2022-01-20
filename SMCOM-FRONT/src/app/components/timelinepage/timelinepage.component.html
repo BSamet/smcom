@@ -2,19 +2,19 @@
 <app-navbar></app-navbar>
 <section class=" h-auto pb-1 bg-primary_cwork">
   <!-- SidenavSection-->
-  <div id="sideNav" class=" z-50 transform bg-primary_cwork transition md:flex" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false}">
+  <div id="sideNav" class=" z-50 transform bg-primary_cwork transition md:flex md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0">
     <!-- Sidenav -->
     <div>
       <app-sidenavbar></app-sidenavbar>
     </div>
     <!-- Sidenav brand-->
-    <div class="hidden md:block translate-x-10 firefox ml-2 "  >
-      <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow ': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
+    <div class="hidden md:block bg-transparent translate-x-10 firefox ml-2 "  >
+      <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40  rotateArrow "> <!-- Rotate arrow when hover sidenav is not pinned -->
     </div>
 
 
   </div>
-  <div>
+  <div class="ml-10">
     <!-- Main Section-->
 
     <div [ngClass]="{'md:w-11/12': isSideNavPin === true}">
