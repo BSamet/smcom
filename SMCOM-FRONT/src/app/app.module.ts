@@ -33,6 +33,9 @@ import { ServicecheckerComponent } from './components/servicechecker/servicechec
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
+import { DateRangePickerSelectionStrategyComponent } from './components/date-range-picker-selection-strategy/date-range-picker-selection-strategy.component';
+import {MatListModule} from "@angular/material/list";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
     TimelineLineComponent,
     TimelinePeriodComponent,
     TimelinenavigationComponent,
-    ServicecheckerComponent
+    ServicecheckerComponent,
+    DateRangePickerSelectionStrategyComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,9 @@ import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
     MatSlideToggleModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    NgxDaterangepickerMd.forRoot()
+    NgxDaterangepickerMd.forRoot(),
+    MatListModule,
+    MatSelectModule
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },

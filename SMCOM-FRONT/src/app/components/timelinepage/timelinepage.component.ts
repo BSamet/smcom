@@ -9,7 +9,11 @@ import {HttpClient} from "@angular/common/http";
 import {State} from "../../interfaces/status";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TimelineData} from "../../interfaces/timeline";
-import moment from 'moment';
+import {MAT_DATE_RANGE_SELECTION_STRATEGY} from "@angular/material/datepicker";
+import {
+  DayRangeSelectionStrategy
+} from "../date-range-picker-selection-strategy/date-range-picker-selection-strategy.component";
+import {DaterangepickerService} from "../../services/daterangepicker.service";
 
 @Component({
   selector: 'app-timelinepage',
@@ -18,9 +22,15 @@ import moment from 'moment';
   animations: [
     animCloseOpen,
     flyInOut
-  ]
+  ],
+  providers: [
+    {
+      provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
+      useClass: DayRangeSelectionStrategy,
+    },
+  ],
 })
-export class TimelinepageComponent implements OnInit {
+export class TimelinepageComponent<D> implements OnInit {
   selected: any;
   range = new FormGroup({
     start: new FormControl(
@@ -31,12 +41,7 @@ export class TimelinepageComponent implements OnInit {
       new Date(new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000))
     )
   });
-  ranges: any = {
-    'Jour': [moment().startOf('day'), moment().endOf('day')],
-    'Semaine': [moment().startOf('week'), moment().endOf('week')],
-    'Mois': [moment().startOf('month'), moment().endOf('month')],
-    'Année': [moment().startOf('year'), moment().endOf('year')]
-  }
+
   daysList: Date[] | undefined;
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
@@ -44,6 +49,7 @@ export class TimelinepageComponent implements OnInit {
   id!:string | null
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
+  dateRange: string[] = ["Jour","Semaine","Mois","Année"];
 
   constructor(
     private language:LanguageService,
@@ -51,7 +57,8 @@ export class TimelinepageComponent implements OnInit {
     private storage: TokenStorageService,
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private dateRangeService: DaterangepickerService<D>) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -99,5 +106,9 @@ export class TimelinepageComponent implements OnInit {
         }
       })
 
+  }
+
+  onRangeUpdate(dateItem: string){
+    this.dateRangeService.changeRange(dateItem);
   }
 }
