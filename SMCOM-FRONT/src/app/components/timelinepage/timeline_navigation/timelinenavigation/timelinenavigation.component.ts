@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {flyInOut} from "../../../../animations/animations";
+import {TimelineData} from "../../../../interfaces/timeline";
+import {State} from "../../../../interfaces/status";
+import moment from "moment";
 
 @Component({
   selector: 'app-timelinenavigation',
@@ -11,9 +14,28 @@ import {flyInOut} from "../../../../animations/animations";
 })
 export class TimelinenavigationComponent implements OnInit {
 
+  @Input() timelineData: TimelineData[] = []
+  @Input() stateData: State[] = []
+  private statsList: State[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  update(): void {
+    this.statsList = this.stateData;
+    const topsData = this.timelineData;
+    for (let top of topsData) {
+      let start =
+        moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix() *
+        1000;
+      let end =
+        moment(top.topenddatefield, 'MM-DD-YYYY HH-mm-ss').unix() * 1000;
+      if (top.topdurationfield == 0){
+        end = Date.now()
+      }
+
+    }
+  }
 }
