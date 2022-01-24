@@ -1,8 +1,8 @@
 <div class="flex justify-center items-center" [@flyInOut]>
-  <svg class="w-44">
+  <svg class="w-44 rotate-90">
     <!-- Back circle -->
     <circle cx="85" cy="75" r="67" stroke="white" stroke-width="15" fill="transparent"
-            class="text-gray-700 rotate-12" />
+            class="text-gray-700 rotate-90" />
 
     <!-- Front circle -->
     <circle *ngIf="value<= 100" cx="85" cy="75" r="67" [ngStyle]="{stroke : currentColor()}" stroke-width="15" fill="transparent"
@@ -13,7 +13,7 @@
     <circle *ngIf="value > 100" cx="85" cy="75" r="67" [ngStyle]="{stroke : currentColor()}" stroke-width="15" fill="transparent"
             :stroke-dasharray="376"
             [attr.stroke-dashoffset]="(376 - 100 / 100 * 376)"
-            class="text-blue-500 " />
+            class="text-blue-500 rotate-90 " />
   </svg>
   <!-- text in circle -->
     <span class="absolute bg-transparent text-white " >{{ name }}<br/>{{ value.toFixed(2) }}%</span>

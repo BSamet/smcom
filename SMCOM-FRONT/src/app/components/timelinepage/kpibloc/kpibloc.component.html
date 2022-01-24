@@ -1,6 +1,6 @@
 <section class="bg-transparent" *ngIf="kpiData" [@flyInOut]>
   <!-- Circle progressbar -->
-  <div class="flex justify-center">
+  <div class="flex justify-center ">
     <app-kpi-circular name="{{getTextFromKey('TEEP')}}" [value]="kpiData.Rates.TEEP*100"></app-kpi-circular>
     <app-kpi-circular name="{{getTextFromKey('GEE')}}" [value]="kpiData.Rates.GEE*100"></app-kpi-circular>
     <app-kpi-circular name="{{getTextFromKey('OEE')}}" [value]="kpiData.Rates.OEE*100"></app-kpi-circular>
@@ -9,7 +9,7 @@
     <app-kpi-circular name="{{getTextFromKey('Quality')}}" [value]="kpiData.Rates.Quality*100"></app-kpi-circular>
   </div>
   <!--Standard progressbar -->
-  <div class="flex justify-center">
+  <div class="flex justify-center ">
     <app-kpi-progressbar name="{{getTextFromKey('Strategic engagement rate')}}" [value]="kpiData.Rates.Involvement*100"></app-kpi-progressbar>
     <app-kpi-progressbar name="{{getTextFromKey('charging rate')}}" [value]="kpiData.Rates.Load*100"></app-kpi-progressbar>
     <app-kpi-progressbar name="{{getTextFromKey('requisition rate')}}" [value]="kpiData.Rates.Requisition*100"></app-kpi-progressbar>
@@ -17,17 +17,17 @@
   </div>
   <!-- KPI Indicator -->
   <div class="flex justify-center">
-    <div class="my-4 standardTime">
+    <div class=" standardTime">
       <app-kpi-indicator name="{{getTextFromKey('total time')}}" [value]="convertTime(kpiData.Times.AT)"></app-kpi-indicator>
       <app-kpi-indicator name="{{getTextFromKey('opening time')}}" [value]="convertTime(kpiData.Times.OT)"></app-kpi-indicator>
       <app-kpi-indicator name="{{getTextFromKey('time required')}}" [value]="convertTime(kpiData.Times.PPT)"></app-kpi-indicator>
     </div>
-    <div class="my-4 workTime">
+    <div class=" workTime">
       <app-kpi-indicator name="{{getTextFromKey('operating time')}}" [value]="convertTime(kpiData.Times.RT)"></app-kpi-indicator>
       <app-kpi-indicator name="{{getTextFromKey('Net operating time')}}" [value]="convertTime(kpiData.Times.NRT)"></app-kpi-indicator>
       <app-kpi-indicator name="{{getTextFromKey('Useful operating time')}}" [value]="convertTime(kpiData.Times.FPT)"></app-kpi-indicator>
     </div>
-    <div class="my-4 breakdownTime">
+    <div class=" breakdownTime">
       <app-kpi-indicator name="{{getTextFromKey('Downtime')}}" [value]="convertTime(kpiData.Times.FT)"></app-kpi-indicator>
       <app-kpi-indicator name="{{getTextFromKey('Average time between failures')}}" [value]="convertTime(kpiData.Times.MTBF)"></app-kpi-indicator>
       <app-kpi-indicator name="{{getTextFromKey('Average troubleshooting time')}}" [value]="convertTime(kpiData.Times.MTTR)"></app-kpi-indicator>
@@ -41,11 +41,7 @@
               animate-spin
               rounded-full
               h-20
-              w-20
-              border-t-2 border-b-2 border-white
-              mb-3
-              transition ease-in duration-200
-            "
+              border-t-2 border-b-2 border-white transition ease-in duration-200 "
     ></div>
     Loading...
   </div>
