@@ -1,4 +1,4 @@
-<section *ngIf="kpiData" [@flyInOut]>
+<section class="bg-transparent" *ngIf="kpiData" [@flyInOut]>
   <!-- Circle progressbar -->
   <div class="flex justify-center">
     <app-kpi-circular name="{{getTextFromKey('TEEP')}}" [value]="kpiData.Rates.TEEP*100"></app-kpi-circular>
