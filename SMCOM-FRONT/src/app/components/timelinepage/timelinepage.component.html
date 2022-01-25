@@ -27,7 +27,17 @@
             <mat-option *ngFor="let dateRangeItem of dateRange" [value]="dateRangeItem" (click)="onRangeUpdate(dateRangeItem)">{{dateRangeItem}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <app-date-range-picker-selection-strategy class="p-2 mx-2 relative left-10 top-5"></app-date-range-picker-selection-strategy>
+
+        <mat-form-field class="p-2 mx-2 relative left-10 top-5" appearance="fill">
+          <mat-label class="text-white">Choix date</mat-label>
+          <mat-date-range-input class="text-white" [rangePicker]="picker">
+            <input matStartDate placeholder="Start date">
+            <input matEndDate placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
       </div>
 
 
