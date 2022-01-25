@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {flyInOut} from "../../../../animations/animations";
-import {TimelineData} from "../../../../interfaces/timeline";
+import {TimelineData, TimelineDataEpoch} from "../../../../interfaces/timeline";
 import {State} from "../../../../interfaces/status";
 import moment from "moment";
 
@@ -26,6 +26,7 @@ export class TimelinenavigationComponent implements OnInit {
   update(): void {
     this.statsList = this.stateData;
     const topsData = this.timelineData;
+    let orderedTopsData: TimelineDataEpoch[] = [];
     for (let top of topsData) {
       let start =
         moment(top.topstartdatefield, 'MM-DD-YYYY HH-mm-ss').unix() *
@@ -36,6 +37,16 @@ export class TimelinenavigationComponent implements OnInit {
         end = Date.now()
       }
 
+      let epochTop = {
+        toppkfield: top.toppkfield,
+        topcnchandlefield: top.topcnchandlefield,
+        topstatehandlefield: top.topstatehandlefield,
+        topstartdatefield: start,
+        topenddatefield: end,
+        topdurationfield: top.topdurationfield
+      } as TimelineDataEpoch;
+
+      
     }
   }
 }
