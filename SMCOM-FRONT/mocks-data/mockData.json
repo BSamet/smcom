@@ -312,6 +312,21 @@
       }
     }
 
-  ]
+  ],
+
+  "perms_admin": [{
+    "action" : "manage",
+    "subject" : "all"
+  }],
+
+  "perms_operator": [{
+    "action" : "edit",
+    "subject" : "timeline"
+  }],
+
+  "perms_normal": [{
+    "action" : "see",
+    "subject" : "dashboard"
+  }]
 
 }
