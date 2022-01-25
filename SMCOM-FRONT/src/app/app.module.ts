@@ -32,6 +32,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { ServicecheckerComponent } from './components/servicechecker/servicechecker.component';
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
+import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { Ability, PureAbility } from '@casl/ability';
     MatSlideToggleModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },
