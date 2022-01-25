@@ -9,10 +9,11 @@ import {HttpClient} from "@angular/common/http";
 import {State} from "../../interfaces/status";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TimelineData} from "../../interfaces/timeline";
-import {MAT_DATE_RANGE_SELECTION_STRATEGY} from "@angular/material/datepicker";
 import {
-  DayRangeSelectionStrategy
-} from "../date-range-picker-selection-strategy/date-range-picker-selection-strategy.component";
+  DateRange,
+  MAT_DATE_RANGE_SELECTION_STRATEGY,
+  MatDateRangeSelectionStrategy
+} from "@angular/material/datepicker";
 import {DaterangepickerService} from "../../services/daterangepicker.service";
 
 @Component({
@@ -26,11 +27,11 @@ import {DaterangepickerService} from "../../services/daterangepicker.service";
   providers: [
     {
       provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
-      useClass: DayRangeSelectionStrategy,
+      useClass: TimelinepageComponent,
     },
   ],
 })
-export class TimelinepageComponent<D> implements OnInit {
+export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
   selected: any;
   range = new FormGroup({
     start: new FormControl(
@@ -42,7 +43,7 @@ export class TimelinepageComponent<D> implements OnInit {
     )
   });
 
-  daysList: Date[] | undefined;
+  daysList!: Date[];
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
   isShowTimeline!: boolean;
@@ -58,7 +59,7 @@ export class TimelinepageComponent<D> implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
-    private dateRangeService: DaterangepickerService<D>) { }
+    private dateRangeService: DaterangepickerService<Date>) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -110,5 +111,15 @@ export class TimelinepageComponent<D> implements OnInit {
 
   onRangeUpdate(dateItem: string){
     this.dateRangeService.changeRange(dateItem);
+  }
+
+  createPreview(activeDate: Date | null): DateRange<Date> {
+    this.daysList = this.dateRangeService.updateDayList();
+    return this.dateRangeService.checkRange(<Date>activeDate);
+  }
+
+  selectionFinished(date: Date | null): DateRange<Date> {
+    // this.daysList = this.dateRangeService.updateDayList();
+    return this.dateRangeService.checkRange(<Date>date);
   }
 }
