@@ -76,7 +76,7 @@ import { Ability, PureAbility } from '@casl/ability';
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability },
     authInterceptorProviders, DatePipe, HttpClientModule],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }
