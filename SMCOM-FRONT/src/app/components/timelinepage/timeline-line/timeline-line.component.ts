@@ -40,7 +40,7 @@ export type ChartOptions = {
   ]
 })
 export class TimelineLineComponent implements OnInit {
-  @Input() day!: string;
+  @Input() day!: number;
   // Chart variable
   id!: string | null;
   dataTimeline!: TimelineData[];
@@ -118,8 +118,7 @@ export class TimelineLineComponent implements OnInit {
   }
 
   updateTimeline() {
-    const dayDate = new Date(parseInt(this.day));
-    const API_key = this.storage.getUser().API_key;
+    const dayDate = new Date(this.day);
     this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) + " " + moment(dayDate).format('DD/MM');
     const xaxis = {
       type: 'datetime',

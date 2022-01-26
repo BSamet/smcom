@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<section class="bg-primary_cwork h-screen pb-1">
+<section class="bg-primary_cwork h-auto pb-1">
   <!-- SidenavSection-->
   <div id="sideNav" class=" z-50 transform bg-primary_cwork transition md:flex" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false}">
     <!-- Sidenav -->
@@ -10,13 +10,11 @@
     <div class="hidden md:block translate-x-10 firefox ml-2"  >
       <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow ': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
     </div>
-
-
   </div>
   <div>
     <!-- Main Section-->
 
-    <div [ngClass]="{'md:w-11/12': isSideNavPin === true}">
+    <div>
       <div>
         <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white"><span>{{getTextFromKey("display")}}</span> KPI</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white"><span>{{getTextFromKey("display")}}</span><br/> <span>{{getTextFromKey("Timeline")}}</span></mat-slide-toggle>
@@ -47,29 +45,27 @@
                placeholder="Choix date"/>
 
       </div>
-
-
       <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
-      <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
+      <div *ngIf="timelineData.length > 0 && isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
         <section class="flex overflow-y-scroll">
-          <div class="w-11/12 pl-10">
-            <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
+          <div class="w-11/12">
+            <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
           </div>
           <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-0 px-8">
             <div class="bg-primary_cwork text-blue-100">
               <!-- av -->
               <nav>
-                <button class="mb-4 transform rotate-90 h-24 w-24 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><<</button>
-                <button class="mb-4 transform rotate-90 h-24 w-24 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
-                <button class="mt-4 transform rotate-90 h-24 w-24 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
-                <button class="mt-4 transform rotate-90 h-24 w-24 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
+                <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><<</button>
+                <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
+                <button class="mt-20 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
+                <button class="mt-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
               </nav>
             </div>
           </div>
         </section>
-        <app-timelinenavigation *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
+        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
       </div>
     </div>
   </div>
