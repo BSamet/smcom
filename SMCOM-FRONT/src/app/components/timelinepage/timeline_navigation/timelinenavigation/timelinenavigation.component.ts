@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {flyInOut} from "../../../../animations/animations";
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-timelinenavigation',
@@ -11,9 +12,12 @@ import {flyInOut} from "../../../../animations/animations";
 })
 export class TimelinenavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor( private language:LanguageService) { }
 
   ngOnInit(): void {
   }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  };
 
 }

@@ -33,7 +33,6 @@ import { ServicecheckerComponent } from './components/servicechecker/servicechec
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +52,7 @@ import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
     TimelineLineComponent,
     TimelinePeriodComponent,
     TimelinenavigationComponent,
-    ServicecheckerComponent
+    ServicecheckerComponent,
   ],
   imports: [
     BrowserModule,

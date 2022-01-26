@@ -52,5 +52,21 @@
   "OEE": "OEE",
   "Availablity": "Availablity",
   "Performance": "Performance",
-  "Quality": "Quality"
+  "Quality": "Quality",
+  "Emulation": "Emulating",
+  "Real": "Real",
+  "display": "Display",
+  "Timeline": "Timeline",
+  "error": "No data are available for",
+  "modify": "edit",
+  "suppression": "delete",
+  "failure": "Failure",
+  "state": "State",
+  "monday":"monday",
+  "tuesday":"tuesday",
+  "wensday":"wensday",
+  "thursday":"thursday",
+  "friday":"friday",
+  "saturday":"saturday",
+  "sunday":"sunday"
 }
