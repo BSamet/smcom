@@ -42,6 +42,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
   dateRange: string[] = ["Jour","Semaine","Mois","Année"];
+  hasLoaded = false;
 
   constructor(
     private language:LanguageService,
@@ -71,6 +72,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   }
 
   getData(){
+    this.hasLoaded = false;
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
@@ -85,6 +87,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
         this.stateData = statesData as State[];
         this.timelineService.timelineDataV2(this.id).subscribe((tops) => {
           this.timelineData = tops as TimelineData[];
+          this.hasLoaded = true;
         })}, error => {
         if (error.error) {
           if (error.error.statusCode == 401){
