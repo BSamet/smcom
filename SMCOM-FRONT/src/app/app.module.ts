@@ -80,7 +80,7 @@ import {MatSelectModule} from "@angular/material/select";
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability },
     authInterceptorProviders, DatePipe, HttpClientModule],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }

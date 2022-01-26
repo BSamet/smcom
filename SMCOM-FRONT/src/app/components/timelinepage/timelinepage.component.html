@@ -1,6 +1,5 @@
-
 <app-navbar></app-navbar>
-<section class="bg-primary_cwork h-screen pb-1">
+<section class="bg-primary_cwork h-auto pb-1">
   <!-- SidenavSection-->
   <div id="sideNav" class=" z-50 transform bg-primary_cwork transition md:flex" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false}">
     <!-- Sidenav -->
@@ -10,7 +9,6 @@
     <!-- Sidenav brand-->
     <div class="hidden md:block translate-x-10 firefox ml-2"  >
       <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow ': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
-      <img src="assets/images/pin.svg" class="cursor-pointer" (click)="toggleSideNavPin()" [ngClass]="{'border-2 border-white rounded-xl': isSideNavPin === true}"> <!-- Border when sidenav is pinned-->
     </div>
 
 
@@ -41,7 +39,7 @@
       </div>
 
 
-      <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid"  id="kpiToggle" >
+      <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
       <div *ngIf="isShowTimeline && end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
@@ -53,10 +51,10 @@
             <div class="bg-primary_cwork text-blue-100">
               <!-- av -->
               <nav>
-                <button class="mb-4 transform rotate-90 h-24 w-24 bg-white hover:bg-white text-gray-800 font-bold rounded-lg"><<</button>
-                <button class="mb-4 transform rotate-90 h-24 w-24 bg-white hover:bg-white text-gray-800 font-bold rounded-lg"><</button>
-                <button class="mt-4 transform rotate-90 h-24 w-24 bg-white hover:bg-white text-gray-800 font-bold rounded-lg">> </button>
-                <button class="mt-4 transform rotate-90 h-24 w-24 bg-white hover:bg-white text-gray-800 font-bold rounded-lg">>> </button>
+                <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><<</button>
+                <button class="mb-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
+                <button class="mt-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
+                <button class="mt-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
               </nav>
             </div>
           </div>
@@ -69,3 +67,4 @@
 
 
 </section>
+
