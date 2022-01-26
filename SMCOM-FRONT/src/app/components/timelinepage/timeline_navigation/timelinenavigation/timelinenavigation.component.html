@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="w-6/12 text-white inline-flex justify-between items-center border-r-1 border-l-1 border-white">
-      <a href="#"><img src="assets/images/arrow_back.svg"></a>
+      <button class="w-64" (click)="goToPreviousTop()"><img src="assets/images/arrow_back.svg"></button>
       <p style="background-color:{{ this.stateData[selectedTop.topstatehandlefield].Color }}" class="rounded-xl px-3 py-2 sm:px-4 sm:py-3 xl:px-10 xl:py-4">{{this.stateData[selectedTop.topstatehandlefield].Name}}</p>
-      <a href="#"><img src="assets/images/arrow_forward.svg"></a>
+      <button class="w-64" (click)="goToNextTop()"><img src="assets/images/arrow_forward.svg"></button>
     </div>
     <div class="w-3/12 text-center">
       <div>

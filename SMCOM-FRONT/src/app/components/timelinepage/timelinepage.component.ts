@@ -40,6 +40,7 @@ export class TimelinepageComponent implements OnInit {
   id!:string | null
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
+  hasLoaded = false;
 
   constructor(
     private language:LanguageService,
@@ -70,6 +71,7 @@ export class TimelinepageComponent implements OnInit {
   }
 
   getData(){
+    this.hasLoaded = false;
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
@@ -84,6 +86,7 @@ export class TimelinepageComponent implements OnInit {
         this.stateData = statesData as State[];
         this.timelineService.timelineDataV2(this.id).subscribe((tops) => {
           this.timelineData = tops as TimelineData[];
+          this.hasLoaded = true;
         })}, error => {
         if (error.error) {
           if (error.error.statusCode == 401){
