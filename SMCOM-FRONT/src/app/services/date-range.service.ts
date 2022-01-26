@@ -6,7 +6,7 @@ import {TimelineService} from "./timeline.service";
 @Injectable({
   providedIn: 'root'
 })
-export class DaterangepickerService<D> {
+export class DateRangeService<D> {
   private range?: string;
   private start!: Date;
   private end!: Date;
