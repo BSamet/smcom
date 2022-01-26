@@ -16,3 +16,6 @@ html,body{
   background-color: #324B5D;
 }
 
+.lineHolder{
+  max-height: 300px;
+}

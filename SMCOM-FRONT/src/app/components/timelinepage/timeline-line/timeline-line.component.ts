@@ -174,13 +174,12 @@ export class TimelineLineComponent implements OnInit {
     };
     this.isLoadingChart = false;
   }
-
   ngOnInit(): void {
     this.updateTimeline();
 
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
-    }, 60000);
+    }, 10000);
   }
 }

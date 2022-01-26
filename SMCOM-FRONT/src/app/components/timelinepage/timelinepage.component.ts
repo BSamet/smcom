@@ -111,6 +111,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     const selection = this.dateRangeService.checkRange(<Date>date);
     this.end = selection.end;
     this.updateTimelines(<Date>selection.start, <Date>selection.end);
+    console.log(this.daysList)
     return this.dateRangeService.checkRange(<Date>date);
   }
 
