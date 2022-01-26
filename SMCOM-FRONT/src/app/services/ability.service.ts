@@ -13,9 +13,9 @@ export class AbilityService {
 
   user: any;
   perms: any;
-  adminUrl = "http://localhost:3000/perms_admin";
-  operatorUrl = "http://localhost:3000/perms_operator";
   normalUrl = "http://localhost:3000/perms_normal";
+  operatorUrl = "http://localhost:3000/perms_operator";
+  adminUrl = "http://localhost:3000/perms_admin";
   requestUrl = "";
 
   checkuserRole() {
@@ -31,17 +31,11 @@ export class AbilityService {
     }
   }
 
-  getAbilityFromJson() {
+  async getAbilityFromJson() {
     this.checkuserRole();
-    this.http.get(this.requestUrl).subscribe(data => {
-      this.perms = data;
-      console.log(this.perms);
-      this.updateAbility();
-    }, error => {
-      if (error.error) {
-        console.log("error");
-      }
-    });
+    this.perms = await this.http.get(this.requestUrl).toPromise();
+    this.updateAbility();
+    return this.perms;
   }
 
   updateAbility() {

@@ -22,6 +22,13 @@ export class UsersService {
       roles: ['normal'],
       API_key: '5FqSgUxyKQ8WvMWBaRm2xjX0P',
     },
+    {
+      userId: 3,
+      username: 'Pierre',
+      password: 'user',
+      roles: ['normal', 'operator'],
+      API_key: 'UxyKQ8WvMWB5FqSgaRm2xjX0P',
+    },
   ];
 
   async findOne(username: string): Promise<User | undefined> {

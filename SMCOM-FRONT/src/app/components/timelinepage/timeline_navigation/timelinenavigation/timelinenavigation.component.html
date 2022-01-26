@@ -30,7 +30,7 @@
         <p>03h 00min 00s</p>
     </div>
     <div class="w-5/6 flex justify-end items-center">
-      <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/edit.svg">Modifier</a>
+      <a *ngIf="'edit' | able: 'timeline'" href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/edit.svg">Modifier</a>
       <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/delete.svg">Supprimer</a>
     </div>
   </div>
