@@ -45,7 +45,7 @@ module.exports = {
         '120': '30rem'
       },
       height:{
-        'fullscreen': '80.5vh' /* 90.5vh sur ecran pc fixe */
+        'fullscreen': '80.5vh' /* 90.5vh sur écran de pc fixe */
       }
     },
   },
