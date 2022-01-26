@@ -94,6 +94,5 @@ export class TimelinenavigationComponent implements OnInit {
       })
     }
     this.updateDisplay();
-    console.log(this.indexTopSelector)
   }
 }
