@@ -1,17 +1,17 @@
-<footer class="fixed bottom-0 w-7/12 bg-white text-xs sm:text-sm sm:flex justify-between rounded-xl border-1 border-white" [@flyInOut]>
+<section *ngIf="selectedTop" class="w-11/12 bg-white text-xs sm:text-sm sm:flex justify-between rounded-xl border-1 border-white" [@flyInOut]>
   <div class="w-full sm:w-2/5 flex justify-around items-center">
     <div class="w-3/12 text-center">
       <div>
         <img src="assets/images/play.svg">
       </div>
       <div>
-        <p>21/10/21</p>
-        <p>14:00:00</p>
+        <p>{{getFormatDate(selectedTop.topstartdatefield)}}</p>
+        <p>{{getFormatTime(selectedTop.topstartdatefield)}}</p>
       </div>
     </div>
     <div class="w-6/12 text-white inline-flex justify-between items-center border-r-1 border-l-1 border-white">
       <a href="#"><img src="assets/images/arrow_back.svg"></a>
-      <p class="bg-failure rounded-xl px-3 py-2 sm:px-4 sm:py-3 xl:px-10 xl:py-4">{{getTextFromKey("failure")}}</p>
+      <p style="background-color:{{ this.stateData[selectedTop.topstatehandlefield].Color }}" class="rounded-xl px-3 py-2 sm:px-4 sm:py-3 xl:px-10 xl:py-4">{{this.stateData[selectedTop.topstatehandlefield].Name}}</p>
       <a href="#"><img src="assets/images/arrow_forward.svg"></a>
     </div>
     <div class="w-3/12 text-center">
@@ -19,19 +19,19 @@
         <img src="assets/images/stop.svg">
       </div>
       <div>
-        <p>21/10/21</p>
-        <p>17:00:00</p>
+        <p>{{getFormatDate(selectedTop.topenddatefield)}}</p>
+        <p>{{getFormatTime(selectedTop.topenddatefield)}}</p>
       </div>
     </div>
   </div>
   <div class="w-full sm:w-3/5 flex">
-    <div class="w-3/6 sm:w-2/6 lg:w-1/6 text-center">
+    <div class="w-2/6 text-center">
         <img src="assets/images/timer.svg">
-        <p>03h 00min 00s</p>
+        <p>{{getFormatDuration(selectedTop.topdurationfield)}}</p>
     </div>
     <div class="w-5/6 flex justify-end items-center">
-      <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/edit.svg">{{getTextFromKey("modify")}}</a>
-      <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/delete.svg">{{getTextFromKey("suppression")}}</a>
+      <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/edit.svg">Modifier</a>
+      <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/delete.svg">Supprimer</a>
     </div>
   </div>
-</footer>
+</section>

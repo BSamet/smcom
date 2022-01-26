@@ -54,7 +54,7 @@
       <div *ngIf="isShowKpi" [@slideIn] class="row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
-      <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
+      <div *ngIf="timelineData.length > 0 && isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
         <section class="flex overflow-y-scroll">
           <div class="w-11/12">
             <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
@@ -71,7 +71,7 @@
             </div>
           </div>
         </section>
-        <app-timelinenavigation [timelineData]="timelineData" *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
+        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="isShowTimeline && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
       </div>
     </div>
   </div>
