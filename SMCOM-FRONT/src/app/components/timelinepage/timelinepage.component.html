@@ -16,7 +16,7 @@
   <div>
     <!-- Main Section-->
 
-    <div [ngClass]="{'md:w-11/12': isSideNavPin === true}">
+    <div>
       <div>
         <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white"><span>{{getTextFromKey("display")}}</span> KPI</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white"><span>{{getTextFromKey("display")}}</span><br/> <span>{{getTextFromKey("Timeline")}}</span></mat-slide-toggle>
@@ -52,7 +52,7 @@
       <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
-      <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
+      <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3 "  id="timelineToggle" >
         <section class="flex">
           <div class="w-11/12 pl-10">
             <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
@@ -62,9 +62,9 @@
               <!-- av -->
               <nav>
                 <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><<</button>
-                <button class="mb-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
-                <button class="mt-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
-                <button class="mt-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
+                <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
+                <button class="mt-20 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
+                <button class="mt-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
               </nav>
             </div>
           </div>
