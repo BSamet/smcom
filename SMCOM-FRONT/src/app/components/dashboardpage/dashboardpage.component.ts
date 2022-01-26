@@ -33,9 +33,9 @@ export class DashboardpageComponent implements OnInit {
     this.http.get(URL + 'station', {headers: {
         API_key: API_key
       }}).subscribe(data=>{
-        const cncData = data as Cnc[];
-        if (this.listCNC == undefined || JSON.stringify(cncData) !== JSON.stringify(this.listCNC))
-          this.listCNC=cncData;
+      const cncData = data as Cnc[];
+      if (this.listCNC == undefined || JSON.stringify(cncData) !== JSON.stringify(this.listCNC))
+        this.listCNC=cncData;
 
     }, error => {
       if (error.error) {
