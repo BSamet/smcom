@@ -10,8 +10,6 @@
     <div class="hidden md:block translate-x-10 firefox ml-2"  >
       <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow ': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
     </div>
-
-
   </div>
   <div>
     <!-- Main Section-->
@@ -47,15 +45,13 @@
                placeholder="Choix date"/>
 
       </div>
-
-
       <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
-      <div *ngIf="isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
-        <section class="flex">
-          <div class="w-11/12 pl-10">
-            <app-timeline-line *ngFor="let day of daysList" day="{{day.getTime()}}" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
+      <div *ngIf="timelineData.length > 0 && isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
+        <section class="flex overflow-y-scroll">
+          <div class="w-11/12">
+            <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
           </div>
           <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-0 px-8">
             <div class="bg-primary_cwork text-blue-100">
@@ -69,7 +65,7 @@
             </div>
           </div>
         </section>
-        <app-timelinenavigation *ngIf="isShowTimeline" class="flex justify-center mt-1"></app-timelinenavigation>
+        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
       </div>
     </div>
   </div>
