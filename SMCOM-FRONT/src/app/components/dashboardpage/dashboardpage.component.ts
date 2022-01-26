@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from "../../services/token-storage.service";
-import {Cnc} from "../../interfaces/cnc"
+import { TokenStorageService } from "../../services/token-storage.service";
+import { Cnc } from "../../interfaces/cnc"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {NestAPI_URL} from "../../smcomconfig";
-import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,16 +11,20 @@ import {Router} from "@angular/router";
   styleUrls: ['./dashboardpage.component.css'],
 })
 export class DashboardpageComponent implements OnInit {
+  isSideNavPin!: boolean;
   listCNC!:Cnc[];
   constructor(
     private http: HttpClient,
     private storage: TokenStorageService,
-    private router: Router
+    private router: Router,
   ) { }
 
-  adminView = false;
-
   async update(){
+
+    const self = this;
+    setTimeout(function(){
+      self.update();
+    }, 10000);
 
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
@@ -30,8 +33,10 @@ export class DashboardpageComponent implements OnInit {
     this.http.get(URL + 'station', {headers: {
         API_key: API_key
       }}).subscribe(data=>{
-      this.listCNC=data as Cnc[];
-      console.log(this.listCNC)
+      const cncData = data as Cnc[];
+      if (this.listCNC == undefined || JSON.stringify(cncData) !== JSON.stringify(this.listCNC))
+        this.listCNC=cncData;
+
     }, error => {
       if (error.error) {
         if (error.error.statusCode == 401){
@@ -43,20 +48,11 @@ export class DashboardpageComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.setAdminView();
-    const self = this;
     this.update();
-
-    setTimeout(function(){
-      self.ngOnInit();
-    }, 60000);
-
+    this.isSideNavPin = false;
   }
 
-  setAdminView(){
-    const currentUser = this.storage.getUser();
-    if(currentUser.roles.includes("admin")){
-      this.adminView = true;
-    } else { this.adminView = false}
+  toggleSideNavPin() {
+    this.isSideNavPin = ! this.isSideNavPin;
   }
 }

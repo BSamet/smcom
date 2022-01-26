@@ -33,7 +33,6 @@ import { ServicecheckerComponent } from './components/servicechecker/servicechec
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
-
 @NgModule({
   declarations: [
     AppComponent,

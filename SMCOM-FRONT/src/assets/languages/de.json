@@ -52,5 +52,21 @@
   "OEE": "GDA",
   "Availablity": "Verfügbarkeit",
   "Performance": "Leistung",
-  "Quality": "Qualität"
+  "Quality": "Qualität",
+  "Emulation": "Emulieren",
+  "Real": "Real",
+  "display": "Anzeigen",
+  "Timeline": "Zeitleiste",
+  "error": "Es liegen keine Daten vor für den",
+  "modify": "ändern",
+  "suppression": "entfernen",
+  "failure": "Ausfall",
+  "state": "Zustand",
+  "monday":"montag",
+  "tuesday":"dienstag",
+  "wensday":"mittwoch",
+  "thursday":"donnerstag",
+  "friday":"freitag",
+  "saturday":"samstag",
+  "sunday":"sonntag"
 }

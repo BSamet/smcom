@@ -51,5 +51,22 @@
   "OEE": "TRS",
   "Availablity": "Disponibilté",
   "Performance": "Performance",
-  "Quality": "Qualité"
+  "Quality": "Qualité",
+  "Emulation": "Émulation",
+  "Real": "Réel",
+  "display": "Afficher",
+  "Timeline": "Chronologie",
+  "error": "Aucune donnée n'est disponible pour le",
+  "modify": "modifier",
+  "suppression": "supprimer",
+  "failure": "Échec",
+  "state": "État",
+  "monday":"lundi",
+  "tuesday":"mardi",
+  "wensday":"mercredi",
+  "thursday":"jeudi",
+  "friday":"vendredi",
+  "saturday":"samedi",
+  "sunday":"dimanche"
+
 }

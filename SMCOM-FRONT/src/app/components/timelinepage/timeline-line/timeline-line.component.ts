@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TimelineService } from '../../../services/timeline.service';
 import moment from 'moment';
 import { State } from '../../../interfaces/status';
+import { LanguageService } from 'src/app/services/language.service';
 
 // Start ApexCharts Import
 import {
@@ -49,7 +50,7 @@ export class TimelineLineComponent implements OnInit {
   noData = false;
 
   chartConfig = {
-    toolbar: { show: false },
+    toolbar: { show: true },
     height: 100,
     type: 'rangeBar',
   };
@@ -102,10 +103,15 @@ export class TimelineLineComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private storage: TokenStorageService,
-    private router: Router
+    private router: Router,
+    private language:LanguageService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
+
+
+
+
     this.series = [];
     this.data = [];
 
@@ -184,4 +190,8 @@ export class TimelineLineComponent implements OnInit {
       self.ngOnInit();
     }, 60000);
   }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  };
+
 }

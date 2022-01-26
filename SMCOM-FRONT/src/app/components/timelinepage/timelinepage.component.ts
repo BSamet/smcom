@@ -48,7 +48,6 @@ export class TimelinepageComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router) { }
-
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();
@@ -60,6 +59,10 @@ export class TimelinepageComponent implements OnInit {
 
   toggleSideNavPin() {
     this.isSideNavPin = ! this.isSideNavPin;
+  }
+
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
   }
 
   updateTimelines() {

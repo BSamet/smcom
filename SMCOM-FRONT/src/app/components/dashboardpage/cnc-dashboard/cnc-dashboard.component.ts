@@ -5,6 +5,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Status } from "../../../interfaces/status"
 import {NestAPI_URL} from "../../../smcomconfig";
 import {flyInOut} from "../../../animations/animations";
+import { LanguageService } from 'src/app/services/language.service';
 @Component({
   selector: 'app-cnc-dashboard',
   templateUrl: './cnc-dashboard.component.html',
@@ -18,7 +19,9 @@ export class CncDashboardComponent implements OnInit {
   @Input() handle!: string;
   @Input() name!: string;
   status!:Status;
-  constructor(private router: Router, private storage:TokenStorageService,
+  constructor(private router: Router,
+              private storage:TokenStorageService,
+              private language:LanguageService,
   private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -35,4 +38,7 @@ export class CncDashboardComponent implements OnInit {
       console.log(this.status)
     })
   }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  };
 }
