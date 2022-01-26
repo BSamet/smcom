@@ -10,8 +10,6 @@
     <div class="hidden md:block translate-x-10 firefox ml-2"  >
       <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow ': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
     </div>
-
-
   </div>
   <div>
     <!-- Main Section-->
@@ -47,8 +45,6 @@
                placeholder="Choix date"/>
 
       </div>
-
-
       <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
@@ -69,7 +65,7 @@
             </div>
           </div>
         </section>
-        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="isShowTimeline && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
+        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
       </div>
     </div>
   </div>
