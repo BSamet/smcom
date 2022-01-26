@@ -14,7 +14,7 @@ import {
   MAT_DATE_RANGE_SELECTION_STRATEGY,
   MatDateRangeSelectionStrategy
 } from "@angular/material/datepicker";
-import {DaterangepickerService} from "../../services/daterangepicker.service";
+import {DateRangeService} from "../../services/date-range.service";
 
 @Component({
   selector: 'app-timelinepage',
@@ -32,16 +32,7 @@ import {DaterangepickerService} from "../../services/daterangepicker.service";
   ],
 })
 export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
-  selected: any;
-  range = new FormGroup({
-    start: new FormControl(
-      new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000)
-    ),
-    // par défaut récupère les données d'une semaine avant
-    end: new FormControl(
-      new Date(new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000))
-    )
-  });
+  end!: Date | null;
 
   daysList!: Date[];
   isSideNavPin!: boolean;
@@ -59,12 +50,12 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
-    private dateRangeService: DaterangepickerService<Date>) { }
+    private dateRangeService: DateRangeService<Date>) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();
-    this.updateTimelines();
+    this.initTimelines();
     this.isShowKpi = false;
     this.isShowTimeline = true;
     this.isSideNavPin = false;
@@ -75,12 +66,8 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     this.isSideNavPin = ! this.isSideNavPin;
   }
 
-  updateTimelines() {
-    this.daysList = this.timelineService.getDaysArray(new Date(this.range.value.start), new Date(this.range.value.end));
-  }
-
-  onUpdateDateRangePicker(){
-    this.daysList = this.timelineService.getDaysArray(this.selected.startDate.toDate(), this.selected.endDate.toDate());
+  updateTimelines(start: Date, end: Date) {
+    this.daysList = this.timelineService.getDaysArray(new Date(start), new Date(end));
   }
 
   getData(){
@@ -114,12 +101,19 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   }
 
   createPreview(activeDate: Date | null): DateRange<Date> {
-    this.daysList = this.dateRangeService.updateDayList();
     return this.dateRangeService.checkRange(<Date>activeDate);
   }
 
   selectionFinished(date: Date | null): DateRange<Date> {
-    // this.daysList = this.dateRangeService.updateDayList();
+    const selection = this.dateRangeService.checkRange(<Date>date);
+    this.end = selection.end;
+    this.updateTimelines(<Date>selection.start, <Date>selection.end);
     return this.dateRangeService.checkRange(<Date>date);
+  }
+
+  private initTimelines() {
+    const start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
+    this.end = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000);
+    this.updateTimelines(start, this.end);
   }
 }
