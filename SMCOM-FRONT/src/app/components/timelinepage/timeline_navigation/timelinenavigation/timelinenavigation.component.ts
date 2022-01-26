@@ -20,6 +20,7 @@ export class TimelinenavigationComponent implements OnInit {
   selectedTop!: TimelineDataEpoch;
   indexTopSelector = -1;
   orderedTopsData: TimelineDataEpoch[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
