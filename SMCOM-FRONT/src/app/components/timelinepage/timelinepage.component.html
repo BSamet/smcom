@@ -14,7 +14,7 @@
   <div>
     <!-- Main Section-->
 
-    <div [ngClass]="{'md:w-11/12': isSideNavPin === true}">
+    <div>
       <div>
         <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white">Afficher KPI</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">Afficher Timeline</mat-slide-toggle>
@@ -48,9 +48,9 @@
               <!-- av -->
               <nav>
                 <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><<</button>
-                <button class="mb-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
-                <button class="mt-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
-                <button class="mt-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
+                <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
+                <button class="mt-20 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
+                <button class="mt-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
               </nav>
             </div>
           </div>
