@@ -18,40 +18,32 @@
       <div>
         <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white">Afficher KPI</mat-slide-toggle>
         <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">Afficher Timeline</mat-slide-toggle>
-        <!--        <button class="p-2 mx-2 relative left-10 top-5" mat-raised-button (click)="openDateViewDialog()">Choix date</button>-->
-        <!--        <mat-form-field class="p-2 mx-2 relative left-10 top-5" appearance="fill">-->
-        <!--          <mat-label class="text-white">Enter a date range</mat-label>-->
-        <!--          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">-->
-        <!--            <input matStartDate formControlName="start" placeholder="Start date">-->
-        <!--            <input matEndDate formControlName="end" placeholder="End date" (dateChange)="updateTimelines()">-->
-        <!--          </mat-date-range-input>-->
-        <!--          <mat-datepicker-toggle class="text-white" matSuffix [for]="picker"></mat-datepicker-toggle>-->
-        <!--          <mat-date-range-picker #picker></mat-date-range-picker>-->
+        <mat-form-field class="p-2 mx-2 relative left-10 top-5 text-white" appearance="fill">
+          <mat-select class="text-white" placeholder="Portée date">
+            <mat-option *ngFor="let dateRangeItem of dateRange" [value]="dateRangeItem" (click)="onRangeUpdate(dateRangeItem)">{{dateRangeItem}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        <!--          <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>-->
-        <!--          <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>-->
-        <!--        </mat-form-field>-->
-
-        <input class="p-2 mx-2 relative left-10 top-5 text-black" type="text"
-               ngxDaterangepickerMd
-               [showCustomRangeLabel]="true"
-               [alwaysShowCalendars]="true"
-               [(ngModel)]="selected"
-               [ranges]="ranges"
-               [linkedCalendars]="true"
-               [showClearButton]="true"
-               [singleDatePicker]="false"
-               (ngModelChange)="onUpdateDateRangePicker()"
-               placeholder="Choix date"/>
-
+        <mat-form-field class="p-2 mx-2 relative left-10 top-5" appearance="fill">
+          <mat-label class="text-white">Choix date</mat-label>
+          <mat-date-range-input [formGroup]="range" class="text-white" [rangePicker]="picker">
+            <input formControlName="start" matStartDate placeholder="Start date">
+            <input formControlName="end" matEndDate placeholder="End date" (dateChange)="updateTimelines()">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
       </div>
       <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
-      <div *ngIf="timelineData.length > 0 && isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
+      <div *ngIf="isShowTimeline && end != null" [@flyInOut] class="mt-10 mx-10"  id="timelineToggle" >
         <section class="flex overflow-y-scroll">
-          <div class="w-11/12">
+          <div *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="w-11/12">
             <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
+          </div>
+          <div *ngIf="!hasLoaded" class="text-center">
+            <span class="mx-10 text-white">Loading...</span>
           </div>
           <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-0 px-8">
             <div class="bg-primary_cwork text-blue-100">

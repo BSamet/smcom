@@ -9,7 +9,13 @@ import {HttpClient} from "@angular/common/http";
 import {State} from "../../interfaces/status";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TimelineData} from "../../interfaces/timeline";
-import moment from 'moment';
+import {
+  DateRange,
+  MAT_DATE_RANGE_SELECTION_STRATEGY,
+  MatDateRangeSelectionStrategy
+} from "@angular/material/datepicker";
+import {DateRangeService} from "../../services/date-range.service";
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-timelinepage',
@@ -18,62 +24,52 @@ import moment from 'moment';
   animations: [
     animCloseOpen,
     flyInOut
-  ]
+  ],
+  providers: [
+    {
+      provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
+      useClass: TimelinepageComponent,
+    },
+  ],
 })
-export class TimelinepageComponent implements OnInit {
-  selected: any;
-  range = new FormGroup({
-    start: new FormControl(
-      new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000)
-    ),
-    // par défaut récupère les données d'une semaine avant
-    end: new FormControl(
-      new Date(new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000))
-    )
-  });
-  ranges: any = {
-    'Jour': [moment().startOf('day'), moment().endOf('day')],
-    'Semaine': [moment().startOf('week'), moment().endOf('week')],
-    'Mois': [moment().startOf('month'), moment().endOf('month')],
-    'Année': [moment().startOf('year'), moment().endOf('year')]
-  }
-  daysList: Date[] | undefined;
+export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
+  daysList!: Date[];
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
   isShowTimeline!: boolean;
   id!:string | null
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
+  dateRange: string[] = ["Jour","Semaine","Mois","Année"];
   hasLoaded = false;
-
+  start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
+  end = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000);
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
   constructor(
     private language:LanguageService,
     private timelineService: TimelineService,
     private storage: TokenStorageService,
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private dateRangeService: DateRangeService<Date>) {
+    this.daysList = this.timelineService.getDaysArray(this.start, this.end);
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();
-    this.updateTimelines();
     this.isShowKpi = false;
     this.isShowTimeline = true;
     this.isSideNavPin = false;
-
   }
 
-  toggleSideNavPin() {
-    this.isSideNavPin = ! this.isSideNavPin;
-  }
 
   updateTimelines() {
-    this.daysList = this.timelineService.getDaysArray(new Date(this.range.value.start), new Date(this.range.value.end));
-  }
-
-  onUpdateDateRangePicker(){
-    this.daysList = this.timelineService.getDaysArray(this.selected.startDate.toDate(), this.selected.endDate.toDate());
+    this.daysList = this.timelineService.getDaysArray(this.range.value.start, this.range.value.end);
   }
 
   getData(){
@@ -103,4 +99,17 @@ export class TimelinepageComponent implements OnInit {
       })
 
   }
+
+  onRangeUpdate(dateItem: string){
+    this.dateRangeService.changeRange(dateItem);
+  }
+
+  createPreview(activeDate: Date | null): DateRange<Date> {
+    return this.dateRangeService.checkRange(<Date>activeDate);
+  }
+
+  selectionFinished(date: Date | null): DateRange<Date> {
+    return this.dateRangeService.checkRange(<Date>date);
+  }
+
 }

@@ -20,6 +20,7 @@ export class TimelinenavigationComponent implements OnInit {
   selectedTop!: TimelineDataEpoch;
   indexTopSelector = -1;
   orderedTopsData: TimelineDataEpoch[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -94,6 +95,5 @@ export class TimelinenavigationComponent implements OnInit {
       })
     }
     this.updateDisplay();
-    console.log(this.indexTopSelector)
   }
 }
