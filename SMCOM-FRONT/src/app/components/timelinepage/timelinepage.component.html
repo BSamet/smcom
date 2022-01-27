@@ -49,14 +49,14 @@
         <app-kpibloc></app-kpibloc>
       </div>
       <div *ngIf="timelineData.length > 0 && isShowTimeline && range.value.end != null" [@flyInOut] class="mt-10 mx-3"  id="timelineToggle" >
-        <section class="flex overflow-y-scroll">
-          <div class="w-11/12">
+        <section class="flex ">
+          <div class="w-11/12 ml-10">
             <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
           </div>
           <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-0 px-8">
             <div class="bg-primary_cwork text-blue-100">
               <!-- av -->
-              <nav>
+              <nav class="ml-4">
                 <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><<</button>
                 <button class="mb-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
                 <button class="mt-4 transform rotate-90 h-20 w-20  bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {flyInOut} from "../../../../animations/animations";
+import { LanguageService } from 'src/app/services/language.service';
 import {TimelineData, TimelineDataEpoch} from "../../../../interfaces/timeline";
 import {State} from "../../../../interfaces/status";
 import moment from "moment";
@@ -14,17 +15,21 @@ import moment from "moment";
 })
 export class TimelinenavigationComponent implements OnInit {
 
+  constructor( private language:LanguageService,) { }
   @Input() timelineData: TimelineData[] = []
   @Input() stateData: State[] = []
   statsList: State[] = [];
   selectedTop!: TimelineDataEpoch;
   indexTopSelector = -1;
   orderedTopsData: TimelineDataEpoch[] = [];
-  constructor() { }
+
 
   ngOnInit(): void {
     this.updateData();
   }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  };
 
   getFormatDate(epoch: number): string {
     return moment(new Date(epoch * 1000)).format('DD/MM/YYYY')
