@@ -50,9 +50,11 @@ export class TimelineLineComponent implements OnInit {
   noData = false;
 
   chartConfig = {
-    toolbar: { show: true },
+    toolbar: {show: true,
+      },
     height: 100,
     type: 'rangeBar',
+
   };
   title = {
     text: '',

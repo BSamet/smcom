@@ -15,14 +15,14 @@ import moment from "moment";
 })
 export class TimelinenavigationComponent implements OnInit {
 
-  constructor( private language:LanguageService) { }
+  constructor( private language:LanguageService,) { }
   @Input() timelineData: TimelineData[] = []
   @Input() stateData: State[] = []
   statsList: State[] = [];
   selectedTop!: TimelineDataEpoch;
   indexTopSelector = -1;
   orderedTopsData: TimelineDataEpoch[] = [];
-  constructor() { }
+
 
   ngOnInit(): void {
     this.updateData();
