@@ -31,7 +31,7 @@
             <input formControlName="end" matEndDate placeholder="End date" (dateChange)="updateTimelines()">
           </mat-date-range-input>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
+          <mat-date-range-picker #picker [startView]="onSelectionUpdate()"></mat-date-range-picker>
         </mat-form-field>
       </div>
       <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
