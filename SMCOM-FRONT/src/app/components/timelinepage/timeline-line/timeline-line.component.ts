@@ -180,6 +180,6 @@ export class TimelineLineComponent implements OnInit {
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
-    }, 10000);
+    }, 120000);
   }
 }
