@@ -33,6 +33,7 @@ import { ChangeDetectorRef } from '@angular/core';
   ],
 })
 export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
+  selectedDateInterval!: string;
   daysList!: Date[];
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
@@ -42,6 +43,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   stateData: State[] = [];
   dateRange: string[] = ["Jour","Semaine","Mois","Année"];
   hasLoaded = false;
+  dateRangeView!: any;
   start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
   end = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000);
   range = new FormGroup({
@@ -101,6 +103,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   }
 
   onRangeUpdate(dateItem: string){
+    this.selectedDateInterval = dateItem;
     this.dateRangeService.changeRange(dateItem);
   }
 
@@ -112,4 +115,13 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     return this.dateRangeService.checkRange(<Date>date);
   }
 
+  onSelectionUpdate() {
+     if (this.selectedDateInterval == "Jour" || this.selectedDateInterval == "Semaine") {
+      return this.dateRangeView = "month";
+    } else if (this.selectedDateInterval == "Mois") {
+      return this.dateRangeView = "year";
+    } else if (this.selectedDateInterval == "Année") {
+      return this.dateRangeView = "multi-year";
+    } else return this.dateRangeView = "month";
+  }
 }
