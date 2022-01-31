@@ -2,6 +2,7 @@
 
 # Initialize GUI components
 $smcomInit = New-Object System.Windows.Forms.Form
+$initBtn = New-Object System.Windows.Forms.Button
 $startBtn = New-Object System.Windows.Forms.Button
 $quitBtn = New-Object System.Windows.Forms.Button
 $exploreBtn = New-Object System.Windows.Forms.Button
@@ -34,24 +35,41 @@ $exploreBtn.Add_Click({
 $scriptInitialized.AutoSize = $true
 $scriptInitialized.Location = New-Object System.Drawing.Point(25,70)
 
-#startBtn config
-$startBtn.AutoSize = $true
-$startBtn.Location = New-Object System.Drawing.Point(30,100)
-$startBtn.Text = 'Start SMCOM'
-$startBtn.Add_Click({
+#initBtn config
+$initBtn.AutoSize = $true
+$initBtn.Location = New-Object System.Drawing.Point(30,100)
+$initBtn.Text = 'Init SMCOM'
+$initBtn.Add_Click({
     $projectPath = $projectDirectoryPath.Text
     $nestApiPath = ($projectPath+"\SMCOM-BACK")
     cd $nestApiPath
     Start-Process npm -ArgumentList "install" -PassThru
-    Start-Process npm -ArgumentList "run start" -PassThru
     $clientPath = ($projectPath+"\SMCOM-FRONT")
     cd $clientPath
 
     Start-Process npm -ArgumentList "install" -PassThru
+    $startBtn.Enabled = $true
+})
+
+#startBtn config
+$startBtn.AutoSize = $true
+$startBtn.Location = New-Object System.Drawing.Point(130,100)
+$startBtn.Text = 'Start SMCOM'
+$startBtn.Enabled = $false
+$startBtn.Add_Click({
+    $projectPath = $projectDirectoryPath.Text
+    $nestApiPath = ($projectPath+"\SMCOM-BACK")
+    cd $nestApiPath
+    Start-Process npm -ArgumentList "run start" -PassThru
+    $clientPath = ($projectPath+"\SMCOM-FRONT")
+    cd $clientPath
+
     Start-Process npm -ArgumentList "run start" -PassThru
     Start-Process npm -ArgumentList "run mock:server" -PassThru
 
     $scriptInitialized.Text = "Process are running ..."
+    $initBtn.Enabled = $false
+    $startBtn.Enabled = $false
 })
 
 #quitBtn config
@@ -67,6 +85,7 @@ $smcomInit.Controls.Add($exploreBtn)
 $smcomInit.Controls.Add($projectDirectoryPath)
 $smcomInit.Controls.Add($projectDirectoryPathLabel)
 $smcomInit.Controls.Add($scriptInitialized)
+$smcomInit.Controls.Add($initBtn)
 $smcomInit.Controls.Add($startBtn)
 $smcomInit.Controls.Add($quitBtn)
 $smcomInit.ShowDialog()
