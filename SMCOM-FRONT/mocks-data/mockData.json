@@ -9,7 +9,7 @@
     {"toppkfield":"94","topcnchandlefield":"4","topstatehandlefield":"0","topstartdatefield":"11/24/2021 13:53:13","topcommentfield":"","topenddatefield":"11/24/2021 13:53:13","topdurationfield":"0"},
     {"toppkfield":"95","topcnchandlefield":"5","topstatehandlefield":"2","topstartdatefield":"11/17/2021 18:34:42","topcommentfield":"","topenddatefield":"11/18/2021 10:18:29","topdurationfield":"56627"},
     {"toppkfield":"96","topcnchandlefield":"5","topstatehandlefield":"0","topstartdatefield":"11/18/2021 10:18:29","topcommentfield":"","topenddatefield":"11/18/2021 10:18:29","topdurationfield":"0"},
-    {"toppkfield":"97","topcnchandlefield":"5","topstatehandlefield":"3","topstartdatefield":"11/22/2021 06:00:00","topcommentfield":"","topenddatefield":"11/23/2021 07:00:00","topdurationfield":"111600"},
+    {"toppkfield":"97","topcnchandlefield":"5","topstatehandlefield":"3","topstartdatefield":"11/22/2021","topcommentfield":"","topenddatefield":"11/23/2021 07:00:00","topdurationfield":"111600"},
     {"toppkfield":"98","topcnchandlefield":"5","topstatehandlefield":"2","topstartdatefield":"11/23/2021 07:00:00","topcommentfield":"","topenddatefield":"11/23/2021 16:00:00","topdurationfield":"32400"},
     {"toppkfield":"99","topcnchandlefield":"5","topstatehandlefield":"0","topstartdatefield":"11/23/2021 16:00:00","topcommentfield":"","topenddatefield":"11/24/2021 14:11:32","topdurationfield":"79892"},
     {"toppkfield":"100","topcnchandlefield":"2","topstatehandlefield":"0","topstartdatefield":"11/16/2021 09:20:14","topcommentfield":"","topenddatefield":"11/17/2021 18:31:18","topdurationfield":"119464"},
@@ -21,8 +21,8 @@
     {"toppkfield":"106","topcnchandlefield":"2","topstatehandlefield":"1","topstartdatefield":"11/23/2021 14:00:00","topcommentfield":"","topenddatefield":"11/23/2021 17:00:00","topdurationfield":"10800"},
     {"toppkfield":"107","topcnchandlefield":"2","topstatehandlefield":"2","topstartdatefield":"11/23/2021 17:00:00","topcommentfield":"","topenddatefield":"11/23/2021 19:00:00","topdurationfield":"7200"},
     {"toppkfield":"108","topcnchandlefield":"2","topstatehandlefield":"0","topstartdatefield":"11/23/2021 19:00:00","topcommentfield":"","topenddatefield":"11/25/2021 12:57:39","topdurationfield":"151059"},
-    {"toppkfield":"109","topcnchandlefield":"2","topstatehandlefield":"1","topstartdatefield":"11/25/2021 12:57:39","topcommentfield":"","topenddatefield":"11/25/2021 12:57:39","topdurationfield":"0"},
-    {"toppkfield":"131","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/01/2021 07:00:00","topcommentfield":"","topenddatefield":"11/02/2021 03:00:00","topdurationfield":"97200"},
+    {"toppkfield":"109","topcnchandlefield":"2","topstatehandlefield":"1","topstartdatefield":"11/25/2021 12:57:39","topcommentfield":"","topenddatefield":"01/03/2022 10:28:15","topdurationfield":"3360636"},
+    {"toppkfield":"131","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/01/2021","topcommentfield":"","topenddatefield":"11/02/2021 03:00:00","topdurationfield":"97200"},
     {"toppkfield":"132","topcnchandlefield":"1","topstatehandlefield":"1","topstartdatefield":"11/02/2021 03:00:00","topcommentfield":"","topenddatefield":"11/02/2021 14:00:00","topdurationfield":"39600"},
     {"toppkfield":"133","topcnchandlefield":"1","topstatehandlefield":"4","topstartdatefield":"11/02/2021 14:00:00","topcommentfield":"","topenddatefield":"11/02/2021 15:37:21","topdurationfield":"5841"},
     {"toppkfield":"134","topcnchandlefield":"1","topstatehandlefield":"2","topstartdatefield":"11/02/2021 15:37:21","topcommentfield":"","topenddatefield":"11/02/2021 15:38:03","topdurationfield":"42"},
@@ -32,7 +32,7 @@
     {"toppkfield":"138","topcnchandlefield":"1","topstatehandlefield":"1","topstartdatefield":"11/02/2021 16:09:41","topcommentfield":"","topenddatefield":"11/09/2021 10:24:36","topdurationfield":"584095"},
     {"toppkfield":"139","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/09/2021 10:24:36","topcommentfield":"","topenddatefield":"11/11/2021 10:26:09","topdurationfield":"172893"},
     {"toppkfield":"140","topcnchandlefield":"1","topstatehandlefield":"3","topstartdatefield":"11/11/2021 10:26:09","topcommentfield":"","topenddatefield":"11/17/2021 10:26:09","topdurationfield":"518400"},
-    {"toppkfield":"141","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/22/2021 12:00:00","topcommentfield":"","topenddatefield":"11/23/2021 13:00:00","topdurationfield":"133200"},
+    {"toppkfield":"141","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/22/2021","topcommentfield":"","topenddatefield":"11/23/2021 13:00:00","topdurationfield":"133200"},
     {"toppkfield":"142","topcnchandlefield":"1","topstatehandlefield":"1","topstartdatefield":"11/23/2021 13:00:00","topcommentfield":"","topenddatefield":"11/23/2021 23:00:59","topdurationfield":"36059"},
     {"toppkfield":"143","topcnchandlefield":"1","topstatehandlefield":"4","topstartdatefield":"11/23/2021 23:00:59","topcommentfield":"","topenddatefield":"11/24/2021 10:00:00","topdurationfield":"39541"},
     {"toppkfield":"144","topcnchandlefield":"1","topstatehandlefield":"2","topstartdatefield":"11/24/2021 10:00:00","topcommentfield":"","topenddatefield":"11/24/2021 11:00:00","topdurationfield":"3600"},
@@ -43,8 +43,11 @@
     {"toppkfield":"149","topcnchandlefield":"1","topstatehandlefield":"1","topstartdatefield":"11/27/2021 06:00:00","topcommentfield":"","topenddatefield":"11/28/2021 13:00:00","topdurationfield":"111600"},
     {"toppkfield":"150","topcnchandlefield":"1","topstatehandlefield":"3","topstartdatefield":"11/28/2021 13:00:00","topcommentfield":"","topenddatefield":"11/28/2021 17:00:00","topdurationfield":"14400"},
     {"toppkfield":"151","topcnchandlefield":"1","topstatehandlefield":"2","topstartdatefield":"11/28/2021 17:00:00","topcommentfield":"","topenddatefield":"11/29/2021 01:00:00","topdurationfield":"28800"},
-    {"toppkfield":"152","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/29/2021 01:00:00","topcommentfield":"","topenddatefield":"11/29/2021 01:00:00","topdurationfield":"0"}
-],
+    {"toppkfield":"152","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"11/29/2021 01:00:00","topcommentfield":"","topenddatefield":"01/03/2022 10:32:20","topdurationfield":"3058340"},
+    {"toppkfield":"153","topcnchandlefield":"2","topstatehandlefield":"2","topstartdatefield":"01/03/2022 10:28:15","topcommentfield":"","topenddatefield":"01/03/2022 10:28:15","topdurationfield":"0"},
+    {"toppkfield":"154","topcnchandlefield":"1","topstatehandlefield":"4","topstartdatefield":"01/03/2022 10:32:20","topcommentfield":"","topenddatefield":"01/03/2022 10:32:20","topdurationfield":"0"}
+  ]
+,
 
   "ping":[
     {
@@ -311,7 +314,6 @@
         "HardwareAvailability": "0.85"
       }
     }
-
   ]
 
 }

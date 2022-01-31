@@ -46,6 +46,7 @@ $startBtn.Add_Click({
     Start-Process npm -ArgumentList "run start" -PassThru
     $clientPath = ($projectPath+"\SMCOM-FRONT")
     cd $clientPath
+
     Start-Process npm -ArgumentList "install" -PassThru
     Start-Process npm -ArgumentList "run start" -PassThru
     Start-Process npm -ArgumentList "run mock:server" -PassThru

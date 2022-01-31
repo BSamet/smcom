@@ -1,4 +1,4 @@
-import {Component, NgModule} from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -9,7 +9,7 @@ import { TimelinepageComponent } from './components/timelinepage/timelinepage.co
 import { KPIBlocComponent } from './components/timelinepage/kpibloc/kpibloc.component';
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { Error404pageComponent } from './components/errorpages/error404page/error404page.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { ProfilepageComponent } from './components/profilepage/profilepage.component';
@@ -30,9 +30,11 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { ServicecheckerComponent } from './components/servicechecker/servicechecker.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatButtonModule} from "@angular/material/button";
-import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
+import { AbilityModule } from '@casl/angular';
+import { Ability, PureAbility } from '@casl/ability';
+import {MatListModule} from "@angular/material/list";
+import {MatSelectModule} from "@angular/material/select";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,7 @@ import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
     TimelineLineComponent,
     TimelinePeriodComponent,
     TimelinenavigationComponent,
-    ServicecheckerComponent,
+    ServicecheckerComponent
   ],
   imports: [
     BrowserModule,
@@ -66,15 +68,18 @@ import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
     FormsModule,
     ReactiveFormsModule,
     NgApexchartsModule,
+    AbilityModule,
     MatNativeDateModule,
     MatSlideToggleModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatDialogModule,
-    MatButtonModule,
-    NgxDaterangepickerMd.forRoot()
+    MatListModule,
+    MatSelectModule
   ],
-  providers: [authInterceptorProviders, DatePipe, HttpClientModule],
+  providers: [
+    { provide: Ability, useValue: new Ability() },
+    { provide: PureAbility, useExisting: Ability },
+    authInterceptorProviders, DatePipe, HttpClientModule],
   bootstrap: [AppComponent]
 })
 

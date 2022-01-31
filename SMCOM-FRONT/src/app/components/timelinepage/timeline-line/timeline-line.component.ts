@@ -2,7 +2,6 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TimelineService } from '../../../services/timeline.service';
 import moment from 'moment';
 import { State } from '../../../interfaces/status';
-import { LanguageService } from 'src/app/services/language.service';
 
 // Start ApexCharts Import
 import {
@@ -50,11 +49,9 @@ export class TimelineLineComponent implements OnInit {
   noData = false;
 
   chartConfig = {
-    toolbar: {show: true,
-      },
+    toolbar: { show: false },
     height: 100,
     type: 'rangeBar',
-
   };
   title = {
     text: '',
@@ -105,27 +102,18 @@ export class TimelineLineComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private storage: TokenStorageService,
-    private router: Router,
-    private language:LanguageService
+    private router: Router
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
-
-
-
-
     this.series = [];
     this.data = [];
 
   }
-  dayOfWeekAsString(dayIndex:number) {
-    return [this.getTextFromKey("sunday"), this.getTextFromKey("monday"),this.getTextFromKey("tuesday"),this.getTextFromKey("wensday"),this.getTextFromKey("thursday"),this.getTextFromKey("friday"), this.getTextFromKey("saturday")][dayIndex] || '';
-  }
-
 
   updateTimeline() {
     const dayDate = new Date(this.day);
-    this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) +" "+ moment(dayDate).format('DD/MM');
+    this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) + " " + moment(dayDate).format('DD/MM');
     const xaxis = {
       type: 'datetime',
       labels: {
@@ -186,20 +174,12 @@ export class TimelineLineComponent implements OnInit {
     };
     this.isLoadingChart = false;
   }
-
-  ngOnChanges(){
-  }
-
   ngOnInit(): void {
     this.updateTimeline();
 
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
-    }, 10000);
+    }, 120000);
   }
-  getTextFromKey(key:string){
-    return this.language.getTextFromKey(key)
-  };
-
 }
