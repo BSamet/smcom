@@ -47,11 +47,15 @@ export class TimelineLineComponent implements OnInit {
   data: any[];
   isLoadingChart = true;
   noData = false;
+  dateCreate = new Date();
 
   chartConfig = {
     toolbar: { show: false },
     height: 100,
     type: 'rangeBar',
+    animations: {
+      enabled: false,
+    }
   };
   title = {
     text: '',
@@ -176,6 +180,8 @@ export class TimelineLineComponent implements OnInit {
   }
   ngOnInit(): void {
     this.updateTimeline();
+    const now = new Date()
+    console.log("timeline loaded in ", (now.getTime() - this.dateCreate.getTime()), " ms")
 
     const self = this;
     setTimeout(function () {
