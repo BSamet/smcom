@@ -118,10 +118,14 @@ export class TimelineLineComponent implements OnInit {
     this.data = [];
 
   }
+  dayOfWeekAsString(dayIndex:number) {
+    return [this.getTextFromKey("sunday"), this.getTextFromKey("monday"),this.getTextFromKey("tuesday"),this.getTextFromKey("wensday"),this.getTextFromKey("thursday"),this.getTextFromKey("friday"), this.getTextFromKey("saturday")][dayIndex] || '';
+  }
+
 
   updateTimeline() {
     const dayDate = new Date(this.day);
-    this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) + " " + moment(dayDate).format('DD/MM');
+    this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) +" "+ moment(dayDate).format('DD/MM');
     const xaxis = {
       type: 'datetime',
       labels: {
@@ -183,13 +187,16 @@ export class TimelineLineComponent implements OnInit {
     this.isLoadingChart = false;
   }
 
+  ngOnChanges(){
+  }
+
   ngOnInit(): void {
     this.updateTimeline();
 
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
-    }, 60000);
+    }, 10000);
   }
   getTextFromKey(key:string){
     return this.language.getTextFromKey(key)

@@ -34,6 +34,7 @@ export class TimelinepageComponent implements OnInit {
     )
   });
   daysList: Date[] | undefined;
+  dayString = "";
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
   isShowTimeline!: boolean;
@@ -49,6 +50,7 @@ export class TimelinepageComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router) { }
+
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();
