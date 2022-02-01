@@ -112,7 +112,6 @@ export class TimelineLineComponent implements OnInit,OnChanges {
     private http: HttpClient,
     private storage: TokenStorageService,
     private router: Router,
-    private language:LanguageService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
@@ -204,8 +203,6 @@ export class TimelineLineComponent implements OnInit,OnChanges {
       self.ngOnInit();
     }, 120000);
   }
-  getTextFromKey(key:string){
-    return this.language.getTextFromKey(key)
-  };
+
 
 }
