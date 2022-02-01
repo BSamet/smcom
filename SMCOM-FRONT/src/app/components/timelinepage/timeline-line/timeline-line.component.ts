@@ -187,11 +187,7 @@ export class TimelineLineComponent implements OnInit {
     };
   }
   ngOnInit(): void {
-    const before = new Date()
     this.updateTimeline();
-    const after = new Date()
-    if (this.series.length > 0)
-      console.log(this.dayString, "timeline loaded in ", (after.getTime() - before.getTime()), " ms")
     this.isLoadingChart = false;
     const self = this;
     setTimeout(function () {
