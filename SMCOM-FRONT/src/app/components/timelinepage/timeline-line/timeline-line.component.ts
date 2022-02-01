@@ -55,9 +55,11 @@ export class TimelineLineComponent implements OnInit,OnChanges {
   noData = false;
 
   chartConfig = {
-    toolbar: { show: false },
+    toolbar: {show: true,
+      },
     height: 100,
     type: 'rangeBar',
+
   };
   title = {
     text: '',
@@ -109,10 +111,15 @@ export class TimelineLineComponent implements OnInit,OnChanges {
     private route: ActivatedRoute,
     private http: HttpClient,
     private storage: TokenStorageService,
-    private router: Router
+    private router: Router,
+    private language:LanguageService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
+
+
+
+
     this.series = [];
     this.data = [];
 
@@ -197,4 +204,8 @@ export class TimelineLineComponent implements OnInit,OnChanges {
       self.ngOnInit();
     }, 120000);
   }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  };
+
 }
