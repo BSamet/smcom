@@ -52,6 +52,19 @@ export class TimelineLineComponent implements OnInit {
     toolbar: { show: false },
     height: 100,
     type: 'rangeBar',
+    animations: {
+      enabled: false,
+    },
+    markers:{
+      enabled: false
+    },
+    dataLabels:{
+      enabled: false
+    },
+    stroke: {
+      width: 2,
+      curve: 'straight'
+    },
   };
   title = {
     text: '',
@@ -172,11 +185,14 @@ export class TimelineLineComponent implements OnInit {
       tooltip: this.tooltip,
       title: this.title,
     };
-    this.isLoadingChart = false;
   }
   ngOnInit(): void {
+    const before = new Date()
     this.updateTimeline();
-
+    const after = new Date()
+    if (this.series.length > 0)
+      console.log(this.dayString, "timeline loaded in ", (after.getTime() - before.getTime()), " ms")
+    this.isLoadingChart = false;
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
