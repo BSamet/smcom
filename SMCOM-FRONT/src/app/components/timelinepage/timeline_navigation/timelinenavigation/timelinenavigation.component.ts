@@ -18,7 +18,7 @@ export class TimelinenavigationComponent implements OnInit {
   @Input() stateData: State[] = []
   statsList: State[] = [];
   selectedTop!: TimelineDataEpoch;
-  indexTopSelector = -1;
+  indexTopSelector!:number;
   orderedTopsData: TimelineDataEpoch[] = [];
 
   constructor() { }
@@ -34,20 +34,19 @@ export class TimelinenavigationComponent implements OnInit {
     return moment(new Date(epoch * 1000)).format('HH:mm:ss')
   }
   goToPreviousTop(): void {
-    console.log(this.indexTopSelector)
-    if (this.indexTopSelector !== -1) {
+    if (this.indexTopSelector && this.indexTopSelector > 0) {
       this.indexTopSelector--;
       this.updateDisplay()
     }
   }
   goToNextTop(): void {
-    if (this.indexTopSelector < this.orderedTopsData.length - 1) {
+    if (this.indexTopSelector && this.indexTopSelector < this.orderedTopsData.length - 1) {
       this.indexTopSelector++;
       this.updateDisplay()
     }
   }
   updateDisplay(): void {
-    if (this.indexTopSelector === -1){ // si index non placé
+    if (!this.indexTopSelector){ // si index non placé
       this.selectedTop = this.orderedTopsData[this.orderedTopsData.length - 1]
       this.indexTopSelector = this.orderedTopsData.length - 1;
     }
