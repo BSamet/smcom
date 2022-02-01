@@ -60,7 +60,9 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     private dateRangeService: DateRangeService<Date>) {
     this.daysList = this.timelineService.getDaysArray(this.start, this.end);
   }
-
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  }
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();

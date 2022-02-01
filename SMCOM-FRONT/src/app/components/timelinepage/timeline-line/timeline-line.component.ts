@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild,SimpleChanges, OnChanges } from '@angular/core';
 import { TimelineService } from '../../../services/timeline.service';
 import moment from 'moment';
 import { State } from '../../../interfaces/status';
+import { LanguageService } from 'src/app/services/language.service';
 
 // Start ApexCharts Import
 import {
@@ -10,6 +11,11 @@ import {
   ApexChart,
   ApexXAxis,
   ApexTitleSubtitle,
+  ApexFill,
+  ApexLegend,
+  ApexPlotOptions,
+  ApexTooltip,
+
 } from 'ng-apexcharts';
 import { TimelineData } from '../../../interfaces/timeline';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -38,7 +44,7 @@ export type ChartOptions = {
     flyInOut
   ]
 })
-export class TimelineLineComponent implements OnInit {
+export class TimelineLineComponent implements OnInit,OnChanges {
   @Input() day!: number;
   // Chart variable
   id!: string | null;
@@ -98,6 +104,7 @@ export class TimelineLineComponent implements OnInit {
   public chartOptions: Partial<ChartOptions> | any;
 
   constructor(
+    private language:LanguageService,
     private timelineService: TimelineService,
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -111,6 +118,12 @@ export class TimelineLineComponent implements OnInit {
 
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+        throw new Error('Method not implemented.');
+    }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  }
   updateTimeline() {
     const dayDate = new Date(this.day);
     this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) + " " + moment(dayDate).format('DD/MM');
@@ -174,6 +187,8 @@ export class TimelineLineComponent implements OnInit {
     };
     this.isLoadingChart = false;
   }
+
+
   ngOnInit(): void {
     this.updateTimeline();
 
