@@ -37,14 +37,14 @@ export class TimelinenavigationComponent implements OnInit {
 
   checkIfOutsideSelection(): void{
     const currentSelectedTop = this.orderedTopsData[this.indexTopSelector]
+    let newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).toDate())
     if (currentSelectedTop.topstartdatefield * 1000 < this.daysList[0].getTime()){
-      const newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).subtract(this.daysList.length-1, 'days').toDate())
-      const endDate = this.timelineService.getDateStartingFromMidnight(moment(newStart).add(this.daysList.length-1, 'days').toDate())
-      this.daysList.splice(0, this.daysList.length)
-      this.daysList.push(...this.timelineService.getDaysArray(newStart, endDate));
+      newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).subtract(this.daysList.length-1, 'days').toDate())
     } else if (currentSelectedTop.topenddatefield * 1000 > this.daysList[this.daysList.length - 1].getTime()){
-      const newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).toDate())
-      const endDate = this.timelineService.getDateStartingFromMidnight(moment(newStart).add(this.daysList.length-1, 'days').toDate())
+      newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).toDate())
+    }
+    const endDate = this.timelineService.getDateStartingFromMidnight(moment(newStart).add(this.daysList.length-1, 'days').toDate())
+    if (newStart.getTime() != this.daysList[0].getTime()){
       this.daysList.splice(0, this.daysList.length)
       this.daysList.push(...this.timelineService.getDaysArray(newStart, endDate));
     }
@@ -64,8 +64,15 @@ export class TimelinenavigationComponent implements OnInit {
       this.updateDisplay()
       this.checkIfOutsideSelection()
     }
-
   }
+
+  focusOnTopDay():void {
+    const currentSelectedTop = this.orderedTopsData[this.indexTopSelector]
+    const newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).toDate())
+    this.daysList.splice(0, this.daysList.length)
+    this.daysList.push(newStart);
+  }
+
   updateDisplay(): void {
     if (!this.indexTopSelector){ // si index non placé
       this.selectedTop = this.orderedTopsData[this.orderedTopsData.length - 1]
