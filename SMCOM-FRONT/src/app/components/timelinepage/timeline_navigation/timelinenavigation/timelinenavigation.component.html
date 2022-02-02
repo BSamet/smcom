@@ -1,19 +1,19 @@
-<footer *ngIf="selectedTop" class="fixed bottom-0 w-11/12 bg-white text-xs flex justify-between rounded-xl border-1 border-gray-400 py-3 text-xl" [@flyInOut]>
-  <div class="w-full sm:w-2/5 flex justify-around items-center">
-    <div class="w-3/12 text-center">
+<footer *ngIf="selectedTop" class="fixed bottom-0 w-11/12 bg-white text-xs flex justify-between rounded-xl border-1 border-gray-400 py-3 text-sm" [@flyInOut]>
+  <div class="w-full flex justify-around items-center">
+    <div class="w-4/12 text-center">
       <div>
         <p><mat-icon>start</mat-icon></p>
         <p>{{getFormatDate(selectedTop.topstartdatefield)}}</p>
         <p>{{getFormatTime(selectedTop.topstartdatefield)}}</p>
       </div>
     </div>
-    <div class="w-6/12 text-black flex justify-between items-center border-r-1 border-l-1 border-white">
+    <div class="w-4/12 text-black flex justify-between items-center border-r-1 border-l-1 border-white">
       <button class="w-64" (click)="goToPreviousTop()"><mat-icon class="text-5xl">arrow_back_ios</mat-icon></button>
 
-      <p style="background-color:{{ this.stateData[selectedTop.topstatehandlefield].Color }}" class="rounded-xl px-10 py-5 text-2xl">{{this.stateData[selectedTop.topstatehandlefield].Name}}</p>
+      <p style="background-color:{{ this.stateData[selectedTop.topstatehandlefield].Color }}" class="rounded-xl px-10 py-5 text-xl">{{this.stateData[selectedTop.topstatehandlefield].Name}}</p>
       <button class="w-64" (click)="goToNextTop()"><mat-icon class="text-5xl">arrow_forward_ios</mat-icon></button>
     </div>
-    <div class="w-3/12 text-center">
+    <div class="w-4/12 text-center">
       <div>
         <p><mat-icon>keyboard_tab</mat-icon></p>
         <p>{{getFormatDate(selectedTop.topenddatefield)}}</p>

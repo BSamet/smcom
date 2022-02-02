@@ -25,7 +25,7 @@ if __name__ == '__main__':
         while last_state == state:
             state = random.randint(0, 4)
         last_state = state
-        seconds = random.randint(1, 600)
+        seconds = random.randint(1, 14400)
         end_date = start_date + datetime.timedelta(seconds=seconds)
         data += generate_line(start_id + gens, cnc_handle, state, start_date, end_date) + "\n"
         start_date = end_date

@@ -57,7 +57,7 @@
             </div>
           </div>
         </section>
-        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
+        <app-timelinenavigation [daysList]="daysList" [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
       </div>
     </div>
   </div>

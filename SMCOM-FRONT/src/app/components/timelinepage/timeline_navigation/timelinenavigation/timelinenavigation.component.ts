@@ -16,6 +16,7 @@ export class TimelinenavigationComponent implements OnInit {
 
   @Input() timelineData: TimelineData[] = []
   @Input() stateData: State[] = []
+  @Input() daysList: Date[] = []
   statsList: State[] = [];
   selectedTop!: TimelineDataEpoch;
   indexTopSelector!:number;
@@ -26,7 +27,6 @@ export class TimelinenavigationComponent implements OnInit {
   ngOnInit(): void {
     this.updateData();
   }
-
   getFormatDate(epoch: number): string {
     return moment(new Date(epoch * 1000)).format('DD/MM/YYYY')
   }
@@ -37,13 +37,31 @@ export class TimelinenavigationComponent implements OnInit {
     if (this.indexTopSelector && this.indexTopSelector > 0) {
       this.indexTopSelector--;
       this.updateDisplay()
+      const currentSelectedTop = this.orderedTopsData[this.indexTopSelector]
+      if (currentSelectedTop.topstartdatefield * 1000 < this.daysList[0].getTime()){
+        const newDate = new Date(
+          new Date(new Date(currentSelectedTop.topstartdatefield * 1000).toDateString())
+        )
+        this.daysList.pop();
+        this.daysList.unshift(newDate);
+      }
     }
+
   }
   goToNextTop(): void {
     if (this.indexTopSelector && this.indexTopSelector < this.orderedTopsData.length - 1) {
       this.indexTopSelector++;
       this.updateDisplay()
+      const currentSelectedTop = this.orderedTopsData[this.indexTopSelector]
+      if (currentSelectedTop.topenddatefield * 1000 > this.daysList[this.daysList.length - 1].getTime()){
+        const newDate = new Date(
+          new Date(new Date(currentSelectedTop.topstartdatefield * 1000).toDateString())
+        )
+        this.daysList.shift();
+        this.daysList.push(newDate);
+      }
     }
+
   }
   updateDisplay(): void {
     if (!this.indexTopSelector){ // si index non placé
