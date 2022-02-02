@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {NestAPI_URL} from "../smcomconfig";
 import {Status} from "../interfaces/status";
 import {TokenStorageService} from "./token-storage.service";
-import * as moment from "moment";
+import moment from "moment";
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +42,18 @@ export class TimelineService {
     let date = new Date(dateTime.getTime());
     date.setHours(0, 0, 0, 0);
     return date;
+  }
+
+  addDays(date:Date, days : number): Date{
+    date.setDate(date.getDate() + days);
+    return date;
+  }
+
+  getPreviousDayRangeList(dateList: Date[]): Date[]{
+    const newStart = moment(dateList[0]).add(-dateList.length+1, 'days').toDate()
+    const endDate = dateList[0]
+    dateList = this.getDaysArray(newStart, endDate)
+    return dateList;
   }
 
 }

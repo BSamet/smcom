@@ -14,7 +14,7 @@ if __name__ == '__main__':
     cnc_handle = input("CNC HANDLE > ")
     start_id = int(input("START ID > "))
     start_date = datetime.datetime(2022, 1, 1, 0, 0, 0)
-    limit_date = datetime.datetime(2022, 1, 7, 23, 59, 0)
+    limit_date = datetime.datetime(2022, 1, 31, 23, 59, 0)
     print("Script will now generate random tops ranging from state 1 to 5")
     print("Limits:\n", start_date, "->", limit_date)
     gens = 0

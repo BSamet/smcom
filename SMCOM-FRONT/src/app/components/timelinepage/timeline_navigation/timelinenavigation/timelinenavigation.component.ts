@@ -3,6 +3,7 @@ import {flyInOut} from "../../../../animations/animations";
 import {TimelineData, TimelineDataEpoch} from "../../../../interfaces/timeline";
 import {State} from "../../../../interfaces/status";
 import moment from "moment";
+import {TimelineService} from "../../../../services/timeline.service";
 
 @Component({
   selector: 'app-timelinenavigation',
@@ -22,7 +23,7 @@ export class TimelinenavigationComponent implements OnInit {
   indexTopSelector!:number;
   orderedTopsData: TimelineDataEpoch[] = [];
 
-  constructor() { }
+  constructor(private timelineService: TimelineService) { }
 
   ngOnInit(): void {
     this.updateData();
@@ -33,33 +34,35 @@ export class TimelinenavigationComponent implements OnInit {
   getFormatTime(epoch: number): string {
     return moment(new Date(epoch * 1000)).format('HH:mm:ss')
   }
+
+  checkIfOutsideSelection(): void{
+    const currentSelectedTop = this.orderedTopsData[this.indexTopSelector]
+    if (currentSelectedTop.topstartdatefield * 1000 < this.daysList[0].getTime()){
+      const newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).subtract(this.daysList.length-1, 'days').toDate())
+      const endDate = this.timelineService.getDateStartingFromMidnight(moment(newStart).add(this.daysList.length-1, 'days').toDate())
+      this.daysList.splice(0, this.daysList.length)
+      this.daysList.push(...this.timelineService.getDaysArray(newStart, endDate));
+    } else if (currentSelectedTop.topenddatefield * 1000 > this.daysList[this.daysList.length - 1].getTime()){
+      const newStart = this.timelineService.getDateStartingFromMidnight(moment.unix(currentSelectedTop.topstartdatefield).toDate())
+      const endDate = this.timelineService.getDateStartingFromMidnight(moment(newStart).add(this.daysList.length-1, 'days').toDate())
+      this.daysList.splice(0, this.daysList.length)
+      this.daysList.push(...this.timelineService.getDaysArray(newStart, endDate));
+    }
+  }
+
   goToPreviousTop(): void {
     if (this.indexTopSelector && this.indexTopSelector > 0) {
       this.indexTopSelector--;
-      this.updateDisplay()
-      const currentSelectedTop = this.orderedTopsData[this.indexTopSelector]
-      if (currentSelectedTop.topstartdatefield * 1000 < this.daysList[0].getTime()){
-        const newDate = new Date(
-          new Date(new Date(currentSelectedTop.topstartdatefield * 1000).toDateString())
-        )
-        this.daysList.pop();
-        this.daysList.unshift(newDate);
-      }
+      this.updateDisplay();
+      this.checkIfOutsideSelection()
     }
-
   }
+
   goToNextTop(): void {
     if (this.indexTopSelector && this.indexTopSelector < this.orderedTopsData.length - 1) {
       this.indexTopSelector++;
       this.updateDisplay()
-      const currentSelectedTop = this.orderedTopsData[this.indexTopSelector]
-      if (currentSelectedTop.topenddatefield * 1000 > this.daysList[this.daysList.length - 1].getTime()){
-        const newDate = new Date(
-          new Date(new Date(currentSelectedTop.topstartdatefield * 1000).toDateString())
-        )
-        this.daysList.shift();
-        this.daysList.push(newDate);
-      }
+      this.checkIfOutsideSelection()
     }
 
   }
