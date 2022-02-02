@@ -42,7 +42,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   id!:string | null
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
-  dateRange: string[] = ["Jour","Semaine","Mois","Année"];
+  dateRange: string[] = ["Jour","Semaine","Mois","Année","Personnalisée"];
   hasLoaded = false;
   dateRangeView!: any;
   start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
@@ -119,14 +119,14 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   }
 
   onSelectionUpdate() {
-     if (this.selectedDateInterval == "Jour" || this.selectedDateInterval == "Semaine") {
-      return this.dateRangeView = "month";
-    } else if (this.selectedDateInterval == "Mois") {
+    if (this.selectedDateInterval == "Mois") {
       return this.dateRangeView = "year";
     } else if (this.selectedDateInterval == "Année") {
       return this.dateRangeView = "multi-year";
     } else return this.dateRangeView = "month";
   }
+
+
 
   moveFastBackwards(){
     const newStart = this.timelineService.getDateStartingFromMidnight(moment(this.daysList[0].getTime()).subtract(this.daysList.length-1, 'days').toDate())
