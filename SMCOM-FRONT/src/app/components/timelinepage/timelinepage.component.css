@@ -15,7 +15,6 @@
 html,body{
   background-color: #324B5D;
 }
-
-.lineHolder{
-  max-height: 300px;
+section::-webkit-scrollbar {
+  display: none;
 }
