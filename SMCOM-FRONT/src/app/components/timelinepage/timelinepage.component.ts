@@ -16,6 +16,7 @@ import {
 } from "@angular/material/datepicker";
 import {DateRangeService} from "../../services/date-range.service";
 import { ChangeDetectorRef } from '@angular/core';
+import moment from "moment";
 
 @Component({
   selector: 'app-timelinepage',
@@ -123,5 +124,28 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     } else if (this.selectedDateInterval == "Année") {
       return this.dateRangeView = "multi-year";
     } else return this.dateRangeView = "month";
+  }
+
+  moveFastBackwards(){
+    const newStart = this.timelineService.getDateStartingFromMidnight(moment(this.daysList[0].getTime()).subtract(this.daysList.length-1, 'days').toDate())
+    const endDate = this.timelineService.getDateStartingFromMidnight(moment(newStart).add(this.daysList.length-1, 'days').toDate())
+    this.daysList.splice(0, this.daysList.length)
+    this.daysList.push(...this.timelineService.getDaysArray(newStart, endDate));
+  }
+  moveFastForward(){
+    const newStart = this.timelineService.getDateStartingFromMidnight(moment(this.daysList[this.daysList.length-1].getTime()).toDate())
+    const endDate = this.timelineService.getDateStartingFromMidnight(moment(newStart).add(this.daysList.length-1, 'days').toDate())
+    this.daysList.splice(0, this.daysList.length)
+    this.daysList.push(...this.timelineService.getDaysArray(newStart, endDate));
+  }
+  moveBackWards(){
+    const newStart = this.timelineService.getDateStartingFromMidnight(moment(this.daysList[0].getTime()).subtract(1, 'days').toDate())
+    this.daysList.pop();
+    this.daysList.unshift(newStart)
+  }
+  moveForward(){
+    const endDate = this.timelineService.getDateStartingFromMidnight(moment(this.daysList[this.daysList.length-1].getTime()).add(1, 'days').toDate())
+    this.daysList.shift();
+    this.daysList.push(endDate)
   }
 }
