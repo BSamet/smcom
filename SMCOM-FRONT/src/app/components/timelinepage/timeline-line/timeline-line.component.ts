@@ -55,7 +55,7 @@ export class TimelineLineComponent implements OnInit,OnChanges {
   noData = false;
 
   chartConfig = {
-    toolbar: {show: true,
+    toolbar: {show: false,
       },
     height: 100,
     type: 'rangeBar',
