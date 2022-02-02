@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
   }
   changeLan(lankey:string){
     this.tokenStorage.saveLanguage(lankey)
+    window.location.reload();
   }
   getCurrentLan(){
     return this.tokenStorage.getLanguage()

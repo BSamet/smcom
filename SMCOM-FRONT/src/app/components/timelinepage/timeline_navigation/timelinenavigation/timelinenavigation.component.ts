@@ -3,6 +3,8 @@ import {flyInOut} from "../../../../animations/animations";
 import {TimelineData, TimelineDataEpoch} from "../../../../interfaces/timeline";
 import {State} from "../../../../interfaces/status";
 import moment from "moment";
+import { LanguageService } from 'src/app/services/language.service';
+
 
 @Component({
   selector: 'app-timelinenavigation',
@@ -21,8 +23,10 @@ export class TimelinenavigationComponent implements OnInit {
   indexTopSelector = -1;
   orderedTopsData: TimelineDataEpoch[] = [];
 
-  constructor() { }
-
+  constructor(private language:LanguageService) { }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  }
   ngOnInit(): void {
     this.updateData();
   }
