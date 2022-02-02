@@ -49,7 +49,6 @@ export class DashboardpageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.update();
-
     this.isSideNavPin = false;
   }
 

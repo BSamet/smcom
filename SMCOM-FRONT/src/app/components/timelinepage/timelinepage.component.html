@@ -13,11 +13,10 @@
   </div>
   <div>
     <!-- Main Section-->
-
     <div>
       <div>
-        <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white">Afficher KPI</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">Afficher Timeline</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}} KPI</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}}<br/>{{getTextFromKey('Timeline')}}</mat-slide-toggle>
         <mat-form-field class="p-2 mx-2 relative left-10 top-5 text-white" appearance="fill">
           <mat-select class="text-white" placeholder="Portée date">
             <mat-option *ngFor="let dateRangeItem of dateRange" [value]="dateRangeItem" (click)="onRangeUpdate(dateRangeItem)">{{dateRangeItem}}</mat-option>
@@ -61,8 +60,5 @@
       </div>
     </div>
   </div>
-
-
-
 </section>
 
