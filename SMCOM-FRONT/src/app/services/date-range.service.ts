@@ -78,8 +78,4 @@ export class DateRangeService<D> {
         return this.createDayRange(date);
     }
   }
-
-  updateDayList(){
-    return this.timelineService.getDaysArray(this.start, this.end);
-  }
 }
