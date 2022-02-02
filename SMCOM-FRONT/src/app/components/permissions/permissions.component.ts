@@ -9,15 +9,31 @@ import { AbilityService } from 'src/app/services/ability.service';
 export class PermissionsComponent implements OnInit {
 
   perms : any;
+  roles : any;
+  selectedRole : any;
 
   constructor( private ability : AbilityService) { }
 
-  ngOnInit(): void {
-    this.getPerms();
+  async ngOnInit() {
+    await this.getRoles();
+    await this.getPerms();
+    this.selectedRole = null;
   }
 
   async getPerms(){
-    this.perms = await this.ability.getAbilityFromJson();
+    this.perms = await this.ability.user.perms;
+    console.log('log User Perms');
+    console.log(this.perms);
   }
 
+  async getRoles(){
+    this.roles = await this.ability.getRoleList();
+    console.log(this.roles);
+  }
+
+  updateUserRole(){
+    this.ability.user.role=this.selectedRole;
+    this.ability.updateUser();
+    this.ngOnInit();
+  }
 }

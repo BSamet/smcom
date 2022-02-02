@@ -6,11 +6,13 @@ import {TokenStorageService} from "../services/token-storage.service";
 export class Permissions {
   canActivate(router:Router, tokenService:any, role:string): boolean {
     const user = tokenService.getUser();
-    if (user && user.roles) {
-      if (user.roles.includes(role)) {
+    if (user && user.role) {
+      console.log("ui");
+      
+      if (user.role!=null) {
         return true
       } else {
-        console.log("need roles!")
+        console.log("need role!")
         router.navigate(['login/unauthorized']).then();
         return false
       }

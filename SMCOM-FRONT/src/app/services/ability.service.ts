@@ -13,40 +13,46 @@ export class AbilityService {
 
   user: any;
   perms: any;
-  normalUrl = "http://localhost:3000/perms_normal";
-  operatorUrl = "http://localhost:3000/perms_operator";
-  adminUrl = "http://localhost:3000/perms_admin";
-  requestUrl = "";
+  roles: any;
+  rolesUrl = "http://localhost:3000/roles";
 
-  checkuserRole() {
+  async getUserPerms() {
     this.user = this.tokenStorage.getUser();
-    if (this.user.roles.includes("normal")){
-      this.requestUrl = this.normalUrl;
-    }
-    if (this.user.roles.includes("operator")){
-      this.requestUrl = this.operatorUrl;
-    }
-    if (this.user.roles.includes("admin")){
-      this.requestUrl = this.adminUrl;
-    }
+    this.roles = await this.http.get(this.rolesUrl).toPromise();
+    console.log("log Roles");
+    console.log(this.roles);
+
+    await this.roles.forEach((role: { nom: any; perms: any; }) => {
+
+      if (role.nom == this.user.role) {
+        this.user.perms = role.perms;
+
+        console.log("log User");
+        console.log(this.user);
+      }
+    });
   }
 
-  async getAbilityFromJson() {
-    this.checkuserRole();
-    this.perms = await this.http.get(this.requestUrl).toPromise();
-    this.updateAbility();
-    return this.perms;
-  }
-
-  updateAbility() {
+  async updateAbility() {
+    await this.getUserPerms();
     const { can, rules } = new AbilityBuilder(Ability);
 
     // Lire doc : https://confluence.uha4point0.fr/display/U4P/Gestion+des+droits+%3A+CASL
-    this.perms.forEach((perm: { action: string | string[]; subject: any; }) => {
+    this.user.perms.forEach((perm: { action: string | string[]; subject: any; }) => {
       can(perm.action, perm.subject)
     });
 
     this.ability.update(rules);
   }
 
+  async getRoleList() {
+    let roleList = await this.http.get(this.rolesUrl).toPromise();
+    return roleList;
+  }
+
+  updateUser(){
+    this.user.perms = null;
+    this.tokenStorage.saveUser(this.user);
+    this.updateAbility();
+  }
 }

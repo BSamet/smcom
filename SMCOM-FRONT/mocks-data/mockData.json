@@ -659,28 +659,53 @@
 
   ],
 
-  "perms_admin": [{
-    "action": "manage",
-    "subject": "all",
-    "description": "Accès à toutes les ressources de l'application"
-  }],
-
-  "perms_operator": [{
+  "roles": [{
+    "nom": "admin",
+    "perms": [{
+      "action": "manage",
+      "subject": "all",
+      "description": "Accès à toutes les ressources de l'application"
+    }]
+  }, {
+    "nom": "operator",
+    "perms": [{
       "action": "edit",
       "subject": "timeline",
       "description": "Accès à l'édition de la timeline"
-    },
-    {
+    }, {
       "action": "send",
       "subject": "documents",
       "description": "Accès à l'envoi de documents"
+    }]
+  }, {
+    "nom": "normal",
+    "perms": [{
+      "action": "see",
+      "subject": "dashboard",
+      "description": "Accès à la visualisation du dashboard"
+    }]
+  }],
+
+  "users": [{
+      "userId": 1,
+      "username": "Administrateur",
+      "password": "admin",
+      "role": "admin",
+      "API_key": "vayv33mljnV9F5OkdFajxhRdp"
+    },
+    {
+      "userId": 2,
+      "username": "Philippe",
+      "password": "user",
+      "role": "normal",
+      "API_key": "5FqSgUxyKQ8WvMWBaRm2xjX0P"
+    },
+    {
+      "userId": 3,
+      "username": "Pierre",
+      "password": "user",
+      "role": "operator",
+      "API_key": "UxyKQ8WvMWB5FqSgaRm2xjX0P"
     }
-  ],
-
-  "perms_normal": [{
-    "action": "see",
-    "subject": "dashboard",
-    "description": "Accès à la visualisation du dashboard"
-  }]
-
+  ]
 }

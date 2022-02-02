@@ -17,7 +17,7 @@ export class AppComponent {
   ) { }
 
   ngOnInit(): void {
-    this.abilityService.getAbilityFromJson();
+    this.abilityService.updateAbility();
   }
 
 }
