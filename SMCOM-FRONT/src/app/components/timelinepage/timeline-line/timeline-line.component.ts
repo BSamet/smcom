@@ -59,7 +59,19 @@ export class TimelineLineComponent implements OnInit,OnChanges {
       },
     height: 100,
     type: 'rangeBar',
-
+    animations: {
+      enabled: false,
+    },
+    markers:{
+      enabled: false
+    },
+    dataLabels:{
+      enabled: false
+    },
+    stroke: {
+      width: 2,
+      curve: 'straight'
+    },
   };
   title = {
     text: '',
@@ -191,13 +203,12 @@ export class TimelineLineComponent implements OnInit,OnChanges {
       tooltip: this.tooltip,
       title: this.title,
     };
-    this.isLoadingChart = false;
   }
 
 
   ngOnInit(): void {
     this.updateTimeline();
-
+    this.isLoadingChart = false;
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
