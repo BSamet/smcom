@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {NestAPI_URL} from "../smcomconfig";
+import {MOCKAPI_URL, NestAPI_URL} from "../smcomconfig";
 import {Status} from "../interfaces/status";
 import {TokenStorageService} from "./token-storage.service";
 import moment from "moment";
@@ -12,12 +12,8 @@ export class TimelineService {
 
   constructor(private http: HttpClient, private storage: TokenStorageService) { }
 
-  public timelineData(state : number, cnc : string | null){
-    return this.http.get("http://localhost:3000/timeline_data?topstatehandlefield="+ state +"&topcnchandlefield="+ cnc);
-  }
-
   public timelineDataV2(cnc : string | null){
-    return this.http.get("http://localhost:3000/timeline_data?topcnchandlefield="+ cnc);
+    return this.http.get(MOCKAPI_URL + "tops?topcnchandlefield="+ cnc);
   }
 
   datesAreOnSameDay(first:Date, second:Date){

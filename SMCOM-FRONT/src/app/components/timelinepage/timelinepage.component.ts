@@ -3,7 +3,7 @@ import {animCloseOpen, flyInOut} from "../../animations/animations";
 import { LanguageService } from 'src/app/services/language.service';
 import {TimelineService} from "../../services/timeline.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {NestAPI_URL} from "../../smcomconfig";
+import {MOCKAPI_URL, NestAPI_URL} from "../../smcomconfig";
 import {TokenStorageService} from "../../services/token-storage.service";
 import {HttpClient} from "@angular/common/http";
 import {State} from "../../interfaces/status";
@@ -80,7 +80,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
-      URL = "http://localhost:3000/"
+      URL = MOCKAPI_URL
     this.http
       .get(URL + 'state', {
         headers: {
