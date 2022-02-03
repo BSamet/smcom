@@ -7,8 +7,6 @@ export class Permissions {
   canActivate(router:Router, tokenService:any, role:string): boolean {
     const user = tokenService.getUser();
     if (user && user.role) {
-      console.log("ui");
-      
       if (user.role!=null) {
         return true
       } else {

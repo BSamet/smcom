@@ -34,6 +34,8 @@ import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
 import { PermissionsComponent } from './components/permissions/permissions.component';
+import {MatListModule} from "@angular/material/list";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -74,13 +76,14 @@ import { PermissionsComponent } from './components/permissions/permissions.compo
     MatSlideToggleModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    NgxDaterangepickerMd.forRoot()
+    MatListModule,
+    MatSelectModule
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability },
     authInterceptorProviders, DatePipe, HttpClientModule],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }

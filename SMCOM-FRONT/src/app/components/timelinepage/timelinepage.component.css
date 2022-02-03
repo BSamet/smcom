@@ -8,3 +8,13 @@
 .firefox{
   -moz-transform: translate(40%);
 }
+::ng-deep.mat-select-placeholder {
+  color: white;
+}
+
+html,body{
+  background-color: #324B5D;
+}
+section::-webkit-scrollbar {
+  display: none;
+}

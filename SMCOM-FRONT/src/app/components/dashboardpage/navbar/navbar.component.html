@@ -1,4 +1,4 @@
-<nav aria-label="primary" class="relative xs:flex-col md:flex-row h-24 items-center z-20 flex-grow h-auto pb-4 md:pb-0 bg-blue-900 flex justify-between flex-row">
+<nav aria-label="primary" class="relative xs:flex-col md:flex-row h-24 items-center z-20 flex-grow pb-4 md:pb-0 bg-blue-900 flex justify-between flex-row">
   <!-- Brand div -->
   <div>
     <img [routerLink]="['/']" class="h-14 ml-12 w-auto rounded-full" src="assets/images/cwork.png" alt="logo">
@@ -234,8 +234,8 @@
 
     <div class="relative group">
       <mat-slide-toggle [(ngModel)]="dataLIVEMode" (change)="switchDataMode()" class="flex flex-row items-center w-full p-2 m-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg w-auto inline relative">
-        <span *ngIf="dataLIVEMode">Mode temps réel</span>
-        <span *ngIf="!dataLIVEMode">Mode émulation</span>
+        <span *ngIf="dataLIVEMode"><span>{{getTextFromKey("Real")}}</span></span>
+        <span *ngIf="!dataLIVEMode"><span>{{getTextFromKey("Emulation")}}</span></span>
       </mat-slide-toggle>
     </div>
   </div>

@@ -43,7 +43,14 @@ module.exports = {
     extend: {
       spacing:{
         '120': '30rem'
-      }
+      },
+      height:{
+        'fullscreen': '80.5vh' /* 90.5vh sur écran de pc fixe */
+      },
+      maxHeight: {
+        '160': '30rem',
+        '288': '38rem',
+      },
     },
   },
   variants: {

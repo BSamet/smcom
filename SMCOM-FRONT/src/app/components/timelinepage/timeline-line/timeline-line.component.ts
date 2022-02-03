@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild,SimpleChanges, OnChanges } from '@angular/core';
 import { TimelineService } from '../../../services/timeline.service';
 import moment from 'moment';
 import { State } from '../../../interfaces/status';
+import { LanguageService } from 'src/app/services/language.service';
 
 // Start ApexCharts Import
 import {
@@ -10,6 +11,11 @@ import {
   ApexChart,
   ApexXAxis,
   ApexTitleSubtitle,
+  ApexFill,
+  ApexLegend,
+  ApexPlotOptions,
+  ApexTooltip,
+
 } from 'ng-apexcharts';
 import { TimelineData } from '../../../interfaces/timeline';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -38,8 +44,8 @@ export type ChartOptions = {
     flyInOut
   ]
 })
-export class TimelineLineComponent implements OnInit {
-  @Input() day!: string;
+export class TimelineLineComponent implements OnInit,OnChanges {
+  @Input() day!: number;
   // Chart variable
   id!: string | null;
   dataTimeline!: TimelineData[];
@@ -49,9 +55,23 @@ export class TimelineLineComponent implements OnInit {
   noData = false;
 
   chartConfig = {
-    toolbar: { show: false },
+    toolbar: {show: false,
+      },
     height: 100,
     type: 'rangeBar',
+    animations: {
+      enabled: false,
+    },
+    markers:{
+      enabled: false
+    },
+    dataLabels:{
+      enabled: false
+    },
+    stroke: {
+      width: 2,
+      curve: 'straight'
+    },
   };
   title = {
     text: '',
@@ -98,22 +118,32 @@ export class TimelineLineComponent implements OnInit {
   public chartOptions: Partial<ChartOptions> | any;
 
   constructor(
+    private language:LanguageService,
     private timelineService: TimelineService,
     private route: ActivatedRoute,
     private http: HttpClient,
     private storage: TokenStorageService,
-    private router: Router
+    private router: Router,
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
+
+
+
+
     this.series = [];
     this.data = [];
 
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+        throw new Error('Method not implemented.');
+    }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  }
   updateTimeline() {
-    const dayDate = new Date(parseInt(this.day));
-    const API_key = this.storage.getUser().API_key;
+    const dayDate = new Date(this.day);
     this.dayString = this.timelineService.dayOfWeekAsString(dayDate.getDay()) + " " + moment(dayDate).format('DD/MM');
     const xaxis = {
       type: 'datetime',
@@ -173,15 +203,17 @@ export class TimelineLineComponent implements OnInit {
       tooltip: this.tooltip,
       title: this.title,
     };
-    this.isLoadingChart = false;
   }
+
 
   ngOnInit(): void {
     this.updateTimeline();
-
+    this.isLoadingChart = false;
     const self = this;
     setTimeout(function () {
       self.ngOnInit();
-    }, 60000);
+    }, 120000);
   }
+
+
 }

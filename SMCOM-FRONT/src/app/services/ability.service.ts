@@ -19,16 +19,10 @@ export class AbilityService {
   async getUserPerms() {
     this.user = this.tokenStorage.getUser();
     this.roles = await this.http.get(this.rolesUrl).toPromise();
-    console.log("log Roles");
-    console.log(this.roles);
-
     await this.roles.forEach((role: { nom: any; perms: any; }) => {
 
       if (role.nom == this.user.role) {
         this.user.perms = role.perms;
-
-        console.log("log User");
-        console.log(this.user);
       }
     });
   }

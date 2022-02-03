@@ -12,7 +12,7 @@
   ></apx-chart>
 </div>
 <div *ngIf="chartOptions && !chartOptions.series.length" class="bg-white rounded-xl text-center my-5 p-10">
-  Aucune donnée n'est disponible pour le {{dayString}}
+  {{getTextFromKey('error')}} {{dayString}}
 </div>
 <section *ngIf="isLoadingChart" class="mt-10">
   <div class="flex flex-col justify-center items-center text-lg text-white text-base font-semibold">
