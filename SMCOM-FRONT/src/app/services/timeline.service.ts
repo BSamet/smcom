@@ -13,7 +13,10 @@ export class TimelineService {
   constructor(private http: HttpClient, private storage: TokenStorageService) { }
 
   public timelineDataV2(cnc : string | null){
-    return this.http.get(MOCKAPI_URL + "tops?topcnchandlefield="+ cnc);
+    let URL = NestAPI_URL
+    if (this.storage.getDataMode() === 'MOCK')
+      URL = MOCKAPI_URL
+    return this.http.get(URL + "tops?topcnchandlefield="+ cnc);
   }
 
   datesAreOnSameDay(first:Date, second:Date){
