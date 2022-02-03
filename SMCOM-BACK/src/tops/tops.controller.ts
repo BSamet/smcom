@@ -19,9 +19,9 @@ export class TopsController {
   constructor(private readonly topsService: TopsService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Get(':id/status')
-  getStatus(@Query() query, @Headers('API_key') API_key) {
-    return this.topsService.findByCNCHandle(API_key, query.topcnchandlefield).pipe(
+  @Get(':id')
+  getStatus(@Param('id') id: string, @Headers('API_key') API_key) {
+    return this.topsService.findByCNCHandle(API_key, id).pipe(
         map((response) => response.data),
         catchError((error) => {
           return [error];
