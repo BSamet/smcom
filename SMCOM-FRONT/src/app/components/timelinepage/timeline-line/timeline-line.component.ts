@@ -44,7 +44,7 @@ export type ChartOptions = {
     flyInOut
   ]
 })
-export class TimelineLineComponent implements OnInit,OnChanges {
+export class TimelineLineComponent implements OnInit {
   @Input() day!: number;
   // Chart variable
   id!: string | null;
@@ -136,9 +136,6 @@ export class TimelineLineComponent implements OnInit,OnChanges {
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-        throw new Error('Method not implemented.');
-    }
   getTextFromKey(key:string){
     return this.language.getTextFromKey(key)
   }
