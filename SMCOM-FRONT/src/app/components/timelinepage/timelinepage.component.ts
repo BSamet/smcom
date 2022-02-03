@@ -34,7 +34,7 @@ import moment from "moment";
   ],
 })
 export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
-  selectedDateInterval!: string;
+  selectedDateInterval!: number;
   daysList!: Date[];
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
@@ -42,7 +42,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   id!:string | null
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
-  dateRange: string[] = ["Jour","Semaine","Mois","Année","Personnalisée"];
+  dateRange = Object.keys(dateRangeEnum);
   hasLoaded = false;
   dateRangeView!: any;
   start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
@@ -70,6 +70,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     this.isShowKpi = false;
     this.isShowTimeline = true;
     this.isSideNavPin = false;
+    this.dateRange = this.dateRange.slice(this.dateRange.length/2);
   }
 
 
@@ -105,7 +106,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
 
   }
 
-  onRangeUpdate(dateItem: string){
+  onRangeUpdate(dateItem: number){
     this.selectedDateInterval = dateItem;
     this.dateRangeService.changeRange(dateItem);
   }
@@ -119,14 +120,12 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   }
 
   onSelectionUpdate() {
-    if (this.selectedDateInterval == "Mois") {
+    if (this.selectedDateInterval == dateRangeEnum.Month) {
       return this.dateRangeView = "year";
-    } else if (this.selectedDateInterval == "Année") {
+    } else if (this.selectedDateInterval == dateRangeEnum.Year) {
       return this.dateRangeView = "multi-year";
     } else return this.dateRangeView = "month";
   }
-
-
 
   moveFastBackwards(){
     const newStart = this.timelineService.getDateStartingFromMidnight(moment(this.daysList[0].getTime()).subtract(this.daysList.length-1, 'days').toDate())
@@ -150,4 +149,11 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     this.daysList.shift();
     this.daysList.push(endDate)
   }
+}
+export enum dateRangeEnum {
+  "Day",
+  "Week",
+  "Month",
+  "Year",
+  "Custom"
 }
