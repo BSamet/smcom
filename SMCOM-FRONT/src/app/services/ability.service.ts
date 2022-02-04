@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Ability, AbilityBuilder } from '@casl/ability';
 import { TokenStorageService } from './token-storage.service';
-import { HttpClient } from '@angular/common/http';
-import {MOCKAPI_URL} from "../smcomconfig";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +11,6 @@ export class AbilityService {
   ) { }
 
   user: any;
-  perms: any;
-  roles: any;
-  rolesUrl = MOCKAPI_URL + 'roles';
 
   updateAbility() {
     const { can, rules } = new AbilityBuilder(Ability);
@@ -36,9 +31,4 @@ export class AbilityService {
     return this.ability;
   }
 
-  updateUser(){
-    this.user.perms = null;
-    this.tokenStorage.saveUser(this.user);
-    this.updateAbility();
-  }
 }

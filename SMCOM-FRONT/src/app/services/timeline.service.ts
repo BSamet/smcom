@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {MOCKAPI_URL, NestAPI_URL} from "../smcomconfig";
+import {NestAPI_URL} from "../smcomconfig";
 import {Status} from "../interfaces/status";
 import {TokenStorageService} from "./token-storage.service";
-import moment from "moment";
+import * as moment from "moment";
 import { LanguageService } from 'src/app/services/language.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,12 @@ export class TimelineService {
               private storage: TokenStorageService,
               private language:LanguageService,) { }
 
+  public timelineData(state : number, cnc : string | null){
+    return this.http.get("http://localhost:3000/timeline_data?topstatehandlefield="+ state +"&topcnchandlefield="+ cnc);
+  }
+
   public timelineDataV2(cnc : string | null){
-    let URL = NestAPI_URL
-    if (this.storage.getDataMode() === 'MOCK')
-      URL = MOCKAPI_URL
-    return this.http.get(URL + "tops?topcnchandlefield="+ cnc);
+    return this.http.get("http://localhost:3000/timeline_data?topcnchandlefield="+ cnc);
   }
 
   datesAreOnSameDay(first:Date, second:Date){
@@ -46,18 +48,6 @@ export class TimelineService {
     let date = new Date(dateTime.getTime());
     date.setHours(0, 0, 0, 0);
     return date;
-  }
-
-  addDays(date:Date, days : number): Date{
-    date.setDate(date.getDate() + days);
-    return date;
-  }
-
-  getPreviousDayRangeList(dateList: Date[]): Date[]{
-    const newStart = moment(dateList[0]).add(-dateList.length+1, 'days').toDate()
-    const endDate = dateList[0]
-    dateList = this.getDaysArray(newStart, endDate)
-    return dateList;
   }
 
 }

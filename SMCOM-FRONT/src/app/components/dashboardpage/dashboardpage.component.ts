@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from "../../services/token-storage.service";
 import { Cnc } from "../../interfaces/cnc"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {MOCKAPI_URL, NestAPI_URL} from "../../smcomconfig";
+import {NestAPI_URL} from "../../smcomconfig";
 import {Router} from "@angular/router";
 
 @Component({
@@ -29,7 +29,7 @@ export class DashboardpageComponent implements OnInit {
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
-      URL = MOCKAPI_URL
+      URL = "http://localhost:3000/"
     this.http.get(URL + 'station', {headers: {
         API_key: API_key
       }}).subscribe(data=>{

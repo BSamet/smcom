@@ -3,7 +3,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router, Routes} from "@angular/router";
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Status } from "../../../interfaces/status"
-import {MOCKAPI_URL, NestAPI_URL} from "../../../smcomconfig";
+import {NestAPI_URL} from "../../../smcomconfig";
 import {flyInOut} from "../../../animations/animations";
 import { LanguageService } from 'src/app/services/language.service';
 @Component({
@@ -28,7 +28,7 @@ export class CncDashboardComponent implements OnInit {
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
-      URL = MOCKAPI_URL
+      URL = "http://localhost:3000/"
     this.http.get(URL + 'station/' +this.handle+"/status", {headers: {
         API_key: API_key
       }}).subscribe(data=>{
