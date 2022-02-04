@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {KPI} from "../../../interfaces/kpi";
-import {NestAPI_URL} from "../../../smcomconfig";
+import {MOCKAPI_URL, NestAPI_URL} from "../../../smcomconfig";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -42,7 +42,7 @@ export class KPIBlocComponent implements OnInit {
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
-      URL = "http://localhost:3000/"
+      URL = MOCKAPI_URL
     this.http.get(URL + 'station/'+Handle+'/kpi/selectByDate/'+startDay+'/'+endDay, {headers: {
         API_key: API_key
       }}).subscribe(data=>{
