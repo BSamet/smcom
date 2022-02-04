@@ -1,5 +1,5 @@
 {
-  "timeline_data": [
+  "tops": [
     {"toppkfield":"1","topcnchandlefield":"1","topstatehandlefield":"4","topstartdatefield":"01/01/2022 00:00:00","topcommentfield":"","topenddatefield":"01/01/2022 00:06:14","topdurationfield":"374"},
     {"toppkfield":"2","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"01/01/2022 00:06:14","topcommentfield":"","topenddatefield":"01/01/2022 00:10:17","topdurationfield":"243"},
     {"toppkfield":"3","topcnchandlefield":"1","topstatehandlefield":"1","topstartdatefield":"01/01/2022 00:10:17","topcommentfield":"","topenddatefield":"01/01/2022 00:11:24","topdurationfield":"67"},
@@ -1991,17 +1991,13 @@
     {"toppkfield":"1989","topcnchandlefield":"1","topstatehandlefield":"2","topstartdatefield":"01/07/2022 23:45:18","topcommentfield":"","topenddatefield":"01/07/2022 23:48:01","topdurationfield":"163"},
     {"toppkfield":"1990","topcnchandlefield":"1","topstatehandlefield":"0","topstartdatefield":"01/07/2022 23:48:01","topcommentfield":"","topenddatefield":"01/07/2022 23:57:23","topdurationfield":"562"},
     {"toppkfield":"1991","topcnchandlefield":"1","topstatehandlefield":"1","topstartdatefield":"01/07/2022 23:57:23","topcommentfield":"","topenddatefield":"","topdurationfield":"0"}
-  ]
-,
-
-  "ping":[
-    {
-      "res": "pong"
-    }
   ],
 
-  "station": [
-    {
+  "ping": [{
+    "res": "pong"
+  }],
+
+  "station": [{
       "id": 4,
       "Handle": 4,
       "Name": "Cnc-1",
@@ -2067,8 +2063,7 @@
       "DisableParentState": false
     }
   ],
-  "stationStatus": [
-    {
+  "stationStatus": [{
       "id": 1,
       "Reference": "",
       "Order": "",
@@ -2180,8 +2175,7 @@
     }
 
   ],
-  "state": [
-    {
+  "state": [{
       "Handle": 0,
       "Name": "Production",
       "Color": "#87D37C",
@@ -2232,8 +2226,7 @@
       "UsePercent": false
     }
   ],
-  "stationKPI": [
-    {
+  "stationKPI": [{
       "id": 1,
       "Times": {
         "AT": "63072000",
@@ -2259,6 +2252,56 @@
         "HardwareAvailability": "0.85"
       }
     }
-  ]
 
+  ],
+
+  "roles": [{
+    "nom": "admin",
+    "perms": [{
+      "action": "manage",
+      "subject": "all",
+      "description": "Accès à toutes les ressources de l'application"
+    }]
+  }, {
+    "nom": "operator",
+    "perms": [{
+      "action": "edit",
+      "subject": "timeline",
+      "description": "Accès à l'édition de la timeline"
+    }, {
+      "action": "send",
+      "subject": "documents",
+      "description": "Accès à l'envoi de documents"
+    }]
+  }, {
+    "nom": "normal",
+    "perms": [{
+      "action": "see",
+      "subject": "dashboard",
+      "description": "Accès à la visualisation du dashboard"
+    }]
+  }],
+
+  "users": [{
+      "userId": 1,
+      "username": "Administrateur",
+      "password": "admin",
+      "role": "admin",
+      "API_key": "vayv33mljnV9F5OkdFajxhRdp"
+    },
+    {
+      "userId": 2,
+      "username": "Philippe",
+      "password": "user",
+      "role": "normal",
+      "API_key": "5FqSgUxyKQ8WvMWBaRm2xjX0P"
+    },
+    {
+      "userId": 3,
+      "username": "Pierre",
+      "password": "user",
+      "role": "operator",
+      "API_key": "UxyKQ8WvMWB5FqSgaRm2xjX0P"
+    }
+  ]
 }
