@@ -9,11 +9,6 @@ import {HttpClient} from "@angular/common/http";
 import {State} from "../../interfaces/status";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TimelineData} from "../../interfaces/timeline";
-import {
-  DateRange,
-  MAT_DATE_RANGE_SELECTION_STRATEGY,
-  MatDateRangeSelectionStrategy
-} from "@angular/material/datepicker";
 import {DateRangeService} from "../../services/date-range.service";
 import { ChangeDetectorRef } from '@angular/core';
 import moment from "moment";
@@ -26,14 +21,8 @@ import moment from "moment";
     animCloseOpen,
     flyInOut
   ],
-  providers: [
-    {
-      provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
-      useClass: TimelinepageComponent,
-    },
-  ],
 })
-export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
+export class TimelinepageComponent implements OnInit {
   selectedDateInterval!: number;
   daysList!: Date[];
   isSideNavPin!: boolean;
@@ -47,10 +36,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   dateRangeView!: any;
   start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
   end = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000);
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl(),
-  });
+
   constructor(
     private language:LanguageService,
     private timelineService: TimelineService,
@@ -71,11 +57,6 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     this.isShowTimeline = true;
     this.isSideNavPin = false;
     this.dateRange = this.dateRange.slice(this.dateRange.length/2);
-  }
-
-
-  updateTimelines() {
-    this.daysList = this.timelineService.getDaysArray(this.range.value.start, this.range.value.end);
   }
 
   getData(){
@@ -111,20 +92,8 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     this.dateRangeService.changeRange(dateItem);
   }
 
-  createPreview(activeDate: Date | null): DateRange<Date> {
-    return this.dateRangeService.checkRange(<Date>activeDate);
-  }
-
-  selectionFinished(date: Date | null): DateRange<Date> {
-    return this.dateRangeService.checkRange(<Date>date);
-  }
-
-  onSelectionUpdate() {
-    if (this.selectedDateInterval == dateRangeEnum.Month) {
-      return this.dateRangeView = "year";
-    } else if (this.selectedDateInterval == dateRangeEnum.Year) {
-      return this.dateRangeView = "multi-year";
-    } else return this.dateRangeView = "month";
+  updateDays(days: Date[]) {
+    this.daysList = days;
   }
 
   moveFastBackwards(){
