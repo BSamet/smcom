@@ -9,7 +9,7 @@
     </div>
     <div>
       <div class="text-xl font-medium text-black">{{this.currentUser.username}}</div>
-      <p *ngFor="let role of currentUser.roles" class="text-gray-500">Utilisateur {{ role }}</p>
+      <p class="text-gray-500">Utilisateur {{ this.currentUser.role }}</p>
       <p class="text-gray-500">Clé API : <span class="font-mono"> {{ this.currentUser.API_key }}</span></p>
       <br>
       <button
@@ -18,4 +18,5 @@
     </div>
   </div>
   <app-servicechecker></app-servicechecker>
+  <app-permissions></app-permissions>
 </div>

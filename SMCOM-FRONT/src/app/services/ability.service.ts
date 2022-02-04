@@ -2,38 +2,46 @@ import { Injectable } from '@angular/core';
 import { Ability, AbilityBuilder } from '@casl/ability';
 import { TokenStorageService } from './token-storage.service';
 import { HttpClient } from '@angular/common/http';
-import {MOCKAPI_URL} from "../smcomconfig";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AbilityService {
 
-  constructor(private ability: Ability, private tokenStorage: TokenStorageService
+  constructor(private ability: Ability, private tokenStorage: TokenStorageService, private http: HttpClient
   ) { }
 
   user: any;
   perms: any;
   roles: any;
-  rolesUrl = MOCKAPI_URL + 'roles';
+  rolesUrl = "http://localhost:3000/roles";
 
-  updateAbility() {
+  async getUserPerms() {
+    this.user = this.tokenStorage.getUser();
+    this.roles = await this.http.get(this.rolesUrl).toPromise();
+    await this.roles.forEach((role: { nom: any; perms: any; }) => {
+
+      if (role.nom == this.user.role) {
+        this.user.perms = role.perms;
+      }
+    });
+  }
+
+  async updateAbility() {
+    await this.getUserPerms();
     const { can, rules } = new AbilityBuilder(Ability);
 
-    this.user = this.tokenStorage.getUser();
-
     // Lire doc : https://confluence.uha4point0.fr/display/U4P/Gestion+des+droits+%3A+CASL
-    if (this.user.roles.includes('admin')) {
-      can('manage', 'all');
-    }
-
-    if (this.user.roles.includes('operator')) {
-      can('see', 'Kpi');
-    }
+    this.user.perms.forEach((perm: { action: string | string[]; subject: any; }) => {
+      can(perm.action, perm.subject)
+    });
 
     this.ability.update(rules);
+  }
 
-    return this.ability;
+  async getRoleList() {
+    let roleList = await this.http.get(this.rolesUrl).toPromise();
+    return roleList;
   }
 
   updateUser(){
