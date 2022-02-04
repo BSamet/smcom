@@ -44,19 +44,27 @@
           <div *ngIf="!hasLoaded" class="text-center">
             <span class="mx-10 text-white">Loading...</span>
           </div>
-          <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-0 px-8">
-            <div class="bg-primary_cwork text-blue-100">
+          <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-5 px-8">
+            <div class="text-blue-100">
               <!-- av -->
               <nav>
-                <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><<</button>
-                <button class="mb-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg"><</button>
-                <button class="mt-20 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">> </button>
-                <button class="mt-4 transform rotate-90 h-20 w-20 bg-white border-2 border-gray-600 text-indigo-400 text-2xl font-bold rounded-lg">>> </button>
+                <button (click)="moveFastBackwards()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
+                  <mat-icon [inline]="true">keyboard_double_arrow_up</mat-icon>
+                </button>
+                <button (click)="moveBackWards()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
+                  <mat-icon [inline]="true">keyboard_arrow_up</mat-icon>
+                </button>
+                <button (click)="moveForward()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
+                  <mat-icon [inline]="true">keyboard_arrow_down</mat-icon>
+                </button>
+                <button (click)="moveFastForward()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
+                  <mat-icon [inline]="true">keyboard_double_arrow_down</mat-icon>
+                </button>
               </nav>
             </div>
           </div>
         </section>
-        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
+        <app-timelinenavigation [daysList]="daysList" [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
       </div>
     </div>
   </div>

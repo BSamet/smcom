@@ -1,37 +1,33 @@
-<footer *ngIf="selectedTop" class="fixed bottom-0 w-7/12 bg-white text-xs sm:text-sm sm:flex justify-between rounded-xl border-1 border-white" [@flyInOut]>
-  <div class="w-full sm:w-2/5 flex justify-around items-center">
-    <div class="w-3/12 text-center">
+<footer *ngIf="selectedTop" class="fixed bottom-0 w-11/12 bg-white text-xs flex justify-between rounded-xl border-1 border-gray-400 py-3 text-sm" [@flyInOut]>
+  <div class="w-full flex justify-around items-center">
+    <div class="w-4/12 text-center">
       <div>
-        <img src="assets/images/play.svg">
-      </div>
-      <div>
+        <p><mat-icon>start</mat-icon></p>
         <p>{{getFormatDate(selectedTop.topstartdatefield)}}</p>
         <p>{{getFormatTime(selectedTop.topstartdatefield)}}</p>
       </div>
     </div>
-    <div class="w-6/12 text-white inline-flex justify-between items-center border-r-1 border-l-1 border-white">
-      <button class="w-64" (click)="goToPreviousTop()"><img src="assets/images/arrow_back.svg"></button>
-      <p style="background-color:{{ this.stateData[selectedTop.topstatehandlefield].Color }}" class="rounded-xl px-3 py-2 sm:px-4 sm:py-3 xl:px-10 xl:py-4">{{this.stateData[selectedTop.topstatehandlefield].Name}}</p>
-      <button class="w-64" (click)="goToNextTop()"><img src="assets/images/arrow_forward.svg"></button>
+    <div class="w-4/12 text-black flex justify-between items-center border-r-1 border-l-1 border-white">
+      <button class="w-64" (click)="goToPreviousTop()"><mat-icon class="text-5xl hover:text-blue-600">arrow_back_ios</mat-icon></button>
+      <button (click)="focusOnTopDay()" class="rounded-xl px-10 py-5 text-xl" style="background-color:{{ this.stateData[selectedTop.topstatehandlefield].Color }}">{{this.stateData[selectedTop.topstatehandlefield].Name}}</button>
+      <button class="w-64" (click)="goToNextTop()"><mat-icon class="text-5xl hover:text-blue-600">arrow_forward_ios</mat-icon></button>
     </div>
-    <div class="w-3/12 text-center">
+    <div class="w-4/12 text-center">
       <div>
-        <img src="assets/images/stop.svg">
-      </div>
-      <div>
+        <p><mat-icon>keyboard_tab</mat-icon></p>
         <p>{{getFormatDate(selectedTop.topenddatefield)}}</p>
         <p>{{getFormatTime(selectedTop.topenddatefield)}}</p>
       </div>
     </div>
   </div>
   <div class="w-full sm:w-3/5 flex">
-    <div class="w-2/6 text-center">
-        <img src="assets/images/timer.svg">
+    <div class="w-3/6 text-center">
+        <p><mat-icon>timelapse</mat-icon></p>
         <p>{{getFormatDuration(selectedTop.topdurationfield)}}</p>
     </div>
-    <div class="w-5/6 flex justify-end items-center">
-      <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/edit.svg">{{getTextFromKey('modify')}}</a>
-      <a href="#" class="px-2 sm:px-3 lg:px-5"><img src="assets/images/delete.svg">{{getTextFromKey('suppression')}}</a>
-    </div>
+  </div>
+  <div class="w-4/6 flex justify-end items-center mx-4">
+    <button (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">edit_note</mat-icon> <p>{{getTextFromKey('modify')}}</p></button>
+    <button (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">delete_forever</mat-icon> <p>{{getTextFromKey('suppression')}}</p></button>
   </div>
 </footer>

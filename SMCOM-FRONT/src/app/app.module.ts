@@ -34,6 +34,7 @@ import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatFormFieldModule,
     MatDatepickerModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },

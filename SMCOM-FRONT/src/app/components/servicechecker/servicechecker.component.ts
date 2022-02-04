@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NestAPI_URL} from "../../smcomconfig";
+import {MOCKAPI_URL, NestAPI_URL} from "../../smcomconfig";
 import {Ping} from "../../interfaces/ping";
 import {HttpClient} from "@angular/common/http";
 
@@ -34,7 +34,8 @@ export class ServicecheckerComponent implements OnInit {
   }
 
   private checkJSON(){
-    this.http.get('http://localhost:3000/ping?res=pong', {responseType: 'json'}).subscribe(data =>{
+    this.http.get(MOCKAPI_URL + 'ping?res=pong', {responseType: 'json'}).subscribe(data =>{
+
       const response = data as Ping[];
       for (let res of response) this.JSONServerStatus = res.res === 'pong';
     })
