@@ -61,12 +61,12 @@
   "suppression": "supprimer",
   "failure": "Échec",
   "state": "État",
-  "monday":"lundi",
-  "tuesday":"mardi",
-  "wensday":"mercredi",
-  "thursday":"jeudi",
-  "friday":"vendredi",
-  "saturday":"samedi",
-  "sunday":"dimanche"
+  "monday":"Lundi",
+  "tuesday":"Mardi",
+  "wensday":"Mercredi",
+  "thursday":"Jeudi",
+  "friday":"Vendredi",
+  "saturday":"Samedi",
+  "sunday":"Dimanche"
 
 }

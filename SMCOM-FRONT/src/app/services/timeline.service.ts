@@ -31,7 +31,7 @@ export class TimelineService {
   }
 
   dayOfWeekAsString(dayIndex:number) {
-    return [this.getTextFromKey('sunday'),this.getTextFromKey('monday'),this.getTextFromKey('tuesday'),this.getTextFromKey('wensday'),this.getTextFromKey('thursday'),this.getTextFromKey('friday'),this.getTextFromKey('saturday')][dayIndex] || '';
+    return [this.getTextFromKey('sunday'),this.getTextFromKey('monday'),this.getTextFromKey('tuesday'),this.getTextFromKey('wednesday'),this.getTextFromKey('thursday'),this.getTextFromKey('friday'),this.getTextFromKey('saturday')][dayIndex] || '';
   }
   getDaysArray(start:Date, end:Date) {
     let arr;
