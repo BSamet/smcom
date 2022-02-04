@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="w-4/6 flex justify-end items-center mx-4">
-    <button (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">edit_note</mat-icon> <p>Editer</p></button>
-    <button (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">delete_forever</mat-icon> <p>Supprimer</p></button>
+    <button (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">edit_note</mat-icon> <p>{{getTextFromKey('modify')}}</p></button>
+    <button (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">delete_forever</mat-icon> <p>{{getTextFromKey('suppression')}}</p></button>
   </div>
 </footer>

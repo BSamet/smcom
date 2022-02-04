@@ -4,13 +4,16 @@ import {MOCKAPI_URL, NestAPI_URL} from "../smcomconfig";
 import {Status} from "../interfaces/status";
 import {TokenStorageService} from "./token-storage.service";
 import moment from "moment";
+import { LanguageService } from 'src/app/services/language.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimelineService {
 
-  constructor(private http: HttpClient, private storage: TokenStorageService) { }
+  constructor(private http: HttpClient,
+              private storage: TokenStorageService,
+              private language:LanguageService,) { }
 
   public timelineDataV2(cnc : string | null){
     let URL = NestAPI_URL
@@ -26,7 +29,7 @@ export class TimelineService {
   }
 
   dayOfWeekAsString(dayIndex:number) {
-    return ["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"][dayIndex] || '';
+    return [this.getTextFromKey('sunday'),this.getTextFromKey('monday'),this.getTextFromKey('tuesday'),this.getTextFromKey('wensday'),this.getTextFromKey('thursday'),this.getTextFromKey('friday'),this.getTextFromKey('saturday')][dayIndex] || '';
   }
   getDaysArray(start:Date, end:Date) {
     let arr;
@@ -36,7 +39,9 @@ export class TimelineService {
     }
     return arr;
   };
-
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  }
   getDateStartingFromMidnight(dateTime:Date) {
     let date = new Date(dateTime.getTime());
     date.setHours(0, 0, 0, 0);

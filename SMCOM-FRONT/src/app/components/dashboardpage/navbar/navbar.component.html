@@ -234,8 +234,8 @@
 
     <div class="relative group">
       <mat-slide-toggle [(ngModel)]="dataLIVEMode" (change)="switchDataMode()" class="flex flex-row items-center w-full p-2 m-2 font-bold text-md text-white text-left uppercase bg-transparent rounded-lg w-auto inline relative">
-        <span *ngIf="dataLIVEMode">Mode temps réel</span>
-        <span *ngIf="!dataLIVEMode">Mode émulation</span>
+        <span *ngIf="dataLIVEMode"><span>{{getTextFromKey("Real")}}</span></span>
+        <span *ngIf="!dataLIVEMode"><span>{{getTextFromKey("Emulation")}}</span></span>
       </mat-slide-toggle>
     </div>
   </div>

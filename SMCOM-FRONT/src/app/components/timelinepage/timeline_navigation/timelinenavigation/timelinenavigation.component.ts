@@ -4,6 +4,8 @@ import {TimelineData, TimelineDataEpoch} from "../../../../interfaces/timeline";
 import {State} from "../../../../interfaces/status";
 import moment from "moment";
 import {TimelineService} from "../../../../services/timeline.service";
+import { LanguageService } from 'src/app/services/language.service';
+
 
 @Component({
   selector: 'app-timelinenavigation',
@@ -23,7 +25,10 @@ export class TimelinenavigationComponent implements OnInit {
   indexTopSelector!:number;
   orderedTopsData: TimelineDataEpoch[] = [];
 
-  constructor(private timelineService: TimelineService) { }
+  constructor(private timelineService: TimelineService, private language:LanguageService) { }
+  getTextFromKey(key:string){
+    return this.language.getTextFromKey(key)
+  }
 
   ngOnInit(): void {
     this.updateData();
