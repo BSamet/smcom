@@ -62,11 +62,11 @@
   "suppression": "delete",
   "failure": "Failure",
   "state": "State",
-  "monday":"monday",
-  "tuesday":"tuesday",
-  "wensday":"wensday",
-  "thursday":"thursday",
-  "friday":"friday",
-  "saturday":"saturday",
-  "sunday":"sunday"
+  "monday":"Monday",
+  "tuesday":"Tuesday",
+  "wednesday":"Wednesday",
+  "thursday":"Thursday",
+  "friday":"Friday",
+  "saturday":"Saturday",
+  "sunday":"Sunday"
 }
