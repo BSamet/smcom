@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import {DateRange} from "@angular/material/datepicker";
 import {DateAdapter} from "@angular/material/core";
 import {TimelineService} from "./timeline.service";
+import {dateRangeEnum} from "../components/timelinepage/timelinepage.component";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DateRangeService<D> {
-  private range?: string;
+  private range?: number;
   private start!: Date;
   private end!: Date;
   constructor(private dateAdapter: DateAdapter<Date>, private timelineService: TimelineService) {}
@@ -60,26 +61,23 @@ export class DateRangeService<D> {
     return new DateRange<Date>(null, null);
   }
 
-  changeRange(dateItem: string) {
+  changeRange(dateItem: number) {
     this.range = dateItem;
   }
 
   checkRange(date: Date){
     switch (this.range) {
-      case "Jour":
+      case dateRangeEnum.Day:
         return this.createDayRange(date);
-      case "Semaine":
+      case dateRangeEnum.Week:
         return this.createWeekRange(date);
-      case "Mois":
+      case dateRangeEnum.Month:
         return this.createMonthRange(date);
-      case "Année":
+      case dateRangeEnum.Year:
         return this.createYearRange(date);
       default:
         return this.createDayRange(date);
     }
   }
-
-  updateDayList(){
-    return this.timelineService.getDaysArray(this.start, this.end);
-  }
 }
+

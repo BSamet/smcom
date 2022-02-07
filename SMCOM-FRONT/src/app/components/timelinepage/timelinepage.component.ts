@@ -9,11 +9,6 @@ import {HttpClient} from "@angular/common/http";
 import {State} from "../../interfaces/status";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TimelineData} from "../../interfaces/timeline";
-import {
-  DateRange,
-  MAT_DATE_RANGE_SELECTION_STRATEGY,
-  MatDateRangeSelectionStrategy
-} from "@angular/material/datepicker";
 import {DateRangeService} from "../../services/date-range.service";
 import { ChangeDetectorRef } from '@angular/core';
 import moment from "moment";
@@ -26,15 +21,9 @@ import moment from "moment";
     animCloseOpen,
     flyInOut
   ],
-  providers: [
-    {
-      provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
-      useClass: TimelinepageComponent,
-    },
-  ],
 })
-export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
-  selectedDateInterval!: string;
+export class TimelinepageComponent implements OnInit {
+  selectedDateInterval!: number;
   daysList!: Date[];
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
@@ -42,15 +31,12 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
   id!:string | null
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
-  dateRange: string[] = ["Jour","Semaine","Mois","Année"];
+  dateRange = Object.keys(dateRangeEnum);
   hasLoaded = false;
   dateRangeView!: any;
   start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
   end = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000);
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl(),
-  });
+
   constructor(
     private language:LanguageService,
     private timelineService: TimelineService,
@@ -70,11 +56,7 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     this.isShowKpi = false;
     this.isShowTimeline = true;
     this.isSideNavPin = false;
-  }
-
-
-  updateTimelines() {
-    this.daysList = this.timelineService.getDaysArray(this.range.value.start, this.range.value.end);
+    this.dateRange = this.dateRange.slice(this.dateRange.length/2);
   }
 
   getData(){
@@ -105,27 +87,13 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
 
   }
 
-  onRangeUpdate(dateItem: string){
+  onRangeUpdate(dateItem: number){
     this.selectedDateInterval = dateItem;
     this.dateRangeService.changeRange(dateItem);
   }
 
-  createPreview(activeDate: Date | null): DateRange<Date> {
-    return this.dateRangeService.checkRange(<Date>activeDate);
-  }
-
-  selectionFinished(date: Date | null): DateRange<Date> {
-    return this.dateRangeService.checkRange(<Date>date);
-  }
-
-  onSelectionUpdate() {
-     if (this.selectedDateInterval == "Jour" || this.selectedDateInterval == "Semaine") {
-      return this.dateRangeView = "month";
-    } else if (this.selectedDateInterval == "Mois") {
-      return this.dateRangeView = "year";
-    } else if (this.selectedDateInterval == "Année") {
-      return this.dateRangeView = "multi-year";
-    } else return this.dateRangeView = "month";
+  updateDays(days: Date[]) {
+    this.daysList = days;
   }
 
   moveFastBackwards(){
@@ -150,4 +118,11 @@ export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionSt
     this.daysList.shift();
     this.daysList.push(endDate)
   }
+}
+export enum dateRangeEnum {
+  "Day",
+  "Week",
+  "Month",
+  "Year",
+  "Custom"
 }
