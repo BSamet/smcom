@@ -34,14 +34,18 @@ export class DashboardpageComponent implements OnInit {
         API_key: API_key
       }}).subscribe(data=>{
       const cncData = data as Cnc[];
+
       if (this.listCNC == undefined || JSON.stringify(cncData) !== JSON.stringify(this.listCNC))
         this.listCNC=cncData;
-
+      console.log(this.listCNC)
+      
     }, error => {
       if (error.error) {
         if (error.error.statusCode == 401){
           this.storage.signOut();
           this.router.navigate(['login/expired']).then();
+        } else {
+          console.log(error.error)
         }
       }
     })
