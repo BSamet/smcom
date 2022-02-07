@@ -24,7 +24,12 @@ export class CncDashboardComponent implements OnInit {
               private language:LanguageService,
   private http: HttpClient) { }
 
-  ngOnInit(): void {
+  update(): void{
+    const self = this;
+    setTimeout(function(){
+      self.update();
+    }, 10000);
+
     const API_key = this.storage.getUser().API_key;
     let URL = NestAPI_URL;
     if (this.storage.getDataMode() === "MOCK")
@@ -36,6 +41,10 @@ export class CncDashboardComponent implements OnInit {
         if( statusData !== this.status)
           this.status=statusData;
     })
+  }
+
+  ngOnInit(): void {
+    this.update()
   }
   getTextFromKey(key:string){
     return this.language.getTextFromKey(key)
