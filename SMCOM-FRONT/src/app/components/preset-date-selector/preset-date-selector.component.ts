@@ -47,7 +47,9 @@ export class PresetDateSelectorComponent<D> implements OnInit, MatDateRangeSelec
 
   updateTimelines() {
     this.dayList = this.timelineService.getDaysArray(this.range.value.start, this.range.value.end);
+    this.range.setValue({start: this.dayList[0], end: this.dayList[this.dayList.length - 1]});
   }
+
 
   timelineUpdate(){
     this.updateTimelines();
@@ -62,5 +64,10 @@ export class PresetDateSelectorComponent<D> implements OnInit, MatDateRangeSelec
       this.dateRangeService.changeRange(this.interval);
       return "multi-year";
     } else return "month";
+  }
+
+  consolelog() {
+    console.log(this.range.value.start + "\n");
+    console.log(this.range.value.end);
   }
 }
