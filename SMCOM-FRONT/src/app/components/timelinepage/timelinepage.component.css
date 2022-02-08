@@ -22,3 +22,7 @@ section::-webkit-scrollbar {
 .timelineHeight{
  height: calc(66vh);
 }
+
+::ng-deep .mat-select-value {
+  color: white;
+}
