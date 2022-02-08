@@ -32,6 +32,9 @@
       <div *ngIf="isShowKpi" [@slideIn] class="mt-10 row container-fluid"  id="kpiToggle" >
         <app-kpibloc></app-kpibloc>
       </div>
+
+
+
       <div *ngIf="isShowTimeline && end != null" [@flyInOut] class="mt-10 mx-10"  id="timelineToggle" >
         <section class="flex overflow-y-scroll timelineHeight">
           <div *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="w-11/12">
