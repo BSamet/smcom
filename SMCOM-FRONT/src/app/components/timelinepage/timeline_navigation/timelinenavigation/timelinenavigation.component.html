@@ -20,13 +20,13 @@
       </div>
     </div>
   </div>
-  <div class="w-full sm:w-3/5 flex">
+  <div class=" sm:w-1/5 flex">
     <div class="w-2/12 text-center fixed">
         <p><mat-icon>timelapse</mat-icon></p>
         <p>{{getFormatDuration(selectedTop.topdurationfield)}}</p>
     </div>
   </div>
-  <div class="w-3/12 flex justify-end items-center mx-4">
+  <div class="flex mx-4">
     <button *ngIf="'edit' | able: 'timeline'" (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">edit_note</mat-icon> <p>{{getTextFromKey('modify')}}</p></button>
     <button (click)="goToPreviousTop()"><mat-icon class="mx-5 text-3xl">delete_forever</mat-icon> <p>{{getTextFromKey('suppression')}}</p></button>
   </div>
