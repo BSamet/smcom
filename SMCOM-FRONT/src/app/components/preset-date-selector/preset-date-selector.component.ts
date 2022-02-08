@@ -8,6 +8,8 @@ import {DateRangeService} from "../../services/date-range.service";
 import {TimelineService} from "../../services/timeline.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {dateRangeEnum} from "../timelinepage/timelinepage.component";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {LoadingdialogComponent} from "../loadingdialog/loadingdialog.component";
 
 @Component({
   selector: 'preset-date-selector',
@@ -24,6 +26,7 @@ export class PresetDateSelectorComponent<D> implements OnInit, MatDateRangeSelec
   @Input() interval!: number;
   @Input() dayList!: Date[];
   @Output() timelineUpdated = new EventEmitter();
+  dialogModal!: MatDialogRef<LoadingdialogComponent, any>;
 
   range = new FormGroup({
     start: new FormControl(),
@@ -32,7 +35,8 @@ export class PresetDateSelectorComponent<D> implements OnInit, MatDateRangeSelec
 
   constructor(
     private dateRangeService: DateRangeService<Date>,
-    private timelineService: TimelineService) { }
+    private timelineService: TimelineService,
+    public dialog: MatDialog) { }
 
   selectionFinished(date: Date | null, currentRange: DateRange<Date>, event: Event): DateRange<Date> {
     return this.dateRangeService.checkRange(<Date>date);
@@ -44,16 +48,29 @@ export class PresetDateSelectorComponent<D> implements OnInit, MatDateRangeSelec
 
   ngOnInit(): void {
   }
+  openLoadingDialog(): void {
+    this.dialogModal = this.dialog.open(LoadingdialogComponent, {
+      width: '500px',
+      //data: {name: this.name, animal: this.animal}
+    });
+  }
 
   updateTimelines() {
     this.dayList = this.timelineService.getDaysArray(this.range.value.start, this.range.value.end);
     this.range.setValue({start: this.dayList[0], end: this.dayList[this.dayList.length - 1]});
   }
 
-
+  async delay(ms: number) {
+    await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then();
+  }
   timelineUpdate(){
-    this.updateTimelines();
-    this.timelineUpdated.emit(this.dayList);
+    this.openLoadingDialog();
+    this.delay(500).then(r => {
+      this.updateTimelines();
+      this.timelineUpdated.emit(this.dayList);
+      this.dialog.closeAll();
+    });
+
   }
 
   onSelectionUpdate() {

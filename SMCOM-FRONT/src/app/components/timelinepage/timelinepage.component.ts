@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnChanges, OnInit} from '@angular/core';
 import {animCloseOpen, flyInOut} from "../../animations/animations";
 import { LanguageService } from 'src/app/services/language.service';
 import {TimelineService} from "../../services/timeline.service";
@@ -12,6 +12,8 @@ import {TimelineData} from "../../interfaces/timeline";
 import {DateRangeService} from "../../services/date-range.service";
 import { ChangeDetectorRef } from '@angular/core';
 import moment from "moment";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {LoadingdialogComponent} from "../loadingdialog/loadingdialog.component";
 
 @Component({
   selector: 'app-timelinepage',
@@ -36,6 +38,7 @@ export class TimelinepageComponent implements OnInit {
   dateRangeView!: any;
   start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
   end = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000);
+  dialogModal!: MatDialogRef<LoadingdialogComponent, any>;
 
   constructor(
     private language:LanguageService,
@@ -44,12 +47,21 @@ export class TimelinepageComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
-    private dateRangeService: DateRangeService<Date>) {
-    this.daysList = this.timelineService.getDaysArray(this.start, this.end);
+    private dateRangeService: DateRangeService<Date>,
+    public dialog: MatDialog) {
+      this.daysList = this.timelineService.getDaysArray(this.start, this.end);
   }
   getTextFromKey(key:string){
     return this.language.getTextFromKey(key)
   }
+  openLoadingDialog(): void {
+    this.dialogModal = this.dialog.open(LoadingdialogComponent, {
+      width: '500px',
+      //data: {name: this.name, animal: this.animal}
+    });
+  }
+
+
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();

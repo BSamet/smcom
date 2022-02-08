@@ -23,6 +23,7 @@ import { NestAPI_URL } from '../../../smcomconfig';
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { HttpClient } from '@angular/common/http';
 import {animCloseOpen, flyInOut} from "../../../animations/animations";
+import {MatDialog} from "@angular/material/dialog";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -46,6 +47,7 @@ export type ChartOptions = {
 })
 export class TimelineLineComponent implements OnInit {
   @Input() day!: number;
+
   // Chart variable
   id!: string | null;
   dataTimeline!: TimelineData[];
@@ -53,10 +55,14 @@ export class TimelineLineComponent implements OnInit {
   data: any[];
   isLoadingChart = true;
   noData = false;
-
   chartConfig = {
+    events: {
+      animationEnd: (event: any, chartContext: any, config: any) => {
+        this.closeModals();
+      }
+    },
     toolbar: {show: false,
-      },
+    },
     height: 100,
     type: 'rangeBar',
     animations: {
@@ -115,6 +121,7 @@ export class TimelineLineComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent | undefined;
   @Input() timelineData: TimelineData[] = [];
   @Input() stateData: State[] = [];
+  @Input() daysList: Date[] = [];
   public chartOptions: Partial<ChartOptions> | any;
 
   constructor(
@@ -124,6 +131,7 @@ export class TimelineLineComponent implements OnInit {
     private http: HttpClient,
     private storage: TokenStorageService,
     private router: Router,
+    public dialog: MatDialog
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     // Timeline Chart Data
@@ -136,6 +144,9 @@ export class TimelineLineComponent implements OnInit {
 
   }
 
+  closeModals():void{
+    this.dialog.closeAll();
+  }
   getTextFromKey(key:string){
     return this.language.getTextFromKey(key)
   }
@@ -200,6 +211,7 @@ export class TimelineLineComponent implements OnInit {
       tooltip: this.tooltip,
       title: this.title,
     };
+
   }
 
 

@@ -39,6 +39,9 @@ import {PresetDateSelectorComponent} from "./components/preset-date-selector/pre
 import { CustomDateSelectorComponent } from './components/custom-date-selector/custom-date-selector.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { LoadingdialogComponent } from './components/loadingdialog/loadingdialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -62,7 +65,8 @@ import {MatIconModule} from "@angular/material/icon";
     ServicecheckerComponent,
     PermissionsComponent,
     PresetDateSelectorComponent,
-    CustomDateSelectorComponent
+    CustomDateSelectorComponent,
+    LoadingdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +89,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatSelectModule,
     MatIconModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatCardModule
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },
