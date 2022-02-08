@@ -18,3 +18,7 @@ html,body{
 section::-webkit-scrollbar {
   display: none;
 }
+
+.timelineHeight{
+ height: calc(66vh);
+}
