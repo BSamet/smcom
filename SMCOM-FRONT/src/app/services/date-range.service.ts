@@ -62,8 +62,9 @@ export class DateRangeService<D> {
 
   private createYearRange(date: Date | null): DateRange<Date> {
     if (date) {
-      this.start = this.dateAdapter.addCalendarDays(date, 0);
-      this.end = this.dateAdapter.addCalendarYears(date, 1);
+      const firstDateOfYear = new Date(date.getFullYear(), 0, 1);
+      this.start = this.dateAdapter.addCalendarYears(firstDateOfYear, 0);
+      this.end = this.dateAdapter.addCalendarYears(firstDateOfYear, 1);
       return new DateRange<Date>(this.start, this.end);
     }
 
