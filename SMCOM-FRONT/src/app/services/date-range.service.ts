@@ -8,6 +8,7 @@ import {dateRangeEnum} from "../components/timelinepage/timelinepage.component";
   providedIn: 'root'
 })
 export class DateRangeService<D> {
+  private readonly NB_OF_DAYS_IN_WEEK = 6; // ]0,6[, 0 is included
   private range?: number;
   private start!: Date;
   private end!: Date;
@@ -33,12 +34,16 @@ export class DateRangeService<D> {
 
   private createWeekRange(date: Date | null): DateRange<Date> {
     if (date) {
-      this.start = this.dateAdapter.addCalendarDays(date, 0);
-      this.end = this.dateAdapter.addCalendarDays(date, 6);
+      this.start = this.dateAdapter.addCalendarDays(date, -this.dateAdapter.getDayOfWeek(date));
+      this.end = this.dateAdapter.addCalendarDays(date, this.defineNumberOfDaysInAWeek(date));
       return new DateRange<Date>(this.start, this.end);
     }
 
     return new DateRange<Date>(null, null);
+  }
+
+  private defineNumberOfDaysInAWeek(date: Date): number {
+    return (this.NB_OF_DAYS_IN_WEEK-this.dateAdapter.getDayOfWeek(date));
   }
 
   private createMonthRange(date: Date | null): DateRange<Date> {
