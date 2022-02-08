@@ -15,8 +15,8 @@
     <!-- Main Section-->
     <div>
       <div>
-        <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}} KPI</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}}<br/>{{getTextFromKey('Timeline')}}</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2  relative left-10 top-5 text-white">{{getTextFromKey('display')}} KPI</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}} {{getTextFromKey('Timeline')}}</mat-slide-toggle>
         <mat-form-field class="p-2 mx-2 relative left-10 top-5 text-white" appearance="fill">
           <mat-select class="text-white" placeholder="Portée date">
             <mat-option *ngFor="let dateRangeItem of dateRange; let index = index" [value]="dateRangeItem" (click)="onRangeUpdate(index)">{{dateRangeItem}}</mat-option>
@@ -37,8 +37,13 @@
           <div *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="w-11/12">
             <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
           </div>
-          <div *ngIf="!hasLoaded" class="text-center">
-            <span class="mx-10 text-white">Loading...</span>
+          <div *ngIf="!hasLoaded" class="text-center flex items-center justify-center w-11/12 text-white">
+            <div>
+              <mat-icon class="text-5xl">downloading</mat-icon>
+              <h1 class="text-2xl m-5">Récupération des données</h1>
+            </div>
+
+
           </div>
           <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-5 px-8">
             <div class="text-blue-100">
