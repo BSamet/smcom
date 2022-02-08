@@ -43,5 +43,6 @@ export class CustomDateSelectorComponent implements OnInit {
 
   updateTimelines() {
     this.dayList = this.timelineService.getDaysArray(this.customRange.value.start, this.customRange.value.end);
+    this.customRange.setValue({start: this.dayList[0], end: this.dayList[this.dayList.length - 1]});
   }
 }

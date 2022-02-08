@@ -33,9 +33,9 @@
         <app-kpibloc></app-kpibloc>
       </div>
       <div *ngIf="isShowTimeline && end != null" [@flyInOut] class="mt-10 mx-10"  id="timelineToggle" >
-        <section class="flex overflow-y-scroll sm:max-h-32 lg:max-h-52 xl:max-h-160  2xl:max-h-288">
-          <div *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="w-max mx-10">
-            <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [daysList]="daysList" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
+        <section class="flex overflow-y-scroll timelineHeight">
+          <div *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="w-11/12">
+            <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
           </div>
           <div *ngIf="!hasLoaded" class="text-center flex items-center justify-center w-11/12 text-white">
             <div>

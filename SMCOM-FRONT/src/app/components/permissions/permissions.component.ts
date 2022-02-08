@@ -22,13 +22,10 @@ export class PermissionsComponent implements OnInit {
 
   async getPerms(){
     this.perms = await this.ability.user.perms;
-    console.log('log User Perms');
-    console.log(this.perms);
   }
 
   async getRoles(){
     this.roles = await this.ability.getRoleList();
-    console.log(this.roles);
   }
 
   updateUserRole(){
