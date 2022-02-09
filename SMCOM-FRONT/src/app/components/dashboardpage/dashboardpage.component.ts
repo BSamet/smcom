@@ -42,6 +42,8 @@ export class DashboardpageComponent implements OnInit {
         if (error.error.statusCode == 401){
           this.storage.signOut();
           this.router.navigate(['login/expired']).then();
+        } else {
+          console.log(error.error)
         }
       }
     })

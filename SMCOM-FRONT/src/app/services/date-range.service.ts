@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import {DateRange} from "@angular/material/datepicker";
 import {DateAdapter} from "@angular/material/core";
 import {TimelineService} from "./timeline.service";
+import {dateRangeEnum} from "../components/timelinepage/timelinepage.component";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DateRangeService<D> {
-  private range?: string;
+  private readonly NB_OF_DAYS_IN_WEEK = 6; // ]0,6[, 0 is included
+  private range?: number;
   private start!: Date;
   private end!: Date;
   constructor(private dateAdapter: DateAdapter<Date>, private timelineService: TimelineService) {}
@@ -32,54 +34,60 @@ export class DateRangeService<D> {
 
   private createWeekRange(date: Date | null): DateRange<Date> {
     if (date) {
-      this.start = this.dateAdapter.addCalendarDays(date, 0);
-      this.end = this.dateAdapter.addCalendarDays(date, 6);
+      this.start = this.dateAdapter.addCalendarDays(date, -this.dateAdapter.getDayOfWeek(date));
+      this.end = this.dateAdapter.addCalendarDays(date, this.defineNumberOfDaysInAWeek(date));
       return new DateRange<Date>(this.start, this.end);
     }
 
     return new DateRange<Date>(null, null);
+  }
+
+  private defineNumberOfDaysInAWeek(date: Date): number {
+    return (this.NB_OF_DAYS_IN_WEEK-this.dateAdapter.getDayOfWeek(date));
   }
 
   private createMonthRange(date: Date | null): DateRange<Date> {
     if (date) {
-      this.start = this.dateAdapter.addCalendarDays(date, 0);
-      this.end = this.dateAdapter.addCalendarDays(date, this.dateAdapter.getNumDaysInMonth(date)-1);
+      this.start = this.dateAdapter.addCalendarDays(date, this.defineNumberOfDaysInAMonth(date));
+      this.end = this.dateAdapter.addCalendarDays(date, this.dateAdapter.getNumDaysInMonth(date) - this.dateAdapter.getDate(date));
       return new DateRange<Date>(this.start, this.end);
     }
 
     return new DateRange<Date>(null, null);
+  }
+
+  private defineNumberOfDaysInAMonth(date: Date): number {
+    return (1-this.dateAdapter.getDate(date));
   }
 
   private createYearRange(date: Date | null): DateRange<Date> {
     if (date) {
-      this.start = this.dateAdapter.addCalendarDays(date, 0);
-      this.end = this.dateAdapter.addCalendarYears(date, 1);
+      const firstDateOfYear = new Date(date.getFullYear(), 0, 1);
+      this.start = this.dateAdapter.addCalendarYears(firstDateOfYear, 0);
+      this.end = this.dateAdapter.addCalendarYears(firstDateOfYear, 1);
       return new DateRange<Date>(this.start, this.end);
     }
 
     return new DateRange<Date>(null, null);
   }
 
-  changeRange(dateItem: string) {
+  changeRange(dateItem: number) {
     this.range = dateItem;
   }
 
   checkRange(date: Date){
     switch (this.range) {
-      case "Jour":
+      case dateRangeEnum.Day:
         return this.createDayRange(date);
-      case "Semaine":
+      case dateRangeEnum.Week:
         return this.createWeekRange(date);
-      case "Mois":
+      case dateRangeEnum.Month:
         return this.createMonthRange(date);
-      case "Année":
+      case dateRangeEnum.Year:
         return this.createYearRange(date);
       default:
         return this.createDayRange(date);
     }
   }
-
-  updateDayList(){
-    return this.timelineService.getDaysArray(this.start, this.end);
-  }
 }
+
