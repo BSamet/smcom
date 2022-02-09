@@ -1,4 +1,4 @@
-<div *ngIf="chartOptions && !isLoadingChart && chartOptions.series.length" [@flyInOut] class="bg-white rounded-xl" id="chart">
+<div *ngIf="chartOptions && !isLoadingChart && chartOptions.series.length" [@flyInOut] class="bg-secondary_cwork rounded-xl" id="chart">
   <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
@@ -11,7 +11,7 @@
     [title]="chartOptions.title"
   ></apx-chart>
 </div>
-<div *ngIf="chartOptions && !chartOptions.series.length" class="bg-white rounded-xl text-center my-5 p-10">
+<div *ngIf="chartOptions && !chartOptions.series.length" class="bg-secondary_cwork  rounded-xl text-center my-5 p-10">
   {{getTextFromKey('error')}} {{dayString}}
 </div>
 <section *ngIf="isLoadingChart" class="mt-10">
