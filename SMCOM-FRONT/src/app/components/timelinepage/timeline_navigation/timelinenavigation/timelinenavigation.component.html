@@ -4,14 +4,14 @@
       <div class=" pl-10 sm:w-3/5 flex">
         <div class="w-3/6 mr-24 text-center">
           <p><mat-icon>timelapse</mat-icon></p>
-          <p class="border-6 border-black">{{getFormatDuration(selectedTop.topdurationfield)}}</p>
+          <p>{{getFormatDuration(selectedTop.topdurationfield)}}</p>
         </div>
       </div>
       <div class=" -translate-y-40">
         <button  *ngIf="'edit' | able: 'timeline'" (click)="goToPreviousTop()"><mat-icon class=" mx-10 text-3xl">edit_note</mat-icon> <p class="">{{getTextFromKey('modify')}}</p></button>
       </div>
     </div>
-    <div class="sm:mt-11 3xl:mt-0  w-4/12 text-center">
+    <div class="sm:mt-6 3xl:mt-0  w-4/12 text-center">
       <div class="mt-6">
         <p><mat-icon>start</mat-icon></p>
         <p>{{getFormatDate(selectedTop.topstartdatefield)}}</p>
@@ -26,14 +26,14 @@
     <button class="w-64" (click)="goToNextTop()"><mat-icon class="text-5xl hover:text-blue-600">arrow_forward_ios</mat-icon></button>
   </div>
   <section class ="flex gap-14">
-    <div class="w-4/12 sm:mt-12 3xl:mt-1 text-center">
+    <div class="w-4/12 sm:mt-6 3xl:mt-1 text-center">
       <div class="mt-5">
         <p><mat-icon class="">keyboard_tab</mat-icon></p>
         <p>{{getFormatDate(selectedTop.topenddatefield)}}</p>
         <p>{{getFormatTime(selectedTop.topenddatefield)}}</p>
       </div>
     </div>
-    <div class="mt-3.5 sm:mt-16 3xl:mt-8 mr-44">
+    <div class="mt-3.5 sm:mt-12 3xl:mt-8 mr-44">
       <button (click)="goToPreviousTop()"><mat-icon class="mx-10 text-3xl">delete_forever</mat-icon> <p>{{getTextFromKey('suppression')}}</p></button>
     </div>
   </section>
