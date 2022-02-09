@@ -32,16 +32,11 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { ServicecheckerComponent } from './components/servicechecker/servicechecker.component';
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
+import {NgxDaterangepickerMd} from "ngx-daterangepicker-material";
 import { PermissionsComponent } from './components/permissions/permissions.component';
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
-import {PresetDateSelectorComponent} from "./components/preset-date-selector/preset-date-selector.component";
-import { CustomDateSelectorComponent } from './components/custom-date-selector/custom-date-selector.component';
-import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import { LoadingdialogComponent } from './components/loadingdialog/loadingdialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -63,10 +58,7 @@ import {MatCardModule} from "@angular/material/card";
     TimelinePeriodComponent,
     TimelinenavigationComponent,
     ServicecheckerComponent,
-    PermissionsComponent,
-    PresetDateSelectorComponent,
-    CustomDateSelectorComponent,
-    LoadingdialogComponent
+    PermissionsComponent
   ],
   imports: [
     BrowserModule,
@@ -87,11 +79,7 @@ import {MatCardModule} from "@angular/material/card";
     MatDatepickerModule,
     MatListModule,
     MatSelectModule,
-    MatIconModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatCardModule
+    MatIconModule
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },

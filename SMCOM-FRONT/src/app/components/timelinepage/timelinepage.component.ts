@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {animCloseOpen, flyInOut} from "../../animations/animations";
 import { LanguageService } from 'src/app/services/language.service';
 import {TimelineService} from "../../services/timeline.service";
@@ -9,11 +9,14 @@ import {HttpClient} from "@angular/common/http";
 import {State} from "../../interfaces/status";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TimelineData} from "../../interfaces/timeline";
+import {
+  DateRange,
+  MAT_DATE_RANGE_SELECTION_STRATEGY,
+  MatDateRangeSelectionStrategy
+} from "@angular/material/datepicker";
 import {DateRangeService} from "../../services/date-range.service";
 import { ChangeDetectorRef } from '@angular/core';
 import moment from "moment";
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {LoadingdialogComponent} from "../loadingdialog/loadingdialog.component";
 
 @Component({
   selector: 'app-timelinepage',
@@ -23,9 +26,15 @@ import {LoadingdialogComponent} from "../loadingdialog/loadingdialog.component";
     animCloseOpen,
     flyInOut
   ],
+  providers: [
+    {
+      provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
+      useClass: TimelinepageComponent,
+    },
+  ],
 })
-export class TimelinepageComponent implements OnInit {
-  selectedDateInterval!: number;
+export class TimelinepageComponent<D> implements OnInit, MatDateRangeSelectionStrategy<Date> {
+  selectedDateInterval!: string;
   daysList!: Date[];
   isSideNavPin!: boolean;
   isShowKpi!: boolean;
@@ -33,13 +42,15 @@ export class TimelinepageComponent implements OnInit {
   id!:string | null
   timelineData: TimelineData[] = [];
   stateData: State[] = [];
-  dateRange = Object.keys(dateRangeEnum);
+  dateRange: string[] = ["Jour","Semaine","Mois","Année"];
   hasLoaded = false;
   dateRangeView!: any;
   start = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() - 6*86400000);
   end = new Date(this.timelineService.getDateStartingFromMidnight(new Date()).getTime() + 86399000);
-  dialogModal!: MatDialogRef<LoadingdialogComponent, any>;
-
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
   constructor(
     private language:LanguageService,
     private timelineService: TimelineService,
@@ -47,28 +58,23 @@ export class TimelinepageComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
-    private dateRangeService: DateRangeService<Date>,
-    public dialog: MatDialog) {
-      this.daysList = this.timelineService.getDaysArray(this.start, this.end);
+    private dateRangeService: DateRangeService<Date>) {
+    this.daysList = this.timelineService.getDaysArray(this.start, this.end);
   }
   getTextFromKey(key:string){
     return this.language.getTextFromKey(key)
   }
-  openLoadingDialog(): void {
-    this.dialogModal = this.dialog.open(LoadingdialogComponent, {
-      width: '500px',
-      //data: {name: this.name, animal: this.animal}
-    });
-  }
-
-
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getData();
     this.isShowKpi = false;
     this.isShowTimeline = true;
     this.isSideNavPin = false;
-    this.dateRange = this.dateRange.slice(this.dateRange.length/2);
+  }
+
+
+  updateTimelines() {
+    this.daysList = this.timelineService.getDaysArray(this.range.value.start, this.range.value.end);
   }
 
   getData(){
@@ -99,13 +105,27 @@ export class TimelinepageComponent implements OnInit {
 
   }
 
-  onRangeUpdate(dateItem: number){
+  onRangeUpdate(dateItem: string){
     this.selectedDateInterval = dateItem;
     this.dateRangeService.changeRange(dateItem);
   }
 
-  updateDays(days: Date[]) {
-    this.daysList = days;
+  createPreview(activeDate: Date | null): DateRange<Date> {
+    return this.dateRangeService.checkRange(<Date>activeDate);
+  }
+
+  selectionFinished(date: Date | null): DateRange<Date> {
+    return this.dateRangeService.checkRange(<Date>date);
+  }
+
+  onSelectionUpdate() {
+     if (this.selectedDateInterval == "Jour" || this.selectedDateInterval == "Semaine") {
+      return this.dateRangeView = "month";
+    } else if (this.selectedDateInterval == "Mois") {
+      return this.dateRangeView = "year";
+    } else if (this.selectedDateInterval == "Année") {
+      return this.dateRangeView = "multi-year";
+    } else return this.dateRangeView = "month";
   }
 
   moveFastBackwards(){
@@ -130,11 +150,4 @@ export class TimelinepageComponent implements OnInit {
     this.daysList.shift();
     this.daysList.push(endDate)
   }
-}
-export enum dateRangeEnum {
-  "Day",
-  "Week",
-  "Month",
-  "Year",
-  "Custom"
 }

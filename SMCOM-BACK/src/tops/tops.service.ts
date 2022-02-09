@@ -10,7 +10,7 @@ export class TopsService {
     constructor(private httpService: HttpService) {}
 
     findByCNCHandle(API_key: string, CNCHandle: string): Observable<AxiosResponse<CNC[]>> {
-        return this.httpService.get(CAPI_url + 'tops/' + CNCHandle, {
+        return this.httpService.get(CAPI_url + 'tops?topcnchandlefield=' + CNCHandle, {
             headers: { Accept: 'application/json+v1' },
             auth: { username: API_key, password: null },
         });

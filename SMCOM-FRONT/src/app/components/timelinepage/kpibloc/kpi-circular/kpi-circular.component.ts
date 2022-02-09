@@ -26,14 +26,15 @@ export class KpiCircularComponent implements OnInit {
 
   // Color for circle when data is under ...
   currentColor() {
-    if (this.value <= 20) {
+
+    if (this.value <= 20 && this .value >0) {
       return '#EC644B';
-    } else if (this.value <= 50) {
+    } else if (this.value <= 50 && this .value >0) {
       return '#F5D76E';
-    } else if (this.value <= 80) {
+    } else if (this.value <= 80 && this .value >0) {
       return '#87D37C'
     } else {
-      return '#3498DB';
+      return '#FFFFFF';
     }
   }
 }

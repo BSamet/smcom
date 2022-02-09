@@ -32,12 +32,9 @@ export class AbilityService {
     const { can, rules } = new AbilityBuilder(Ability);
 
     // Lire doc : https://confluence.uha4point0.fr/display/U4P/Gestion+des+droits+%3A+CASL
-
-    if (this.user.perms != undefined) {
-      this.user.perms.forEach((perm: { action: string | string[]; subject: any; }) => {
-        can(perm.action, perm.subject)
-      });
-    }
+    this.user.perms.forEach((perm: { action: string | string[]; subject: any; }) => {
+      can(perm.action, perm.subject)
+    });
 
     this.ability.update(rules);
   }
@@ -47,7 +44,7 @@ export class AbilityService {
     return roleList;
   }
 
-  updateUser() {
+  updateUser(){
     this.user.perms = null;
     this.tokenStorage.saveUser(this.user);
     this.updateAbility();
