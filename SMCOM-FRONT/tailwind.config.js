@@ -16,11 +16,9 @@ module.exports = {
       'gl': '1060',
       'xl': '1280px',
       '2xl': '1536px',
-      '3xl' : '1644px',
     },
     colors:{
       primary_cwork: "#324B5D",
-      secondary_cwork: "#D6DAE0",
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,

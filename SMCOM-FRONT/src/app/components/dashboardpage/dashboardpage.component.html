@@ -1,4 +1,4 @@
-<section class="bg-white h-screen">
+<section class="bg-primary_cwork overflow-hidden">
   <app-navbar></app-navbar>
   <div class="md:flex">
     <!-- SidenavSection-->
@@ -14,10 +14,6 @@
 
     </div>
     <div class="w-10/12 mx-2">
-      <div *ngIf="'see' | able: 'Kpi'">
-        <h1>You are able to see Kpi</h1>
-        //CASL autorisation example
-      </div>
       <div class="grid grid-cols-1  pl-4  sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-3 ml-3">
         <app-cnc-dashboard *ngFor="let cnc of listCNC" handle="{{cnc.Handle}}" name="{{cnc.Name}}">
         </app-cnc-dashboard>
@@ -39,5 +35,4 @@
       </div>
     </div>
   </div>
-  <app-footer></app-footer>
 </section>

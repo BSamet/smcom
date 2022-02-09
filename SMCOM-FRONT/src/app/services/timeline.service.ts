@@ -16,10 +16,15 @@ export class TimelineService {
               private language:LanguageService,) { }
 
   public timelineDataV2(cnc : string | null){
-    let URL = NestAPI_URL
+    let URL = NestAPI_URL + "tops/"
+    const API_key = this.storage.getUser().API_key;
     if (this.storage.getDataMode() === 'MOCK')
-      URL = MOCKAPI_URL
-    return this.http.get(URL + "tops?topcnchandlefield="+ cnc);
+      URL = MOCKAPI_URL + "tops?topcnchandlefield="
+    return this.http.get(URL + cnc, {
+      headers: {
+        API_key: API_key,
+      },
+    });
   }
 
   datesAreOnSameDay(first:Date, second:Date){
