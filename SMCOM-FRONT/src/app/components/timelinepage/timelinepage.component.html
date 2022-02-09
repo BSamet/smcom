@@ -1,14 +1,18 @@
 <app-navbar></app-navbar>
 <section class="bg-primary_cwork h-auto pb-1">
   <!-- SidenavSection-->
-  <div id="sideNav" class=" z-50 transform bg-primary_cwork transition md:flex" [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false}">
+  <div id="sideNav" class=" z-50 transform bg-primary_cwork transition md:flex"
+       [ngClass]="{'md:absolute md:-translate-x-44 lg:-translate-x-48 xl:-translate-x-48 2xl:-translate-x-72 hover:-translate-x-0': isSideNavPin === false}"
+  >
     <!-- Sidenav -->
     <div>
       <app-sidenavbar></app-sidenavbar>
     </div>
     <!-- Sidenav brand-->
     <div class="hidden md:block translate-x-10 firefox ml-2"  >
-      <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 " [ngClass]="{' rotateArrow ': isSideNavPin === false}"> <!-- Rotate arrow when hover sidenav is not pinned -->
+      <img src="assets/images/double_arrow.svg" class="cursor-pointer w-6 lg:-translate-x-40 "
+           [ngClass]="{' rotateArrow ': isSideNavPin === false}"
+      > <!-- Rotate arrow when hover sidenav is not pinned -->
     </div>
   </div>
   <div>
@@ -16,12 +20,18 @@
     <div>
       <div>
         <mat-slide-toggle [(ngModel)]='isShowKpi'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}} KPI</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}}<br/>{{getTextFromKey('Timeline')}}</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]='isShowTimeline'  class="p-2 mx-2 relative left-10 top-5 text-white">{{getTextFromKey('display')}}
+          <br/>
+          {{getTextFromKey('Timeline')}}
+        </mat-slide-toggle>
+
         <mat-form-field class="p-2 mx-2 relative left-10 top-5 text-white" appearance="fill">
           <mat-select class="text-white" placeholder="Portée date">
             <mat-option *ngFor="let dateRangeItem of dateRange" [value]="dateRangeItem" (click)="onRangeUpdate(dateRangeItem)">{{dateRangeItem}}</mat-option>
           </mat-select>
         </mat-form-field>
+
+
 
         <mat-form-field class="p-2 mx-2 relative left-10 top-5" appearance="fill">
           <mat-label class="text-white">Choix date</mat-label>
@@ -38,33 +48,36 @@
       </div>
       <div *ngIf="isShowTimeline && end != null" [@flyInOut] class="mt-10 mx-10"  id="timelineToggle" >
         <section class="flex overflow-y-scroll sm:max-h-32 lg:max-h-52 xl:max-h-160  2xl:max-h-288">
-          <div *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="w-11/12">
+          <div *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="w-11/12 ">
             <app-timeline-line *ngFor="let day of daysList" [day]="day.getTime()" [stateData]="stateData" [timelineData]="timelineData"></app-timeline-line>
           </div>
           <div *ngIf="!hasLoaded" class="text-center">
             <span class="mx-10 text-white">Loading...</span>
           </div>
-          <div class="w-1/12 ml-12 h-1/2 fixed inset-y-1/4 right-5 px-8">
-            <div class="text-blue-100">
+          <div class=" w-1/12 h-1/2 px-8" >
+            <div class="bg-primary_cwork text-blue-100">
               <!-- av -->
               <nav>
-                <button (click)="moveFastBackwards()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
-                  <mat-icon [inline]="true">keyboard_double_arrow_up</mat-icon>
+                <button (click)="moveFastBackwards()" class="hover:text-white translate-x-40 h-20 w-20 text-indigo-300 text-9xl">
+                  <mat-icon class="translate-x-40" [inline]="true">keyboard_double_arrow_up</mat-icon>
                 </button>
-                <button (click)="moveBackWards()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
+                <button (click)="moveBackWards()" class="hover:text-white h-20 w-20 text-indigo-300 text-9xl">
                   <mat-icon [inline]="true">keyboard_arrow_up</mat-icon>
                 </button>
-                <button (click)="moveForward()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
+                <button (click)="moveForward()" class=" hover:text-white h-20 w-20 text-indigo-300 text-9xl">
                   <mat-icon [inline]="true">keyboard_arrow_down</mat-icon>
                 </button>
-                <button (click)="moveFastForward()" class="hover:text-white mb-4 h-20 w-20 text-indigo-300 text-9xl">
+                <button (click)="moveFastForward()" class="hover:text-white h-20 w-20 text-indigo-300 text-9xl">
                   <mat-icon [inline]="true">keyboard_double_arrow_down</mat-icon>
                 </button>
               </nav>
             </div>
           </div>
         </section>
-        <app-timelinenavigation [daysList]="daysList" [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0" class="flex justify-center mt-1"></app-timelinenavigation>
+        <app-timelinenavigation [stateData]="stateData" [timelineData]="timelineData" *ngIf="hasLoaded && isShowTimeline && stateData.length > 0 && timelineData.length > 0"
+                                class="flex justify-center  translate-y-40"
+        >
+        </app-timelinenavigation>
       </div>
     </div>
   </div>
