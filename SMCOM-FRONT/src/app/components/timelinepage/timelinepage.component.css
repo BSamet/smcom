@@ -18,3 +18,15 @@ html,body{
 section::-webkit-scrollbar {
   display: none;
 }
+/* firefox scrollbar */
+section {
+  scrollbar-width: none;
+}
+
+.timelineHeight{
+ height: calc(60vh);
+}
+
+::ng-deep .mat-select-value {
+  color: white;
+}
